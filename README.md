@@ -6,3 +6,9 @@
 - Robert Quinones
 - Sunny Wong
 - Tommy Tran
+
+# JDK Version
+- 10.2
+
+# IDE
+- Intellij
