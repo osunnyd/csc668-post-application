@@ -29,7 +29,7 @@ public class Manager {
     public void closeStore(){
 
     }
-    
+
     //Method tell store to set up Catalog, (or set up catalog and give it to store)
     public void setUpCatalog(File products){
 
