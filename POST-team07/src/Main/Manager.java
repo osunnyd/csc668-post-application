@@ -21,9 +21,15 @@ public class Manager {
     };
 
     //Method Open store
+    public void openStore(){
+
+    }
 
     //Method Close Store
+    public void closeStore(){
 
+    }
+    
     //Method tell store to set up Catalog, (or set up catalog and give it to store)
     public void setUpCatalog(File products){
 
@@ -32,7 +38,7 @@ public class Manager {
         //UPC (1-4)  Text description (10-29)  Price (35 to end of line)
         //1234.....Item Description 1.......1.23
 
-        //ArrayList<Product>
+        //ArrayList<Item>
         Hashmap<String, Float> catalog = new HashMap<String, Float>();
 
         FileInputStream in = null;
