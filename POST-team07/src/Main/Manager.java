@@ -21,13 +21,17 @@ public class Manager {
     };
 
     //Method Open store
-    public void openStore(){
-
+    public Store openStore(){
+        //ask console/Manager to continue or exit
+        Store store = new Store();
+        //create catalog
     }
 
     //Method Close Store
     public void closeStore(){
-
+        //Print needed to console
+        //Close files for Store
+        //Close Store / Store = NIL
     }
 
     //Method tell store to set up Catalog, (or set up catalog and give it to store)
@@ -39,21 +43,22 @@ public class Manager {
         //1234.....Item Description 1.......1.23
 
         //ArrayList<Item>
-        Hashmap<String, Float> catalog = new HashMap<String, Float>();
+        Hashmap<String, Float> catalogHashMap = new HashMap<String, Float>();
 
-        FileInputStream in = null;
-
-        try {
-            in = new FileInputStream(products);
-
-            int c;
-            while ((c = in.read()) != -1) {
-                System.out.println("Stuff being read");
+        try (BufferedReader br = new BufferedReader(new FileReader(products))) {
+            //in = new FileInputStream(products);
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                //add to hashmap
+                //add to arraylist
             }
 
+
+
         } finally {
-            if (in != null) {
-                in.close();
+            if (br != null) {
+                br.close();
             }
         }
 
