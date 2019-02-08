@@ -25,7 +25,7 @@ public class Customer {
 
   private void calculateChange(){
     if(paymentType.equals("CASH"))
-    change = total - amountTendered;
+    this.change = this.total - this.amountTendered;
   }
 
   public void setTotal(double total){
