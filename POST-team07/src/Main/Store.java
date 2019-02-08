@@ -1,5 +1,5 @@
 package Main;
-
+import java.io.File;
 import java.util.HashMap;
 
 public class Store {
@@ -14,10 +14,16 @@ public class Store {
     POS pos;
     SalesLog log;
 
+    public Store(File products) {
+        parseProducts(products);
+    }
+
+
+
 
     void writeToLog(POS pos, SalesLog log) {}
 
-    void parseProducts(){}
+    void parseProducts(File products){}
 
     boolean closeStore()
     {
@@ -29,9 +35,5 @@ public class Store {
         return isOpen = true;
     }
 
-
-// test123
-
-
-
 }
+
