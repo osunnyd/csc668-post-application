@@ -14,6 +14,8 @@ public class Manager {
     String name = "";
     File products;
     File transactions;
+    Store store;
+
 
     //Constructor
     Manager(String name){
@@ -21,7 +23,7 @@ public class Manager {
     };
 
     //Method Open store
-    public Store openStore(){
+    public void openStore(){
         //ask console/Manager to continue or exit
         Store store = new Store();
         //create catalog
@@ -29,9 +31,13 @@ public class Manager {
 
     //Method Close Store
     public void closeStore(){
-        //Print needed to console
-        //Close files for Store
-        //Close Store / Store = NIL
+        //ask console/Manager to close or continue
+        //true if closing
+        //false if another file to be given for transactions]
+
+        //OR
+
+        //Give Driver signal to finish current current transactions and close store
     }
 
     //Method tell store to set up Catalog, (or set up catalog and give it to store)
@@ -42,7 +48,7 @@ public class Manager {
         //UPC (1-4)  Text description (10-29)  Price (35 to end of line)
         //1234.....Item Description 1.......1.23
 
-        //ArrayList<Item>
+        //ArrayList<Item> catalog
         Hashmap<String, Float> catalogHashMap = new HashMap<String, Float>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(products))) {
