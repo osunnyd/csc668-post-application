@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91666fb5-e9a6-4e42-a410-14fded45e711" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/Customer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/Driver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/Item.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/Manager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/POS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/SalesLineItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/SalesLog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/Store.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POST-team07/Main/TransactionManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main/Store.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,14 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main/Store.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-              <folding>
-                <element signature="e#266#267#0" expanded="true" />
-                <element signature="e#294#295#0" expanded="true" />
-                <element signature="e#342#343#0" expanded="true" />
-                <element signature="e#363#364#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="442">
+              <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -118,7 +102,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549595429836" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549595788157" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -149,6 +133,7 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +154,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2579425" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2579425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -260,14 +245,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Store.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding>
-            <element signature="e#266#267#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="442">
+          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
         </state>
       </provider>
     </entry>
