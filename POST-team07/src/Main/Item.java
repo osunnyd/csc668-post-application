@@ -1,32 +1,45 @@
 package Main;
 
 /*
-
-
-
+Utility class item
 
 */
 
-public class Item {
+public class Item
+{
   private String upc;
   private String description;
-  private double price;
+  private float price;
 
-  public Item (String upc, String description, double price){
-    this.upc = upc;
-    this.description = description;
-    this.price = price;
-
+  public Item()
+  {
+    this.upc = "";
+    this.description = "";
+    this.price = 0;
   }
-  public String getUpc(){
+
+  public String getUPC()
+  {
     return this.upc;
   }
 
-  public String getDescription(){
+  public String getDescription()
+  {
     return this.description;
   }
 
-  public double getPrice(){
+  public float getPrice()
+  {
     return this.price;
+  }
+
+  public void setUPC(String setUPC)
+  {
+    upc = setUPC;
+  }
+
+  public void setDescription(String setDescription)
+  {
+    description = setDescription;
   }
 }
