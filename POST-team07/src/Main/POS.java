@@ -10,8 +10,12 @@ public class POS {
   SalesLog saleslog;
 
   //Methods
-  buildReceipts(ArrayList transactionsList){
+  public void buildReceipts(ArrayList transactionsList){
     receipts = new ArrayList();
+    //build from Trasnactions manager receipts or on you own.
   }
+
+
+
 
 }
