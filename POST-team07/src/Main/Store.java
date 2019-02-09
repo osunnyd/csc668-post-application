@@ -23,7 +23,6 @@ public class Store {
     parseProducts(products);
   }
 
-
   void writeToLog(POS pos, SalesLog log) {
   }
 
@@ -46,10 +45,14 @@ public class Store {
 
     private void parseItems(String[] items){
       Item item = new Item();
-      String[] product = new String[3];
+
+      String[] product;
 
       for (int itrOfItems = 0; itrOfItems < items.length; itrOfItems++){
         product = items[itrOfItems].split(" ", 3);
+        item.setUPC(product[0]);
+        item.setDescription(product[1]);
+        item.setPrice(Float.parseFloat(product[2]));
       }
     }
 
