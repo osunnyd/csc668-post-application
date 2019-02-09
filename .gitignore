@@ -3,6 +3,7 @@ out/
 
 # Vscode
 .vs/
+.vscode/
 
 # User-specific stuff
 .idea/**/workspace.xml
