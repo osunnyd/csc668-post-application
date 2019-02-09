@@ -14,35 +14,32 @@ Manager is in charge of starting initialization.
 
 public class Manager {
   String name = "";
-  File products;
-  File transactions;
   Store store;
 
 
     //Constructor
   Manager(String name){
-    this.name = name
-  };
+    this.name = name;
+  }
 
   //Method Open store
-  public void openStore(){
-  //ask console/Manager to continue or exit
-  Store store = new Store();
-    //create catalog
+  public void openStore( File products ){
+    try{
+      store = new Store(products);
+      store.openStore()
+    }catch(Exception e){
+    }
+  }
+
+  //Method Process Transactions
+
+  public void processTransactions(File transactions){
+    store.processTransactions(transactions);
   }
 
   //Method Close Store
   public void closeStore(){
-    //ask console/Manager to close or continue
-    //true if closing
-    //false if another file to be given for transactions]
-
-    //OR
-
-    //Give Driver signal to finish current current transactions and close store
+    store.closeStore();
   }
-
-  //Method tell store to set up Catalog, (or set up catalog and give it to store)
-  public void setUpCatalog(File products){  }
 
 }
