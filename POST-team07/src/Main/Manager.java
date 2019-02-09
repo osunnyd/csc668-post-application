@@ -15,7 +15,7 @@ Manager is in charge of starting initialization.
 public class Manager {
   String name = "";
   Store store;
-
+  Catalog catalog;
 
     //Constructor
   Manager(String name){
@@ -25,8 +25,9 @@ public class Manager {
   //Method Open store
   public void openStore( File products ){
     try{
-      store = new Store(products);
-      store.openStore()
+      catalog = new Catalog(products);
+      store = new Store(catalog);
+      store.openStore();
     }catch(Exception e){
     }
   }
