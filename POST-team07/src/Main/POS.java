@@ -4,13 +4,14 @@ package Main;
 
 public class POS {
 
-    //Fields
-    TransactionManager transactionManager;
-    HashMap Catalog;
-    ArrayList<String> receipts;
+  //Fields
+  TransactionManager transactionManager;
+  ArrayList<String> receipts;
+  SalesLog saleslog;
 
-    //Methods
-    recieptBuilder(Customer);
-    getReciepts();
+  //Methods
+  buildReceipts(ArrayList transactionsList){
+    receipts = new ArrayList();
+  }
 
 }
