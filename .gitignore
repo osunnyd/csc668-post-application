@@ -1,6 +1,9 @@
 # IntelliJ
 out/
 
+# Vscode
+.vs/
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
