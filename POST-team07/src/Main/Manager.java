@@ -25,8 +25,9 @@ public class Manager {
   //Method Open store
   public void openStore( File products ){
     try{
-      store = new Store(products);
-      store.openStore()
+      store = new Store();
+      store.openStore();
+      store.catalog.parseproducts(products);
     }catch(Exception e){
     }
   }
