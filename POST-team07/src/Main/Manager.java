@@ -19,7 +19,7 @@ public class Manager {
 
     //Constructor
     Manager(String name){
-        this.name = name
+        this.name = name;
     };
 
     //Method Open store
