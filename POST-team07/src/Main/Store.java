@@ -16,9 +16,9 @@ public class Store
   // keeps track of UPC and quantity; assume quantity is infinite for now
   // HashMap<String, Integer> stock = new HashMap<>();
 
-  public Store()
+  public Store(Catalog catalog)
   {
-    catalog = new Catalog();
+    this.catalog = catalog;
   }
 
 

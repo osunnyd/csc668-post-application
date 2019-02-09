@@ -15,7 +15,10 @@ public class Catalog
   //each item is a String line to be parsed
   private ArrayList<String> items = new ArrayList<>();
 
-
+  public Catalog(File fileName) throws IOException
+  {
+    parseProducts(fileName);
+  }
   public void parseProducts(File products) throws IOException
   {
 
