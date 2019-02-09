@@ -42,4 +42,9 @@ public class Item
   {
     description = setDescription;
   }
+
+  public void setPrice (float setPrice)
+  {
+    price = setPrice;
+  }
 }
