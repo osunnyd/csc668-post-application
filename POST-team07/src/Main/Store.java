@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 public class Store
 {
+
+  POS pos;
+  SalesLog log;
   boolean isOpen = false;
 
   // keeps track of UPC and quantity; assume quantity is infinite for now
@@ -24,6 +27,7 @@ public class Store
     parseProducts(products);
   }
 
+  private void writeToLog(){} // to be implemented
 
   private void parseProducts(File products) throws IOException {
 
