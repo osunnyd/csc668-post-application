@@ -10,20 +10,19 @@ import java.util.HashMap;
 public class Store
 {
   Catalog catalog;
-//  Stock stock;
+  Stock stock;
   boolean isOpen = false;
 
   // keeps track of UPC and quantity; assume quantity is infinite for now
   // HashMap<String, Integer> stock = new HashMap<>();
 
-  public Store(Catalog catalog)
-  {
+  public Store(Catalog catalog, Stock stock) {
     this.catalog = catalog;
+    this.stock = stock;
   }
+  
 
-
-  public void printCatalog()
-  {
+  public void printCatalog() {
     catalog.printCatalog();
     //System.out.println(catalog.toString());
   }
@@ -31,6 +30,8 @@ public class Store
   public Item getItem (String itemUPC) {
     return catalog.getItem( new UPC( itemUPC ) );
   }
+
+  public HashMap getStock() { return stock.getStock(); }
 
   boolean closeStore()
   {
