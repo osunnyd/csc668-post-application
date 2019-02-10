@@ -4,6 +4,7 @@ public class SalesLineItem {
   private UPC upc;
   private int quantity;
   private float unitPrice;
+  private float subtotal;
   private String description;
 
   public SalesLineItem ( String itemUPC, int quantity ) {
@@ -28,6 +29,10 @@ public class SalesLineItem {
     return description;
   }
 
+  public float getSubtotal () {
+    return subtotal;
+  }
+
   public void setUpc ( String newUPC ) {
     this.upc.setUPC( newUPC );
   }
@@ -42,5 +47,9 @@ public class SalesLineItem {
 
   public void setUnitPrice( float price ) {
     this.unitPrice = price;
+  }
+
+  public void setSubtotal ( float subtotal ) {
+    this.subtotal = subtotal;
   }
 }

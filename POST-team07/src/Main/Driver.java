@@ -18,7 +18,7 @@ public class Driver {
     //File transactions;
     Store store;
     // When True Prints to Console
-    static Boolean debugOn = false;
+    static Boolean debugOn = true;
 
     public static void main(String[] args) {
         if ( args.length > 2 ) {
@@ -30,8 +30,8 @@ public class Driver {
             File transactions = new File( args[1] );
 
             if ( debugOn ) { // Delete all of this before we submit
-                printFileContents( products );
-                printFileContents( transactions );
+//                printFileContents( products );
+//                printFileContents( transactions );
 
                 try {
                     // Create Catalog
@@ -39,14 +39,14 @@ public class Driver {
 
                     // Create Arraylist & Add Items
                     ArrayList< SalesLineItem > purchasedItems = new ArrayList<>();
-                    purchasedItems.add( new SalesLineItem( "2018", 1 ) );
-                    purchasedItems.add( new SalesLineItem( "1104", 1 ) );
-                    purchasedItems.add( new SalesLineItem( "9876", 3 ) );
+//                    purchasedItems.add( new SalesLineItem( "2018", 1 ) );
+//                    purchasedItems.add( new SalesLineItem( "1104", 1 ) );
+//                    purchasedItems.add( new SalesLineItem( "9876", 3 ) );
 
 
                     // Create Customer - Name, Date, Payment Type, Amount Tendered, Array List of S.L.Is
                     Customer customer = new Customer( "John Doe", new Date().toString(),
-                      "CASH", "50.00", purchasedItems);
+                      "CASH", "47.65", purchasedItems);
 
                     // Calculate Bill, Change, Receipt in that order
                     customer.calculateBill( productCatalog );
@@ -69,7 +69,6 @@ public class Driver {
 
         }
     }
-  }
 
   // Debug Function - Delete later
   public static void printFileContents( File file ) {
