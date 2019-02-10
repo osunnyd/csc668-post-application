@@ -54,6 +54,12 @@ public class Catalog
     }
   }
 
+  // returns item based on upc
+  public Item getItem(UPC upc)
+  {
+    return catalog.get(upc);
+  }
+
   public void printCatalog()
   {
     for (UPC keys : catalog.keySet())

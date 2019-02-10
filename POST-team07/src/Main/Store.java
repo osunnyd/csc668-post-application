@@ -28,7 +28,13 @@ public class Store
     //System.out.println(catalog.toString());
   }
 
-
+  public Item getItem (String upc)
+  {
+    UPC upcOfItem = new UPC();
+    upcOfItem.setUPC(upc);
+    Item returnedItem = catalog.getItem(upcOfItem);
+    return returnedItem;
+  }
 
   boolean closeStore()
   {
