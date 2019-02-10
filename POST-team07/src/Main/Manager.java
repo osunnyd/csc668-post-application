@@ -12,6 +12,7 @@ Manager is in charge of starting initialization.
 
 
 
+
 public class Manager {
   String name = "";
   Store store;
