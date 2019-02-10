@@ -1,0 +1,9 @@
+# IntelliJ
+out/
+
+# Vscode
+.vs/
+.vscode/
+
+# User-specific stuff
+.idea/
