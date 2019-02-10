@@ -21,7 +21,12 @@ public class UPC {
     return upc.hashCode();
   }
 
-  // I changed this to take a string DELETE later
+  // for default and loading in file into products
+  public UPC() {
+    this.upc = "";
+  }
+  
+  // another constructor for UPC if needed
   public UPC( String upc) {
     this.upc = upc;
   }
