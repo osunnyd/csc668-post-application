@@ -5,14 +5,14 @@ public class UPC
   private String upc;
   // had to override to compare UPC codes correctly
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(Object object) {
 
-    if (o == this) return true;
-    if (!(o instanceof UPC)) {
+    if (object == this) return true;
+    if (!(object instanceof UPC)) {
       return false;
     }
 
-    UPC compare = (UPC) o;
+    UPC compare = (UPC) object;
 
     return compare.upc.equals(this.upc);
   }
