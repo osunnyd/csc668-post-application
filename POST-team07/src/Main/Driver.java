@@ -2,9 +2,6 @@ package Main;
 /*
     This class runs our entire application. Helps manager initialize a store
     with a products.txt and transactions.txt passed in from the command line
-
-
-
 */
 
 import java.io.File;
@@ -72,20 +69,21 @@ public class Driver {
 
         }
     }
+  }
 
-    // Debug Function - Delete later
-    public static void printFileContents( File file ) {
+  // Debug Function - Delete later
+  public static void printFileContents( File file ) {
 
-        try( Scanner tester = new Scanner( file ) ) {
+    try( Scanner tester = new Scanner( file ) ) {
 
-            while( tester.hasNextLine() ) {
-                System.out.println( tester.nextLine() );
-            }
+      while( tester.hasNextLine() ) {
+        System.out.println( tester.nextLine() );
+      }
 
-            System.out.println();
+      System.out.println();
 
-        } catch ( FileNotFoundException e ) {
-            System.out.println( e );
-        }
+    } catch ( FileNotFoundException e ) {
+      System.out.println( e );
     }
+  }
 }
