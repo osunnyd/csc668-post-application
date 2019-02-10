@@ -1,24 +1,46 @@
 package Main;
 
 public class SalesLineItem {
-  private String upc;
+  private UPC upc;
   private int quantity;
-  private double unitPrice;
+  private float unitPrice;
+  private String description;
 
-  public SalesLineItem(String upc, int quantity, double unitPrice){
-    this.upc = upc;
+  public SalesLineItem ( String itemUPC, int quantity ) {
+    this.upc = new UPC( itemUPC );
     this.quantity = quantity;
-    this.unitPrice = unitPrice;
 
   }
 
-  public String getUpc(){
+  public UPC getUPC() {
     return this.upc;
   }
-  public int getQuantity(){
+
+  public int getQuantity() {
     return this.quantity;
   }
-  public double getUnitPrice(){
+
+  public float getUnitPrice() {
     return this.unitPrice;
+  }
+
+  public String getDescription () {
+    return description;
+  }
+
+  public void setUpc ( String newUPC ) {
+    this.upc.setUPC( newUPC );
+  }
+
+  public void setQuantity ( int quantity ) {
+    this.quantity = quantity;
+  }
+
+  public void setDescription ( String description ) {
+    this.description = description;
+  }
+
+  public void setUnitPrice( float price ) {
+    this.unitPrice = price;
   }
 }

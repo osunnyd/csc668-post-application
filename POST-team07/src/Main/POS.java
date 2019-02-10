@@ -2,6 +2,8 @@ package Main;
 
 //Jarek
 
+import java.util.ArrayList;
+
 public class POS {
 
   //Fields

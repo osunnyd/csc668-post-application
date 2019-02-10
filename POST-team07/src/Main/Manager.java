@@ -35,7 +35,7 @@ public class Manager {
   //Method Process Transactions
 
   public void processTransactions(File transactions){
-    store.processTransactions(transactions);
+//    store.processTransactions(transactions);
   }
 
   //Method Close Store

@@ -1,7 +1,6 @@
 package Main;
 
-public class UPC
-{
+public class UPC {
   private String upc;
   // had to override to compare UPC codes correctly
   @Override
@@ -22,17 +21,21 @@ public class UPC
     return upc.hashCode();
   }
 
-  public UPC()
-  {
+  // for default and loading in file into products
+  public UPC() {
     this.upc = "";
   }
-  public String getUPC()
-  {
+  
+  // another constructor for UPC if needed
+  public UPC( String upc) {
+    this.upc = upc;
+  }
+
+  public String getUPC() {
     return this.upc;
   }
 
-  public void setUPC(String setUPC)
-  {
+  public void setUPC( String setUPC ) {
     upc = setUPC;
   }
 }

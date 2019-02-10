@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Store
 {
   Catalog catalog;
-  Stock stock;
+//  Stock stock;
   boolean isOpen = false;
 
   // keeps track of UPC and quantity; assume quantity is infinite for now
@@ -28,12 +28,8 @@ public class Store
     //System.out.println(catalog.toString());
   }
 
-  public Item getItem (String upc)
-  {
-    UPC upcOfItem = new UPC();
-    upcOfItem.setUPC(upc);
-    Item returnedItem = catalog.getItem(upcOfItem);
-    return returnedItem;
+  public Item getItem (String itemUPC) {
+    return catalog.getItem( new UPC( itemUPC ) );
   }
 
   boolean closeStore()
