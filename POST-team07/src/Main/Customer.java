@@ -7,79 +7,113 @@ package Main;
 
 */
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Customer {
   private String name;
   private String date;
   private String paymentType;
-  private double amountTendered;
-  private double billTotal;
-  private double change;
-  private ArrayList< SalesLineItem > purchasedItems;
+  private String amountTendered;
+  private String receipt = "";
+  private float billTotal = 0;
+  private float change = 0;
+  private ArrayList<SalesLineItem> purchasedItems;
 
-  public Customer( String name, String date, ArrayList< SalesLineItem > purchasedItems,
-                   String paymentType, double amountTendered ){
+  public Customer ( String name, String date, String paymentType, String amountTendered,
+                    ArrayList<SalesLineItem> purchasedItems) {
+
     this.name = name;
     this.date = date;
-    this.purchasedItems = purchasedItems;
     this.paymentType = paymentType;
     this.amountTendered = amountTendered;
-    this.billTotal = 0.0;
-    this.change = 0.0;
+    this.purchasedItems = purchasedItems;
   }
 
-  public void calculateBill( Catalog productCatalog ) {
-
-    productCatalog.printCatalog();
-
-    // Look through each sales like item
+  public void calculateBill ( Catalog productCatalog ) {
     for ( int index = 0; index < this.purchasedItems.size(); index++ ) {
 
-      String productUPC = purchasedItems.get( index ).getUPC();
-      System.out.println( productUPC );
+      SalesLineItem currentSalesLineItem = purchasedItems.get( index );
+      UPC productUPC = currentSalesLineItem.getUPC();
 
-      // We have a method for this I can use instead later
-      Item currentItem = productCatalog.getItem( new UPC( productUPC ) );
-      System.out.println(currentItem);
+      Item currentItem = productCatalog.getItem( productUPC );
+      currentSalesLineItem.setUnitPrice( currentItem.getPrice() );
+      currentSalesLineItem.setDescription( currentItem.getDescription() );
 
-      // Delete later
-//      System.out.println( currentItem.getUPC() + ", " + currentItem.getDescription() + ", " + currentItem.getPrice());
-    }
+      float currentLineTotal = currentItem.getPrice() * currentSalesLineItem.getQuantity();
+      updateTotal( currentLineTotal );
 
-  }
-
-  public void calculateChange() {
-    if( paymentType.equals("CASH") ) {
-      this.change = this.billTotal - this.amountTendered;
     }
   }
 
-  private void updateSalesLineItemPrice( Integer index, double price ) {
-    this.purchasedItems.get( index ).setUnitPrice( price );
+  public void calculateChange () {
+    if ( paymentType.equals( "CASH" ) ) {
+      this.change = Float.parseFloat( this.amountTendered ) - this.billTotal;
+    }
   }
 
-  public void setTotal( double total ) {
-    this.billTotal = total;
+  public void generateReceipt () {
+    DecimalFormat twoDecimals = new DecimalFormat( "###.##" );
+
+    generateReceiptHeader( twoDecimals );
+    generateReceiptFooter( twoDecimals );
   }
 
-  public String getName() {
+  private void generateReceiptHeader( DecimalFormat twoDecimals) {
+    this.receipt += this.name + "\t" + this.date + "\n";
+
+    for( int index = 0; index < purchasedItems.size(); index++ ) {
+      SalesLineItem currentItem = purchasedItems.get( index );
+
+      this.receipt += currentItem.getDescription() +
+        ": " + currentItem.getQuantity() +
+        " @ $" + twoDecimals.format( currentItem.getUnitPrice() ) + "\n";
+    }
+
+    this.receipt += "-----\n";
+  }
+
+  private void generateReceiptFooter( DecimalFormat twoDecimals) {
+    this.receipt += "Total: $" + this.billTotal + "\n";
+
+    if( this.paymentType.equals( "CASH" ) ) {
+      this.receipt += "Amount Tendered: $" + this.amountTendered + "\n" +
+        "Amount Returned: $" + twoDecimals.format(this.change) + "\n";
+
+    } else if ( this.paymentType.equals("CREDIT") ) {
+      this.receipt += "Paid by Credit Card " + this.amountTendered;
+
+    } else {
+      this.receipt += "Paid by Check\n";
+
+    }
+  }
+
+  public void updateTotal ( float total ) {
+    this.billTotal += total;
+  }
+
+  public String getName () {
     return this.name;
   }
 
-  public String getDate() {
+  public String getDate () {
     return this.date;
   }
 
-  public String getPaymentType() {
+  public String getPaymentType () {
     return this.paymentType;
   }
 
-  public double getAmountTendered () {
+  public String getAmountTendered () {
     return amountTendered;
   }
 
-  public double getChange() {
+  public String getReceipt() {
+    return this.receipt;
+  }
+
+  public float getChange () {
     return this.change;
   }
 

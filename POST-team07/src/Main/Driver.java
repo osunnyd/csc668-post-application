@@ -21,7 +21,7 @@ public class Driver {
     //File transactions;
     Store store;
     // When True Prints to Console
-    static Boolean debugOn = true;
+    static Boolean debugOn = false;
 
     public static void main(String[] args) {
         if ( args.length > 2 ) {
@@ -32,9 +32,9 @@ public class Driver {
             File products = new File( args[0] );
             File transactions = new File( args[1] );
 
-            if ( debugOn ) {
-//                printFileContents( products );
-//                printFileContents( transactions );
+            if ( debugOn ) { // Delete all of this before we submit
+                printFileContents( products );
+                printFileContents( transactions );
 
                 try {
                     // Create Catalog
@@ -42,23 +42,23 @@ public class Driver {
 
                     // Create Arraylist & Add Items
                     ArrayList< SalesLineItem > purchasedItems = new ArrayList<>();
-                    purchasedItems.add( new SalesLineItem( "1234", 2 ) );
-                    purchasedItems.add( new SalesLineItem( "2345", 3 ) );
+                    purchasedItems.add( new SalesLineItem( "2018", 1 ) );
+                    purchasedItems.add( new SalesLineItem( "1104", 1 ) );
+                    purchasedItems.add( new SalesLineItem( "9876", 3 ) );
 
 
-                    // Create Customer
-                    Customer customer = new Customer( "Robert", new Date().toString(), purchasedItems,
-                      "CASH", Double.parseDouble( "20.00" ));
+                    // Create Customer - Name, Date, Payment Type, Amount Tendered, Array List of S.L.Is
+                    Customer customer = new Customer( "John Doe", new Date().toString(),
+                      "CASH", "50.00", purchasedItems);
 
-                    System.out.println( customer.getName() + " " + customer.getDate() + " " + customer.getPaymentType() + " " + customer.getAmountTendered());
-
-                    // Calculate Bill
+                    // Calculate Bill, Change, Receipt in that order
                     customer.calculateBill( productCatalog );
-
-                    // Calculate Change
                     customer.calculateChange();
+                    customer.generateReceipt(); // Be sure to generate first
 
-//                    customer.getReceipt();
+                    // Display Invoice - getReceipt returns the string
+                    System.out.println(  customer.getReceipt() );
+
                 } catch ( IOException error ) {
                     System.out.print( error );
                 }
@@ -70,7 +70,6 @@ public class Driver {
             // TODO Store Processes Transactions
             // TODO Manager Closes Store
 
-            System.out.println( "\nEnd of Program" ); // DELETE LATER
         }
     }
 

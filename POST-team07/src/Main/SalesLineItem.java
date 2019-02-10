@@ -1,17 +1,18 @@
 package Main;
 
 public class SalesLineItem {
-  private String upc;
+  private UPC upc;
   private int quantity;
-  private double unitPrice;
+  private float unitPrice;
+  private String description;
 
-  public SalesLineItem ( String upc, int quantity ) {
-    this.upc = upc;
+  public SalesLineItem ( String itemUPC, int quantity ) {
+    this.upc = new UPC( itemUPC );
     this.quantity = quantity;
 
   }
 
-  public String getUPC() {
+  public UPC getUPC() {
     return this.upc;
   }
 
@@ -19,19 +20,27 @@ public class SalesLineItem {
     return this.quantity;
   }
 
-  public double getUnitPrice() {
+  public float getUnitPrice() {
     return this.unitPrice;
   }
 
-  public void setUpc ( String upc ) {
-    this.upc = upc;
+  public String getDescription () {
+    return description;
+  }
+
+  public void setUpc ( String newUPC ) {
+    this.upc.setUPC( newUPC );
   }
 
   public void setQuantity ( int quantity ) {
     this.quantity = quantity;
   }
 
-  public void setUnitPrice( double price ) {
+  public void setDescription ( String description ) {
+    this.description = description;
+  }
+
+  public void setUnitPrice( float price ) {
     this.unitPrice = price;
   }
 }
