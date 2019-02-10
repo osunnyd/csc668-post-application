@@ -69,7 +69,7 @@ public class Driver {
 
         }
     }
-  }
+  
 
   // Debug Function - Delete later
   public static void printFileContents( File file ) {

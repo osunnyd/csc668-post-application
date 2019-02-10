@@ -20,8 +20,7 @@ public class Store
     this.catalog = catalog;
     this.stock = stock;
   }
-
-  public procces
+  
 
   public void printCatalog() {
     catalog.printCatalog();
