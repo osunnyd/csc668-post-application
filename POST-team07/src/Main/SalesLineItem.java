@@ -12,13 +12,19 @@ public class SalesLineItem {
 
   }
 
-  public String getUpc(){
+  public String getUpc() {
     return this.upc;
   }
-  public int getQuantity(){
+
+  public int getQuantity() {
     return this.quantity;
   }
-  public double getUnitPrice(){
+
+  public double getUnitPrice() {
     return this.unitPrice;
+  }
+
+  public void setUnitPrice( double price ) {
+    this.unitPrice = price;
   }
 }
