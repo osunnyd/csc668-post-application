@@ -24,6 +24,14 @@ public class SalesLineItem {
     return this.unitPrice;
   }
 
+  public void setUpc ( String upc ) {
+    this.upc = upc;
+  }
+
+  public void setQuantity ( int quantity ) {
+    this.quantity = quantity;
+  }
+
   public void setUnitPrice( double price ) {
     this.unitPrice = price;
   }

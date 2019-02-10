@@ -9,13 +9,13 @@ import java.util.HashMap;
 
 public class Catalog {
   //keeps track of UPC and what the Item is
-  HashMap<UPC, Item> catalog = new HashMap<>();
+  HashMap< UPC, Item > catalog = new HashMap<>();
 
   //each item is a String line to be parsed
-  private ArrayList<String> items = new ArrayList<>();
+  private ArrayList< String > items = new ArrayList<>();
 
-  public Catalog(File fileName) throws IOException {
-    parseProducts(fileName);
+  public Catalog( File fileName ) throws IOException {
+    parseProducts( fileName );
   }
 
   public void parseProducts( File products ) throws IOException {

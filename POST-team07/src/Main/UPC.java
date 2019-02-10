@@ -1,7 +1,6 @@
 package Main;
 
-public class UPC
-{
+public class UPC {
   private String upc;
   // had to override to compare UPC codes correctly
   @Override

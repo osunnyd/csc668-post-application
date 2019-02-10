@@ -32,6 +32,9 @@ public class Driver {
             if ( debugOn ) {
                 printFileContents( products );
                 printFileContents( transactions );
+
+
+                // Calculate Customer's Bill
             }
 
             // TODO Manager Opens Store
