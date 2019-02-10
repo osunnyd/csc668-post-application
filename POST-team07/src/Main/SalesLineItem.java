@@ -5,14 +5,13 @@ public class SalesLineItem {
   private int quantity;
   private double unitPrice;
 
-  public SalesLineItem(String upc, int quantity, double unitPrice){
+  public SalesLineItem ( String upc, int quantity ) {
     this.upc = upc;
     this.quantity = quantity;
-    this.unitPrice = unitPrice;
 
   }
 
-  public String getUpc() {
+  public String getUPC() {
     return this.upc;
   }
 

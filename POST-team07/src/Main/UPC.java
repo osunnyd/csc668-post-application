@@ -21,17 +21,16 @@ public class UPC {
     return upc.hashCode();
   }
 
-  public UPC()
-  {
-    this.upc = "";
+  // I changed this to take a string DELETE later
+  public UPC( String upc) {
+    this.upc = upc;
   }
-  public String getUPC()
-  {
+
+  public String getUPC() {
     return this.upc;
   }
 
-  public void setUPC(String setUPC)
-  {
+  public void setUPC( String setUPC ) {
     upc = setUPC;
   }
 }

@@ -14,8 +14,9 @@ public class Catalog {
   //each item is a String line to be parsed
   private ArrayList< String > items = new ArrayList<>();
 
-  public Catalog( File fileName ) throws IOException {
-    parseProducts( fileName );
+  public Catalog( File products ) throws IOException {
+    parseProducts( products );
+
   }
 
   public void parseProducts( File products ) throws IOException {
@@ -42,40 +43,40 @@ public class Catalog {
 
     // parse each line by spaces
     for ( int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++ ) {
-      Item item = new Item();
-      UPC upc = new UPC();
 
       product = items.get( itrOfItems ).toString().split( "  +" ); // splits by 2 spaces or more
 
-      upc.setUPC( product[ 0 ] );
-      item.setUPC( product[ 0 ] );
-      item.setDescription( product[ 1 ] );
-      item.setPrice( Float.parseFloat( product[ 2 ] ) );
+      String productUPC = product[ 0 ];
+      String productDescription = product[ 1 ];
+      float  productPrice = Float.parseFloat( product[ 2 ] );
+
+      UPC upc = new UPC( productUPC );
+      Item item = new Item( productUPC, productDescription, productPrice );
 
       catalog.put( upc, item );
     }
   }
 
   // returns item based on upc
-  public Item getItem(UPC upc)
-  {
-    Item toReturn = new Item();
-    if(catalog.containsKey(upc))
-    {
-      toReturn = catalog.get(upc);
-    }
-    else
-    {
+  public Item getItem( UPC upc )  {
+
+    Item itemToReturn = new Item();
+
+    if ( catalog.containsKey( upc ) ) {
+      itemToReturn = catalog.get( upc );
+
+    } else {
       System.out.println("Item not found");
     }
-    return toReturn;
+
+    return itemToReturn;
   }
 
   public void printCatalog()
   {
     for (UPC keys : catalog.keySet())
     {
-      System.out.println(keys.getUPC() + " "+ catalog.get(keys).getDescription() + " " + catalog.get(keys).getPrice());
+      System.out.println(keys.getUPC() + ", "+ catalog.get(keys).getDescription() + ", " + catalog.get(keys).getPrice());
     }
   }
 }

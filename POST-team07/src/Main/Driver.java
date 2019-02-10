@@ -9,6 +9,9 @@ package Main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList; // Remove later
+import java.util.Date;
 import java.util.Scanner;
 
 public class Driver {
@@ -18,7 +21,7 @@ public class Driver {
     //File transactions;
     Store store;
     // When True Prints to Console
-    static Boolean debugOn = false;
+    static Boolean debugOn = true;
 
     public static void main(String[] args) {
         if ( args.length > 2 ) {
@@ -30,11 +33,37 @@ public class Driver {
             File transactions = new File( args[1] );
 
             if ( debugOn ) {
-                printFileContents( products );
-                printFileContents( transactions );
+//                printFileContents( products );
+//                printFileContents( transactions );
+
+                try {
+                    // Create Catalog
+                    Catalog productCatalog = new Catalog( products );
+
+                    // Create Arraylist & Add Items
+                    ArrayList< SalesLineItem > purchasedItems = new ArrayList<>();
+                    purchasedItems.add( new SalesLineItem( "1234", 2 ) );
+                    purchasedItems.add( new SalesLineItem( "2345", 3 ) );
 
 
-                // Calculate Customer's Bill
+                    // Create Customer
+                    Customer customer = new Customer( "Robert", new Date().toString(), purchasedItems,
+                      "CASH", Double.parseDouble( "20.00" ));
+
+                    System.out.println( customer.getName() + " " + customer.getDate() + " " + customer.getPaymentType() + " " + customer.getAmountTendered());
+
+                    // Calculate Bill
+                    customer.calculateBill( productCatalog );
+
+                    // Calculate Change
+                    customer.calculateChange();
+
+//                    customer.getReceipt();
+                } catch ( IOException error ) {
+                    System.out.print( error );
+                }
+
+                // Calculate Customer's Bill Testing
             }
 
             // TODO Manager Opens Store
