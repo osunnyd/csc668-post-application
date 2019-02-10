@@ -57,7 +57,16 @@ public class Catalog
   // returns item based on upc
   public Item getItem(UPC upc)
   {
-    return catalog.get(upc);
+    Item toReturn = new Item();
+    if(catalog.containsKey(upc))
+    {
+      toReturn = catalog.get(upc);
+    }
+    else
+    {
+      System.out.println("Item not found");
+    }
+    return toReturn;
   }
 
   public void printCatalog()
