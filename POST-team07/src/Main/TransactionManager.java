@@ -12,8 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
 
-import static Main.Driver.debugOn; // Delete this line before final submission
-
 public class TransactionManager {
 
   Catalog catalog;
@@ -69,9 +67,9 @@ public class TransactionManager {
     Item tempItem = this.catalog.getItem( tempUpc );
 
     if ( ( itemUPCandQuantity.length ) == 2 && !( tempItem.getUPC() ).equals( "" ) ) {
-      purchasedItems.add( new SalesLineItem( itemUPCandQuantity[ 0 ], Integer.parseInt( itemUPCandQuantity[ 1 ]) ) );
+      purchasedItems.add( new SalesLineItem( itemUPCandQuantity[ 0 ], Integer.parseInt( itemUPCandQuantity[ 1 ] ) ) );
 
-    } else if ( itemUPCandQuantity.length == 1 && !( tempItem.getUPC() ).equals("") ) {
+    } else if ( itemUPCandQuantity.length == 1 && !( tempItem.getUPC() ).equals( "" ) ) {
       purchasedItems.add( new SalesLineItem( itemUPCandQuantity[ 0 ], 1 ) );
 
     }
@@ -95,12 +93,7 @@ public class TransactionManager {
     customerTransaction.calculateChange();
     customerTransaction.generateReceipt();
 
-    if ( debugOn ) { // Delete this before final submission
-      System.out.println( customerTransaction.getReceipt() );
-      System.out.println();
-    }
-
-    this.receipts.add(customerTransaction.getReceipt());
+    this.receipts.add( customerTransaction.getReceipt() );
   }
 
   public ArrayList<String> getReceipts() {

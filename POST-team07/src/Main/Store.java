@@ -21,7 +21,6 @@ public class Store
 
   public void printCatalog() {
     catalog.printCatalog();
-    //System.out.println(catalog.toString());
   }
 
   public Item getItem (String itemUPC) {
