@@ -2,6 +2,7 @@ package Main;
 
 //Jarek
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -12,10 +13,10 @@ public class POS {
   ArrayList<String> receipts;
   SalesLog saleslog;
 
-  public POS(Catalog catalog, String transactions){
-    transactionManager = new TransactionManager();
+  public POS(Catalog catalog, File transactions){
+    transactionManager = new TransactionManager( transactions, catalog );
     try{
-      transactionManager.parseTransactionFile( transactions, catalog );
+      transactionManager.parseTransactions();
     }
     catch(IOException e){
 
