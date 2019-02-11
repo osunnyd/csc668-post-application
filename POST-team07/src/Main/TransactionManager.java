@@ -11,7 +11,7 @@ import java.util.Date;
 public class TransactionManager {
   private ArrayList<String> receipts;
 
-  public void parseTransactionFile(String fileName, HashMap catalog) throws IOException {
+  public void parseTransactionFile(String fileName, Catalog catalog) throws IOException {
     this.receipts = receipts;
     FileReader fileReader = new FileReader(new File(fileName));
     BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -23,44 +23,98 @@ public class TransactionManager {
       String date = (new Date()).toString();
       ArrayList<SalesLineItem> purchasedItems = new ArrayList<>();
       line = bufferedReader.readLine();
+
       while (exit) {
         if (!(line.substring(0, 1).equals("<"))) {
-          String itemUPCandQuantity[] = line.split("\\s+");
-          if ((itemUPCandQuantity.length) == 2 && catalog.containsKey(itemUPCandQuantity[0])) {
-            purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], Integer.parseInt(itemUPCandQuantity[1])));
-          } else if (itemUPCandQuantity.length == 1 && catalog.containsKey(itemUPCandQuantity[0]) {
-            purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], 1));
-          }
+          addItemstoCostumerArray(line, purchasedItems);
         }
 
         if ((line.substring(0, 1).equals("<"))) {
           String tenderLine[] = line.split("\\s+");
+
           if (line.substring(3).equals("A")) {
-            String paymentType = "CASH";
-            String amount = tenderLine[1].replace("$", "");
-            amount = amount.replace(">", "");
-            Customer temp = new Customer(name, date, paymentType, amount, purchasedItems);
-            receipts.add(temp.generateReceipt);
+
+            cashHandler(tenderLine, receipts);
+
           } else if (line.substring(3).equals("R")) {
-            String paymentType = "CREDIT";
-            String amount = tenderLine[1].replace("$", "");
-            amount = amount.replace(">", "");
-            Customer temp = new Customer(name, date, paymentType, amount, purchasedItems);
-            receipts.add(temp.generateReceipt);
+
+            creditHandler(tenderLine, receipts);
+
           } else if (line.substring(3).equals("H")) {
-            String paymentType = "CHECK";
-            String amount = tenderLine[1].replace("$", "");
-            amount = amount.replace(">", "");
-            Customer temp = new Customer(name, date, paymentType, amount, purchasedItems);
-            receipts.add(temp.generateReceipt);
+
+            checkHandler(tenderLine, receipts);
+
           }
           exit = !exit;
         }
         line = bufferedReader.readLine();
       }
     }
+
     bufferedReader.close();
     fileReader.close();
+
   }
 
+  void addItemstoCostumerArray(String line, ArrayList<SalesLinesItems> purchasedItems) {
+    String itemUPCandQuantity[] = line.split("\\s+");
+    UPC tempUpc = new UPC(itemUPCandQuantity[0]);
+    Item tempItem = new Item();
+    tempItem = catalog.getItem(tempUpc)
+
+    if ((itemUPCandQuantity.length) == 2 && (tempItem.getUpc).equals("")) {
+
+      purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], Integer.parseInt(itemUPCandQuantity[1])));
+
+    } else if (itemUPCandQuantity.length == 1 && (tempItem.getUpc).equals("")) {
+
+      purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], 1));
+
+    }
+
+  }
+
+  void cashHandler(String tenderLine[], ArrayList<String> receipts) {
+    String paymentType = "CASH";
+    String amount = tenderLine[1].replace("$", "");
+    amount = amount.replace(">", "");
+    Customer tempCustomer = new Customer(name, date, paymentType, amount, purchasedItems);
+    tempCustomer.calculateBill(catalog);
+    tempCustomer.calculateChange();
+    tempCustomer.generateReceipt();
+    receipts.add(tempCustomer.getReceipt);
+  }
+
+  void checkHandler(String tenderLine[], ArrayList<String> receipts) {
+    String paymentType = "CHECK";
+    String amount = tenderLine[1].replace("$", "");
+    amount = amount.replace(">", "");
+    Customer tempCostumer = new Customer(name, date, paymentType, amount, purchasedItems);
+    tempCustomer.calculateBill(catalog);
+    tempCustomer.calculateChange();
+    tempCustomer.generateReceipt();
+    receipts.add(tempCustomer.getReceipt);
+  }
+
+  void creditHandler(String tenderLine[], ArrayList<String> receipts) {
+    String paymentType = "CREDIT";
+    String amount = tenderLine[1].replace("$", "");
+    amount = amount.replace(">", "");
+    Customer tempCustomer = new Customer(name, date, paymentType, amount, purchasedItems);
+    tempCustomer.calculateBill(catalog);
+    tempCustomer.calculateChange();
+    tempCustomer.generateReceipt();
+    receipts.add(tempCustomer.getReceipt);
+  }
+
+
+  public void printReceipts() {
+    for (int i = 0; i < receipts.size(); i++) {
+      System.out.println(receipts[i]);
+    }
+  }
+
+  public ArrayList<String> getReceipts() {
+    return receipts;
+  }
 }
