@@ -23,8 +23,12 @@ public class POS {
     }
   }
   //Methods
-  public void buildReceipts(ArrayList transactionsList){
-    receipts = new ArrayList();
+  public void buildReceipts(){
+    receipts = transactionManager.getReceipts();
+    for (int i = 0; i < receipts.size(); i++)
+    {
+      System.out.println(receipts.get(i).toString());
+    }
     //build from Trasnactions manager receipts or on you own.
   }
 
