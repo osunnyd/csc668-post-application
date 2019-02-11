@@ -28,7 +28,7 @@ public class TransactionManager {
           String itemUPCandQuantity[] = line.split("\\s+");
           if ((itemUPCandQuantity.length) == 2 && catalog.containsKey(itemUPCandQuantity[0])) {
             purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], Integer.parseInt(itemUPCandQuantity[1])));
-          } else if (itemUPCandQuantity.length == 1 && catalog.containsKey(itemUPCandQuantity[0]) {
+          } else if (itemUPCandQuantity.length == 1 && catalog.containsKey(itemUPCandQuantity[0])) {
             purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], 1));
           }
         }
