@@ -1,16 +1,12 @@
 package Main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Store
 {
   Catalog catalog;
   Stock stock;
+  POS pos;
   boolean isOpen = false;
 
   // keeps track of UPC and quantity; assume quantity is infinite for now
@@ -19,6 +15,7 @@ public class Store
   public Store(Catalog catalog, Stock stock) {
     this.catalog = catalog;
     this.stock = stock;
+    pos = new POS(this.catalog);
   }
   
 
@@ -31,15 +28,16 @@ public class Store
     return catalog.getItem( new UPC( itemUPC ) );
   }
 
-  public HashMap getStock() { return stock.getStock(); }
+  public HashMap hashMapOFStock() { return stock.getStock(); }
 
-  boolean closeStore()
+  public HashMap hashMapOfCatalog() { return catalog.getCatalog(); }
+
+  public boolean closeStore()
   {
     return isOpen = false;
   }
 
-  boolean openStore()
-  {
+  public boolean openStore() {
     return isOpen = true;
   }
 

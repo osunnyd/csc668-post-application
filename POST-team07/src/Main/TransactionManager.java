@@ -26,7 +26,9 @@ public class TransactionManager {
 
       while (exit) {
         if (!(line.substring(0, 1).equals("<"))) {
+
           addItemstoCostumerArray(line, purchasedItems);
+
         }
 
         if ((line.substring(0, 1).equals("<"))) {

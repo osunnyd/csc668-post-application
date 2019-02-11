@@ -52,6 +52,13 @@ public class Stock {
 
   public HashMap getStock() { return stock; } //Gives access to the hashmap
 
+  public int getQty(UPC upc) {
+    if ( stock.containsKey( upc ) ) {
+      return stock.get(upc);
+    } else {
+      return -1; //If UPC does not exist it will return a negative one
+    }
+  }
   //prints the stock hashmap onto the console if need be
   public void printStock() {
 
