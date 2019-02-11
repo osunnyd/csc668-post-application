@@ -19,9 +19,9 @@ public class TransactionManager {
   Catalog catalog;
 
   public TransactionManager(File transactions, Catalog catalog){
-    this.transactions=transactions;
-    this.catalog=catalog;
-    this.receipts=new ArrayList<>();
+    this.transactions = transactions;
+    this.catalog = catalog;
+    this.receipts = new ArrayList<>();
   }
   public void parseTransactions() throws IOException {
     FileReader fileReader = new FileReader(transactions);
@@ -93,9 +93,13 @@ public class TransactionManager {
                           ArrayList<SalesLineItem> purchasedItems){
 
     Customer customerTransaction = new Customer(name, date, tenderType, tenderValue, purchasedItems);
+
     customerTransaction.calculateBill(this.catalog);
     customerTransaction.calculateChange();
     customerTransaction.generateReceipt();
+    System.out.println( customerTransaction.getReceipt() );
+    System.out.println();
+
     this.receipts.add(customerTransaction.getReceipt());
   }
 

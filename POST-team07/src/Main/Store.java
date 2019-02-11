@@ -1,5 +1,6 @@
 package Main;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class Store
@@ -36,8 +37,8 @@ public class Store
     return isOpen = false;
   }
 
-  public boolean openStore(String transactions) {
-    pos = new POS(catalog, transactions);
+  public boolean openStore( File transactions) {
+    pos = new POS( catalog, transactions );
     return isOpen = true;
   }
 
