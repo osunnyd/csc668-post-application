@@ -1,5 +1,6 @@
 package Main;
 /*
+    Robert Quinones
     This class runs our entire application. Helps manager initialize a store
     with a products.txt and transactions.txt passed in from the command line
 */
@@ -36,27 +37,9 @@ public class Driver {
                 try {
                     // Create Catalog
                     Catalog productCatalog = new Catalog( products );
-                  TransactionManager transactionManager = new TransactionManager( transactions, productCatalog);
-                  transactionManager.parseTransactions();
-                    // Create Arraylist & Add Items
-//                    ArrayList< SalesLineItem > purchasedItems = new ArrayList<>();
-//                    purchasedItems.add( new SalesLineItem( "2018", 1 ) );
-//                    purchasedItems.add( new SalesLineItem( "1104", 1 ) );
-//                    purchasedItems.add( new SalesLineItem( "9876", 3 ) );
-
-
-//                    // Create Customer - Name, Date, Payment Type, Amount Tendered, Array List of S.L.Is
-//                    Customer customer = new Customer( "John Doe", new Date().toString(),
-//                      "CASH", "47.65", purchasedItems);
-
-                    // Calculate Bill, Change, Receipt in that order
-//                    customer.calculateBill( productCatalog );
-//                    customer.calculateChange();
-//                    customer.generateReceipt(); // Be sure to generate first
-
-                    // Display Invoice - getReceipt returns the string
-//                    System.out.println(  customer.getReceipt() );
-
+                    TransactionManager transactionManager = new TransactionManager( transactions, productCatalog);
+                    transactionManager.parseTransactions();
+                   
                 } catch ( IOException error ) {
                     System.out.print( error );
                 }
