@@ -29,15 +29,16 @@ public class Manager {
     try{
       catalog = new Catalog(products);
       stock = new Stock(products);
-      store = new Store(catalog, stock);
-      store.openStore();
+      store = new Store(catalog, stock );
+
     }catch(Exception e){
     }
   }
 
   //Method Process Transactions
 
-  public void processTransactions(File transactions){
+  public void processTransactions(String transactions){
+    store.openStore(transactions);
 //    store.processTransactions(transactions);
   }
 
