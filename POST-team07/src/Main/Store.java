@@ -6,7 +6,7 @@ public class Store
 {
   Catalog catalog;
   Stock stock;
-  POS pos = new POS(catalog);
+  POS pos;
   boolean isOpen = false;
 
   // keeps track of UPC and quantity; assume quantity is infinite for now
@@ -15,6 +15,7 @@ public class Store
   public Store(Catalog catalog, Stock stock) {
     this.catalog = catalog;
     this.stock = stock;
+    pos = new POS(this.catalog);
   }
   
 

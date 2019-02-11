@@ -11,6 +11,9 @@ public class POS {
   ArrayList<String> receipts;
   SalesLog saleslog;
 
+  public POS(Catalog catalog){
+    transactionManager = new transactionManager(catalog);
+  }
   //Methods
   public void buildReceipts(ArrayList transactionsList){
     receipts = new ArrayList();
