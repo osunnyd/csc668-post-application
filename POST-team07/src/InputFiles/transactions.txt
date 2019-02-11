@@ -90,13 +90,7 @@ Robert Quinones
 0619     3
 0924     10
 0117
-<CHECK $124.22>
-
-John Doe
-2345     3
-1111     2
-2019     1
-<CHECK $10.00>
+<CHECK $137.84>
 
 Kahn Mann
 0117     20

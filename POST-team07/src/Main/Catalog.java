@@ -66,7 +66,7 @@ public class Catalog {
       itemToReturn = catalog.get( upc );
 
     } else {
-      System.out.println("Item not found");
+      System.out.println("Item UPC: " + upc.getUPC() + " Not Found.\n");
     }
 
     return itemToReturn;
