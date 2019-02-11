@@ -1,5 +1,13 @@
 package Main;
 
+/*
+    Robert Quinones
+    Tommy Tran
+
+    Holds UPC, QTY Pairs from transactions, then adds more relevant
+    data to make receipt generation simpler
+ */
+
 public class SalesLineItem {
   private UPC upc;
   private int quantity;
@@ -31,14 +39,6 @@ public class SalesLineItem {
 
   public float getSubtotal () {
     return subtotal;
-  }
-
-  public void setUpc ( String newUPC ) {
-    this.upc.setUPC( newUPC );
-  }
-
-  public void setQuantity ( int quantity ) {
-    this.quantity = quantity;
   }
 
   public void setDescription ( String description ) {

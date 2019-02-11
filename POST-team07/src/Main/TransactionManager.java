@@ -8,7 +8,16 @@ import java.io.IOException;
 import java.util.Date;
 
 public class TransactionManager {
+
+  File products;
+  Catalog catalog;
   private ArrayList<String> receipts;
+
+  public TransactionManager( File products, Catalog catalog ) {
+    this.products = products;
+    this.catalog = catalog;
+    this.receipts = new ArrayList<>();
+  }
 
   public void parseTransactionFile(String fileName, Catalog catalog) throws IOException {
     this.receipts = receipts;
