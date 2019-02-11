@@ -72,6 +72,8 @@ public class Catalog {
     return itemToReturn;
   }
 
+  public HashMap getCatalog() { return catalog; }
+
   public void printCatalog()
   {
     for (UPC keys : catalog.keySet())
