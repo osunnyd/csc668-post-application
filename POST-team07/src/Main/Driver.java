@@ -52,6 +52,13 @@ public class Driver {
             // TODO Manager Closes Store
 
         }
+        // test run
+      File products = new File( args[0] );
+      File transactions = new File( args[1] );
+      Manager manager = new Manager("JohnDoe");
+      manager.openStore(products);
+      manager.processTransactions(transactions);
+      manager.closeStore();
     }
 
 

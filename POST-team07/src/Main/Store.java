@@ -34,7 +34,9 @@ public class Store
 
   public boolean closeStore()
   {
+    pos.buildReceipts();
     return isOpen = false;
+
   }
 
   public boolean openStore( File transactions) {
