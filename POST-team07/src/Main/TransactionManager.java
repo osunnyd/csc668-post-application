@@ -1,7 +1,6 @@
 package Main;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,7 +26,7 @@ public class TransactionManager {
       while (exit) {
         if (!(line.substring(0, 1).equals("<"))) {
 
-          addItemstoCostumerArray(line, purchasedItems);
+          addItemstoCostumerArray(line, purchasedItems, catalog);
 
         }
 
@@ -36,15 +35,15 @@ public class TransactionManager {
 
           if (line.substring(3).equals("A")) {
 
-            cashHandler(tenderLine, receipts);
+            cashHandler(tenderLine, receipts, catalog, name, date, purchasedItems);
 
           } else if (line.substring(3).equals("R")) {
 
-            creditHandler(tenderLine, receipts);
+            creditHandler(tenderLine, receipts, catalog, name, date, purchasedItems);
 
           } else if (line.substring(3).equals("H")) {
 
-            checkHandler(tenderLine, receipts);
+            checkHandler(tenderLine, receipts, catalog, name, date, purchasedItems);
 
           }
           exit = !exit;
@@ -58,17 +57,16 @@ public class TransactionManager {
 
   }
 
-  void addItemstoCostumerArray(String line, ArrayList<SalesLinesItems> purchasedItems) {
+  void addItemstoCostumerArray(String line, ArrayList<SalesLineItem> purchasedItems, Catalog catalog) {
     String itemUPCandQuantity[] = line.split("\\s+");
     UPC tempUpc = new UPC(itemUPCandQuantity[0]);
-    Item tempItem = new Item();
-    tempItem = catalog.getItem(tempUpc)
+    Item tempItem = catalog.getItem(tempUpc);
 
-    if ((itemUPCandQuantity.length) == 2 && (tempItem.getUpc).equals("")) {
+    if ((itemUPCandQuantity.length) == 2 && (tempItem.getUPC()).equals("")) {
 
       purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], Integer.parseInt(itemUPCandQuantity[1])));
 
-    } else if (itemUPCandQuantity.length == 1 && (tempItem.getUpc).equals("")) {
+    } else if (itemUPCandQuantity.length == 1 && (tempItem.getUPC()).equals("")) {
 
       purchasedItems.add(new SalesLineItem(itemUPCandQuantity[0], 1));
 
@@ -76,7 +74,8 @@ public class TransactionManager {
 
   }
 
-  void cashHandler(String tenderLine[], ArrayList<String> receipts) {
+  void cashHandler(String tenderLine[], ArrayList<String> receipts, Catalog catalog, String name, String date,
+                   ArrayList<SalesLineItem> purchasedItems) {
     String paymentType = "CASH";
     String amount = tenderLine[1].replace("$", "");
     amount = amount.replace(">", "");
@@ -84,21 +83,23 @@ public class TransactionManager {
     tempCustomer.calculateBill(catalog);
     tempCustomer.calculateChange();
     tempCustomer.generateReceipt();
-    receipts.add(tempCustomer.getReceipt);
+    receipts.add(tempCustomer.getReceipt());
   }
 
-  void checkHandler(String tenderLine[], ArrayList<String> receipts) {
+  void checkHandler(String tenderLine[], ArrayList<String> receipts, Catalog catalog, String name, String date,
+                    ArrayList<SalesLineItem> purchasedItems) {
     String paymentType = "CHECK";
     String amount = tenderLine[1].replace("$", "");
     amount = amount.replace(">", "");
-    Customer tempCostumer = new Customer(name, date, paymentType, amount, purchasedItems);
+    Customer tempCustomer = new Customer(name, date, paymentType, amount, purchasedItems);
     tempCustomer.calculateBill(catalog);
     tempCustomer.calculateChange();
     tempCustomer.generateReceipt();
-    receipts.add(tempCustomer.getReceipt);
+    receipts.add(tempCustomer.getReceipt());
   }
 
-  void creditHandler(String tenderLine[], ArrayList<String> receipts) {
+  void creditHandler(String tenderLine[], ArrayList<String> receipts, Catalog catalog, String name, String date,
+                     ArrayList<SalesLineItem> purchasedItems) {
     String paymentType = "CREDIT";
     String amount = tenderLine[1].replace("$", "");
     amount = amount.replace(">", "");
@@ -106,14 +107,7 @@ public class TransactionManager {
     tempCustomer.calculateBill(catalog);
     tempCustomer.calculateChange();
     tempCustomer.generateReceipt();
-    receipts.add(tempCustomer.getReceipt);
-  }
-
-
-  public void printReceipts() {
-    for (int i = 0; i < receipts.size(); i++) {
-      System.out.println(receipts[i]);
-    }
+    receipts.add(tempCustomer.getReceipt());
   }
 
   public ArrayList<String> getReceipts() {
