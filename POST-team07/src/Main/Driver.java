@@ -19,7 +19,7 @@ public class Driver {
     //File transactions;
     Store store;
     // When True Prints to Console
-    static Boolean debugOn = true;
+    static Boolean debugOn = false;
 
     public static void main(String[] args) {
         if ( args.length > 2 ) {
@@ -37,7 +37,7 @@ public class Driver {
                 try {
                     // Create Catalog
                     Catalog productCatalog = new Catalog( products );
-                    TransactionManager transactionManager = new TransactionManager( transactions, productCatalog);
+                    TransactionManager transactionManager = new TransactionManager( transactions, productCatalog );
                     transactionManager.parseTransactions();
                    
                 } catch ( IOException error ) {
