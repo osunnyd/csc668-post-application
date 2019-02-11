@@ -12,10 +12,10 @@ public class Store
   // keeps track of UPC and quantity; assume quantity is infinite for now
   // HashMap<String, Integer> stock = new HashMap<>();
 
-  public Store(Catalog catalog, Stock stock) {
+  public Store(Catalog catalog, Stock stock, String transactions) {
     this.catalog = catalog;
     this.stock = stock;
-    pos = new POS(this.catalog);
+
   }
   
 
@@ -37,7 +37,8 @@ public class Store
     return isOpen = false;
   }
 
-  public boolean openStore() {
+  public boolean openStore(String transactions) {
+    pos = new POS(catalog, transactions);
     return isOpen = true;
   }
 
