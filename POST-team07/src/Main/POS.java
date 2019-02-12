@@ -8,28 +8,29 @@ import java.util.ArrayList;
 
 public class POS {
 
-  //Fields
   TransactionManager transactionManager;
   ArrayList<String> receipts;
-  SalesLog saleslog;
 
-  public POS(Catalog catalog, File transactions){
+  public POS( Catalog catalog, File transactions ) {
+
     transactionManager = new TransactionManager( transactions, catalog );
+
     try{
       transactionManager.parseTransactions();
-    }
-    catch(IOException e){
+
+    } catch( IOException error ){
+      System.out.println( error );
 
     }
   }
-  //Methods
-  public void buildReceipts(){
+
+  public void buildReceipts() {
     receipts = transactionManager.getReceipts();
-    for (int i = 0; i < receipts.size(); i++)
-    {
-      System.out.println(receipts.get(i).toString());
+
+    for ( int index = 0; index < receipts.size(); index++ ) {
+      System.out.println( receipts.get( index ) );
+      System.out.println();
     }
-    //build from Trasnactions manager receipts or on you own.
   }
 
 

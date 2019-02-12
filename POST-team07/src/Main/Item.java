@@ -2,7 +2,6 @@ package Main;
 
 /*
 Utility class item
-
 */
 
 public class Item {
@@ -32,17 +31,5 @@ public class Item {
 
   public float getPrice() {
     return this.price;
-  }
-
-  public void setUPC( String setUPC ) {
-    this.upc = setUPC;
-  }
-
-  public void setDescription( String setDescription ) {
-    this.description = setDescription;
-  }
-
-  public void setPrice ( float setPrice ) {
-    this.price = setPrice;
   }
 }

@@ -20,7 +20,6 @@ public class Stock {
     parseProducts( filename );
   }
 
-  //Parses the products text file
   private void parseProducts( File products ) throws IOException {
     String item;
 
@@ -33,7 +32,8 @@ public class Stock {
 
     readFile.close();
     lineBuffer.close();
-    parseItems( items ); //Parses each element (item) in the arraylist items
+
+    parseItems( items );
   }
 
   private void parseItems( ArrayList items ) {
@@ -43,28 +43,29 @@ public class Stock {
       UPC upc = new UPC();
       int qty = 1000000;
 
-      product = items.get(iteratorOfItems).toString().split("  +");
+      product = items.get( iteratorOfItems ).toString().split( "  +" );
 
-      upc.setUPC(product[0]);
-      stock.put(upc, qty);
+      upc.setUPC( product[ 0 ] );
+
+      stock.put( upc, qty );
     }
   }
 
-  public HashMap getStock() { return stock; } //Gives access to the hashmap
+  public HashMap getStock() {
+    return stock;
+  }
 
-  public int getQty(UPC upc) {
+  public int getQty( UPC upc ) {
     if ( stock.containsKey( upc ) ) {
       return stock.get(upc);
     } else {
-      return -1; //If UPC does not exist it will return a negative one
+      return -1;
     }
   }
-  //prints the stock hashmap onto the console if need be
-  public void printStock() {
 
+  public void printStock() {
     for ( UPC keys : stock.keySet()) {
       System.out.println( keys.getUPC() + ", "+ stock.get( keys ) );
     }
-
   }
 }

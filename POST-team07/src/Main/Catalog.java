@@ -57,7 +57,6 @@ public class Catalog {
     }
   }
 
-  // returns item based on upc
   public Item getItem( UPC upc )  {
 
     Item itemToReturn = new Item();
@@ -72,12 +71,12 @@ public class Catalog {
     return itemToReturn;
   }
 
-  public HashMap getCatalog() { return catalog; }
+  public HashMap getCatalog() {
+    return catalog;
+  }
 
-  public void printCatalog()
-  {
-    for (UPC keys : catalog.keySet())
-    {
+  public void printCatalog() {
+    for (UPC keys : catalog.keySet()) {
       System.out.println(keys.getUPC() + ", "+ catalog.get(keys).getDescription() + ", " + catalog.get(keys).getPrice());
     }
   }

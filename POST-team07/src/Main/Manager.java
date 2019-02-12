@@ -10,39 +10,31 @@ Manager is in charge of starting initialization.
 -Open the store
 */
 
-
-
-
 public class Manager {
-  String name = "";
+  String name;
   Store store;
   Stock stock;
   Catalog catalog;
 
-    //Constructor
-  Manager(String name){
+  Manager( String name ){
     this.name = name;
   }
 
-  //Method Open store
   public void openStore( File products ){
     try{
-      catalog = new Catalog(products);
-      stock = new Stock(products);
-      store = new Store(catalog, stock );
+      this.catalog = new Catalog( products );
+      this.stock = new Stock( products );
+      this.store = new Store( catalog, stock );
 
-    }catch(Exception e){
+    }catch(Exception error){
+      System.out.println( error );
     }
   }
 
-  //Method Process Transactions
-
   public void processTransactions( File transactions ){
     store.openStore( transactions );
-//    store.processTransactions(transactions);
   }
 
-  //Method Close Store
   public void closeStore(){
     store.closeStore();
   }

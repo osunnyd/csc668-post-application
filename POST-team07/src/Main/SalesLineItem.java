@@ -1,12 +1,11 @@
 package Main;
 
 /*
-    Robert Quinones
-    Tommy Tran
+    Robert Quinones, Tommy Tran
 
     Holds UPC, QTY Pairs from transactions, then adds more relevant
     data to make receipt generation simpler
- */
+*/
 
 public class SalesLineItem {
   private UPC upc;

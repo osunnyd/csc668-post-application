@@ -2,18 +2,21 @@ package Main;
 
 public class UPC {
   private String upc;
-  // had to override to compare UPC codes correctly
-  @Override
-  public boolean equals(Object object) {
 
-    if (object == this) return true;
-    if (!(object instanceof UPC)) {
+  @Override
+  public boolean equals( Object object ) {
+
+    if ( object == this ) {
+      return true;
+    }
+
+    if ( !( object instanceof UPC ) ) {
       return false;
     }
 
-    UPC compare = (UPC) object;
+    UPC compare = ( UPC ) object;
 
-    return compare.upc.equals(this.upc);
+    return compare.upc.equals( this.upc );
   }
 
   @Override
@@ -21,13 +24,11 @@ public class UPC {
     return upc.hashCode();
   }
 
-  // for default and loading in file into products
   public UPC() {
     this.upc = "";
   }
   
-  // another constructor for UPC if needed
-  public UPC( String upc) {
+  public UPC( String upc ) {
     this.upc = upc;
   }
 
