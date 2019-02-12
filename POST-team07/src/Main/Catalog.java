@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//Sunny 
+
 public class Catalog {
   //keeps track of UPC and what the Item is
   HashMap< UPC, Item > catalog = new HashMap<>();
