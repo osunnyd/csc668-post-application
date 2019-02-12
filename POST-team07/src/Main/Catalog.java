@@ -1,5 +1,8 @@
 package Main;
-
+/*
+Sunny Wong
+Catalog puts the products into the hashmap holds the item UPC and and the Item
+*/
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

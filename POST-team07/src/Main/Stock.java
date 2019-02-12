@@ -1,5 +1,9 @@
 package Main;
-
+/*
+Omar ALaniz
+Stock Hashmap holds the item UPC and and the quantity of each item
+Because in this scope of this project, the quantity is infinite aka set to 1000000
+*/
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,10 +13,6 @@ import java.util.HashMap;
 
 public class Stock {
 
-  /*
-    Stock Hashmap holds the item UPC and and the quantity of each item
-    Because in this scope of this project, the quantity is infinite aka set to 1000000
-  */
   private HashMap< UPC, Integer > stock = new HashMap<>();
   private ArrayList< String > items = new ArrayList<>();
 
