@@ -1,6 +1,8 @@
 # Build Instructions
  From `post-console-application-team-7/POST-team07` run the command
+ 
  `javac -cp src src/Main/*.java`
+ 
  `java -cp src Main.Driver src/InputFiles/products.txt src/InputFiles/transactions.txt`
 
 # Team 7
