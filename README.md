@@ -1,5 +1,5 @@
 # Build Instructions
- From `post-console-application-team-7/POST-team07` run the command
+ From `post-console-application-team-7/POST-team07` run the commands
  
  `javac -cp src src/Main/*.java`
  
