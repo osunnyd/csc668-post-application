@@ -1,4 +1,5 @@
 package Main;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 //Jarek
@@ -16,26 +17,42 @@ public class Manager {
   Stock stock;
   Catalog catalog;
 
-  Manager( String name ){
-    this.name = name;
-  }
+  // Moved from Driver.main
+  public static void main(String[] args) {
+    if (args.length > 2) {
+      System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
-  public void openStore( File products ){
-    try{
-      this.catalog = new Catalog( products );
-      this.stock = new Stock( products );
-      this.store = new Store( catalog, stock );
+    } else {
+      File products = new File(args[0]);
+      File transactions = new File(args[1]);
+      Manager manager = new Manager("John Doe");
 
-    }catch(Exception error){
-      System.out.println( error );
+      manager.openStore(products);
+      manager.processTransactions(transactions);
+      manager.closeStore();
     }
   }
 
-  public void processTransactions( File transactions ){
-    store.openStore( transactions );
+  Manager(String name) {
+    this.name = name;
   }
 
-  public void closeStore(){
+  public void openStore(File products) {
+    try {
+      this.catalog = new Catalog(products);
+      this.stock = new Stock(products);
+      this.store = new Store(catalog, stock);
+
+    } catch (Exception error) {
+      System.out.println(error);
+    }
+  }
+
+  public void processTransactions(File transactions) {
+    store.openStore(transactions);
+  }
+
+  public void closeStore() {
     store.closeStore();
   }
 
