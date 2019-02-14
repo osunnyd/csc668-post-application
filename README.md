@@ -1,9 +1,18 @@
-# Build Instructions
+# Build Instructions for Assignment 1
  From `post-console-application-team-7/POST-team07` run the commands
  
  `javac -cp src src/Main/*.java`
  
  `java -cp src Main.Driver src/InputFiles/products.txt src/InputFiles/transactions.txt`
+
+ # Build Instructions for Assignment 2
+  From `post-console-application-team-7` run the commands
+  - Build Locally
+    - `./build-project-local.sh localhost:3000`
+  - Build For Heroku
+    - `./build-project-heroku.sh https://post-server.herokuapp.com`
+  - Clean Project Locally
+    - `./clean-project.sh`
 
 # Team 7
 
