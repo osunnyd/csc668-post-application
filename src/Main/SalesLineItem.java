@@ -14,8 +14,8 @@ public class SalesLineItem {
   private float subtotal;
   private String description;
 
-  public SalesLineItem ( String itemUPC, int quantity ) {
-    this.upc = new UPC( itemUPC );
+  public SalesLineItem(String itemUPC, int quantity) {
+    this.upc = new UPC(itemUPC);
     this.quantity = quantity;
 
   }
@@ -32,23 +32,23 @@ public class SalesLineItem {
     return this.unitPrice;
   }
 
-  public String getDescription () {
+  public String getDescription() {
     return description;
   }
 
-  public float getSubtotal () {
+  public float getSubtotal() {
     return subtotal;
   }
 
-  public void setDescription ( String description ) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
-  public void setUnitPrice( float price ) {
+  public void setUnitPrice(float price) {
     this.unitPrice = price;
   }
 
-  public void setSubtotal ( float subtotal ) {
+  public void setSubtotal(float subtotal) {
     this.subtotal = subtotal;
   }
 }

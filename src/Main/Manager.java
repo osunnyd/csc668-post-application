@@ -12,10 +12,10 @@ Manager is in charge of starting initialization.
 */
 
 public class Manager {
-  String name;
-  Store store;
-  Stock stock;
-  Catalog catalog;
+  static String name = "John Doe";
+  static Store store;
+  static Stock stock;
+  static Catalog catalog;
 
   // Moved from Driver.main
   public static void main(String[] args) {
@@ -25,35 +25,29 @@ public class Manager {
     } else {
       File products = new File(args[0]);
       File transactions = new File(args[1]);
-      Manager manager = new Manager("John Doe");
 
-      manager.openStore(products);
-      manager.processTransactions(transactions);
-      manager.closeStore();
+      openStore(products);
+      processTransactions(transactions);
+      closeStore();
     }
   }
 
-  Manager(String name) {
-    this.name = name;
-  }
-
-  public void openStore(File products) {
+  public static void openStore(File products) {
     try {
-      this.catalog = new Catalog(products);
-      this.stock = new Stock(products);
-      this.store = new Store(catalog, stock);
+      catalog = new Catalog(products);
+      stock = new Stock(products);
+      store = new Store(catalog, stock);
 
     } catch (Exception error) {
       System.out.println(error);
     }
   }
 
-  public void processTransactions(File transactions) {
+  public static void processTransactions(File transactions) {
     store.openStore(transactions);
   }
 
-  public void closeStore() {
+  public static void closeStore() {
     store.closeStore();
   }
-
 }
