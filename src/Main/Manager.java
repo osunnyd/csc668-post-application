@@ -4,6 +4,8 @@ import Http.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 //Jarek
 
@@ -36,15 +38,20 @@ public class Manager {
           // String result = getProducts();
           // System.out.println(result);
 
-          // Authorize Check
-          String check_payment_data = "{ \"amount\": 1234.56 }";
-          String check_result = authorizePayment("CHECK".toLowerCase(), check_payment_data);
-          System.out.println("Check Result: " + check_result + "\n");
+          // Cash Sale
+          System.out.println("Testing a Cash Sale");
+          cashSale();
+          System.out.println();
 
-          // Authorize Credit
-          String credit_payment_data = "{ \"amount\": 1234.56, \"cardNumber\": 123456 }";
-          String credit_result = authorizePayment("CREDIT".toLowerCase(), credit_payment_data);
-          System.out.println("Credit Result: " + credit_result);
+          // Check Sale
+          System.out.println("Testing a Check Sale");
+          checkSale();
+          System.out.println();
+
+          // Credit Sale
+          System.out.println("Testing a Credit Sale");
+          creditSale();
+          System.out.println();
 
         } catch (Exception ex) {
           ex.printStackTrace();
@@ -99,4 +106,93 @@ public class Manager {
       return "406";
     }
   }
+
+  // PUT Item
+  public static void createSale(String DATA) {
+    try {
+      String result = new Put(URI + "/sales").execute(DATA);
+      System.out.println(result);
+
+      if (result.contains("id")) {
+        System.out.println("201 - Successful Sale");
+      }
+
+      if (result.contains("error")) {
+        System.out.println("400 - Error in Sale Object sent to API");
+      }
+    } catch (MalformedURLException mex) {
+      System.out.println("MalformedURLException");
+      mex.printStackTrace();
+    } catch (IOException iex) {
+      System.out.println("IOException");
+      iex.printStackTrace();
+    }
+
+    return;
+  }
+
+  // PUT Sale
+  public static void cashSale() {
+    String CASH_DATA = "{ \"customer\": \"John Roberts\", \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56, \"tendered\": { \"type\": \"CASH\", \"amount\": 1235.56 }, \"returned\": 1.00 }";
+
+    createSale(CASH_DATA);
+    System.out.println("Cash Sale Created\n");
+  }
+
+  // Check Sale
+  public static void checkSale() {
+    String CHECK_DATA = "{ \"customer\": \"John Roberts\", \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56, \"tendered\": { \"type\": \"CHECK\", \"amount\": 1235.56 }, \"returned\": 0.00 }";
+
+    // Authorize Check
+    String check_payment_data = "{ \"amount\": 1234.56 }";
+    String check_result = authorizePayment("CHECK".toLowerCase(), check_payment_data);
+    switch (check_result) {
+    case "202":
+      createSale(CHECK_DATA);
+      break;
+
+    case "400":
+      System.out.println("400 - Error in Check Authorization");
+      break;
+
+    case "406":
+      System.out.println("406 - Check Not Authorized");
+      break;
+    default:
+      System.out.println("You're not supposed to be here");
+      break;
+    }
+    System.out.println();
+    return;
+  }
+
+  // CRedit Sale
+  public static void creditSale() {
+    String CREDIT_DATA = "{\"customer\":\"John Roberts\",\"timeOfSale\":\"2019-02-11T06:46:51.623Z\",\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}],\"total\":1234.56,\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456},\"returned\":0.00}";
+
+    // Authorize Check
+    String credit_payment_data = "{ \"amount\": 1234.56, \"cardNumber\": 123456 }";
+
+    String credit_result = authorizePayment("CREDIT".toLowerCase(), credit_payment_data);
+    switch (credit_result) {
+    case "202":
+      createSale(CREDIT_DATA);
+      break;
+
+    case "400":
+      System.out.println("400 - Error in Credit Authorization");
+      break;
+
+    case "406":
+      System.out.println("406 - Credit Not Authorized");
+      break;
+    default:
+      System.out.println("You're not supposed to be here");
+      break;
+    }
+    System.out.println();
+    return;
+  }
 }
+// {"customer":"John
+// Roberts","timeOfSale":"2019-02-11T06:46:51.623Z\",\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}],\"total\":1234.56,\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456},\"returned\":0.00}
