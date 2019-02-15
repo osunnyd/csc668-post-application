@@ -1,6 +1,6 @@
 package Main;
 
-import Http.*;
+import Requests.Http.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -194,5 +194,3 @@ public class Manager {
     return;
   }
 }
-// {"customer":"John
-// Roberts","timeOfSale":"2019-02-11T06:46:51.623Z\",\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}],\"total\":1234.56,\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456},\"returned\":0.00}

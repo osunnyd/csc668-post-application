@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Remove any potential class files
 find src/Main -type f -name "*.class" -delete
-find src/Http -type f -name "*.class" -delete
+find src/Requests/Http -type f -name "*.class" -delete
 
 
 # Compile Project
