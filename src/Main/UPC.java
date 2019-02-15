@@ -6,19 +6,19 @@ public class UPC {
   private String upc;
 
   @Override
-  public boolean equals( Object object ) {
+  public boolean equals(Object object) {
 
-    if ( object == this ) {
+    if (object == this) {
       return true;
     }
 
-    if ( !( object instanceof UPC ) ) {
+    if (!(object instanceof UPC)) {
       return false;
     }
 
-    UPC compare = ( UPC ) object;
+    UPC compare = (UPC) object;
 
-    return compare.upc.equals( this.upc );
+    return compare.upc.equals(this.upc);
   }
 
   @Override
@@ -29,8 +29,8 @@ public class UPC {
   public UPC() {
     this.upc = "";
   }
-  
-  public UPC( String upc ) {
+
+  public UPC(String upc) {
     this.upc = upc;
   }
 
@@ -38,7 +38,7 @@ public class UPC {
     return this.upc;
   }
 
-  public void setUPC( String setUPC ) {
+  public void setUPC(String setUPC) {
     upc = setUPC;
   }
 }

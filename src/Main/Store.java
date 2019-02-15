@@ -1,4 +1,5 @@
 package Main;
+
 /*
 Omar ALaniz, Sunny Wong
 */
@@ -7,8 +8,7 @@ import java.util.HashMap;
 
 //Sunny
 
-public class Store
-{
+public class Store {
   Catalog catalog;
   Stock stock;
   POS pos;
@@ -18,32 +18,32 @@ public class Store
     this.catalog = catalog;
     this.stock = stock;
   }
-  
 
   public void printCatalog() {
     catalog.printCatalog();
   }
 
-  public Item getItem (String itemUPC) {
-    return catalog.getItem( new UPC( itemUPC ) );
+  public Item getItem(String itemUPC) {
+    return catalog.getItem(new UPC(itemUPC));
   }
 
-  public HashMap hashMapOFStock() { return stock.getStock(); }
+  public HashMap hashMapOFStock() {
+    return stock.getStock();
+  }
 
-  public HashMap hashMapOfCatalog() { return catalog.getCatalog(); }
+  public HashMap hashMapOfCatalog() {
+    return catalog.getCatalog();
+  }
 
-  public boolean closeStore()
-  {
+  public boolean closeStore() {
     pos.buildReceipts();
     return isOpen = false;
 
   }
 
-  public boolean openStore( File transactions) {
-    pos = new POS( catalog, transactions );
+  public boolean openStore(File transactions) {
+    pos = new POS(catalog, transactions);
     return isOpen = true;
   }
 
 }
-
-
