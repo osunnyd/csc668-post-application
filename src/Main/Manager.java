@@ -1,13 +1,14 @@
 package Main;
 
 import Requests.Http.*;
+import Requests.StoreRequests.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-//Jarek
+//Jarek, Robert
 
 /*
 Manager is in charge of starting initialization.
@@ -35,8 +36,8 @@ public class Manager {
       if (debugOn) {
         try {
           // Test to GET Data from Backend
-          // String result = getProducts();
-          // System.out.println(result);
+          String result = new ProductRequest(URI).getProducts();
+          System.out.println(result);
 
           // Cash Sale
           System.out.println("Testing a Cash Sale");
@@ -82,19 +83,6 @@ public class Manager {
 
   public static void closeStore() {
     store.closeStore();
-  }
-
-  // We can change this to be in Catalog or something - Debug
-  // GET PRODUCTS
-  public static String getProducts() {
-    try {
-      return new Get(URI + "/products").execute();
-
-    } catch (Exception ex) {
-      ex.printStackTrace();
-
-      return "Connection to " + URI + "/products has failed.";
-    }
   }
 
   // POST CHECK
