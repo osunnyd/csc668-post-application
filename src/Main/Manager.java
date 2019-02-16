@@ -1,11 +1,14 @@
 package Main;
 
-import Http.*;
+import Requests.Http.*;
+import Requests.StoreRequests.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
-//Jarek
+//Jarek, Robert
 
 /*
 Manager is in charge of starting initialization.
@@ -33,18 +36,28 @@ public class Manager {
       if (debugOn) {
         try {
           // Test to GET Data from Backend
-          // String result = getProducts();
+          // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);
 
-          // Authorize Check
-          String check_payment_data = "{ \"amount\": 1234.56 }";
-          String check_result = authorizePayment("CHECK".toLowerCase(), check_payment_data);
-          System.out.println("Check Result: " + check_result + "\n");
+          // Cash Sale
+          System.out.println("-----Testing a Cash Sale-----");
+          String cashTransactionData = "{ \"customer\": \"John Roberts\", \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56, \"tendered\": { \"type\": \"CASH\", \"amount\": 1235.56 }, \"returned\": 1.00 }";
+          cashSale(cashTransactionData);
+          System.out.println("-----Ending Cash Sale-----\n");
 
-          // Authorize Credit
-          String credit_payment_data = "{ \"amount\": 1234.56, \"cardNumber\": 123456 }";
-          String credit_result = authorizePayment("CREDIT".toLowerCase(), credit_payment_data);
-          System.out.println("Credit Result: " + credit_result);
+          // Check Sale
+          System.out.println("-----Testing a Check Sale-----");
+          String checkTransactionData = "{ \"customer\": \"John Roberts\", \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56, \"tendered\": { \"type\": \"CHECK\", \"amount\": 1235.56 }, \"returned\": 0.00 }";
+          String checkAuthorizationData = "{ \"amount\": 1234.56 }";
+          nonCashSale("CHECK", checkAuthorizationData, checkTransactionData);
+          System.out.println("-----Ending Check Sale-----\n");
+
+          // Credit Sale
+          System.out.println("-----Testing a Credit Sale-----");
+          String creditTransactionData = "{\"customer\":\"John Roberts\",\"timeOfSale\":\"2019-02-11T06:46:51.623Z\",\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}],\"total\":1234.56,\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456},\"returned\":0.00}";
+          String creditAuthorizationData = "{ \"amount\": 1234.56, \"cardNumber\": 123456 }";
+          nonCashSale("CREDIT", creditAuthorizationData, creditTransactionData);
+          System.out.println("-----Ending Credit Sale-----\n");
 
         } catch (Exception ex) {
           ex.printStackTrace();
@@ -77,26 +90,58 @@ public class Manager {
     store.closeStore();
   }
 
-  // We can change this to be in Catalog or something - Debug
-  // GET PRODUCTS
-  public static String getProducts() {
-    try {
-      return new Get(URI + "/products").execute();
+  // PUT Item - In practice we will save this request to get more data from it
+  // as of now we just need to display data for testing
+  public static String createSale(String transactionData) {
+    return new SaleRequest(URI).createSale(transactionData);
+  }
 
-    } catch (Exception ex) {
-      ex.printStackTrace();
+  public static void saleResultInterpreter(String statusCode) {
+    switch (statusCode) {
+    case "201":
+      System.out.println("201 - Sale Successfully Created");
+      break;
 
-      return "Connection to " + URI + "/products has failed.";
+    case "400":
+      System.out.println("400 - Error in Sale Creation");
+      break;
+
+    default:
+      System.out.println("500 - Server Error");
+      break;
     }
   }
 
-  // POST CHECK
-  public static String authorizePayment(String type, String paymentData) {
-    try {
-      return new Post(URI + "/payments/" + type).execute(paymentData);
-    } catch (Exception ex) {
-      // Exceptions are thrown where No Body & Non-200 response is present
-      return "406";
+  // PUT Sale
+  public static void cashSale(String transactionData) {
+    String createSaleResult = createSale(transactionData);
+    saleResultInterpreter(createSaleResult);
+  }
+
+  public static void nonCashSale(String paymentType, String authorizationData, String transactionData) {
+    String authorization_result = new PaymentAuthorizationRequest(URI).authorizePayment(paymentType, authorizationData);
+
+    switch (authorization_result) {
+    case "202":
+      String createSaleResult = createSale(transactionData);
+      saleResultInterpreter(createSaleResult);
+      break;
+
+    case "400":
+      System.out.println("400 - Error in Check Authorization");
+      break;
+
+    case "406":
+      System.out.println("406 - Check Not Authorized");
+      break;
+
+    default:
+      System.out.println(authorization_result + " You're not supposed to be here");
+      break;
     }
+
+    System.out.println();
+
+    return;
   }
 }

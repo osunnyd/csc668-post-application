@@ -1,5 +1,6 @@
-package Http;
+package Requests.Http;
 
+// Robert Quinones
 import java.io.IOException;
 import java.net.MalformedURLException;
 
@@ -19,6 +20,8 @@ public class Post extends RestRequest {
 
     Response response = new Response(connection);
 
+    // Debug, Delete later
+    System.out.println("<POST Result>");
     System.out.println(response.getBody());
 
     connection.disconnect();
