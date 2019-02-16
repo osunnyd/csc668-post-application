@@ -1,7 +1,9 @@
 package Main;
 
+import UserInterface.*;
 import Requests.Http.*;
 import Requests.StoreRequests.*;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,6 +37,8 @@ public class Manager {
       System.out.println("This is the URI " + URI);
       if (debugOn) {
         try {
+
+          new POS_GUI();
           // Test to GET Data from Backend
           // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);
