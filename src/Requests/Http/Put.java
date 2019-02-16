@@ -15,9 +15,6 @@ public class Put extends RestRequest {
   }
 
   public String execute(String body) throws IOException {
-
-    System.out.println("BODY PASSED IN TO PUT EXECUTE");
-    System.out.println(body);
     connection.setDoOutput(true);
     connection.getOutputStream().write(body.getBytes("UTF-8"));
 
