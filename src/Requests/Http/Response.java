@@ -1,5 +1,6 @@
-package Http;
+package Requests.Http;
 
+// Robert Quinones
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
