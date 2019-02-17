@@ -4,14 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
+import UserInterfaceController.*;
 
-public class BottomPanel extends JPanel {
+public class BottomPanel extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    PaymentPanel paymentPanel;
+    UserInterfaceController controller;
 
-    public BottomPanel() {
+    public BottomPanel(UserInterfaceController controller) {
+        this.controller = controller;
         setDefaults();
-        addPaymentPanel();
+        addPaymentPanel(controller);
     }
 
     private void setDefaults(){
@@ -27,9 +31,10 @@ public class BottomPanel extends JPanel {
 
     }
 
-    private void addPaymentPanel(){
-        PaymentPanel paymentPanel = new PaymentPanel();
-        add(paymentPanel);
+    private void addPaymentPanel(UserInterfaceController controller){
+        this.paymentPanel = new PaymentPanel(controller);
+        add(this.paymentPanel);
     }
+
 
 }

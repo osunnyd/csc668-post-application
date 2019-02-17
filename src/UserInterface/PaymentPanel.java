@@ -2,26 +2,26 @@ package UserInterface;
 
 import javax.swing.*;
 
-import javafx.scene.control.ComboBox;
-
 import java.awt.*;
 import java.awt.event.*;
+import UserInterfaceController.*;
 
-public class PaymentPanel extends JPanel implements ActionListener {
+public class PaymentPanel extends JPanel{
 
     private static final long serialVersionUID = 1L;
+    UserInterfaceController controller;
     JComboBox paymentTypeDropdown;
     TextField amountField;
     JButton payButton;
 
-    public PaymentPanel() {
+    public PaymentPanel(UserInterfaceController controller) {
+        this.controller = controller;
         setPreferredSize(new Dimension(200, 800));
         setBorder(BorderFactory.createTitledBorder("Payment"));
         setLayout(new BorderLayout(10, 10));
-
         setPaymentTypeDropdown();
         setAmountField();
-        setPayButton();
+        setPayButton(this.controller);
     }
 
     private void setPaymentTypeDropdown() {
@@ -44,22 +44,14 @@ public class PaymentPanel extends JPanel implements ActionListener {
         add(amountPanel, BorderLayout.CENTER);
     }
 
-    private void setPayButton() {
-        payButton = new JButton("Pay");
+    private void setPayButton(UserInterfaceController controller) {
+        this.payButton = new JButton("Pay");
         add(payButton, BorderLayout.PAGE_END);
-        payButton.addActionListener(this);
+        payButton.addActionListener(controller.getPaymentListener());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO: add validation for payment
-        // TODO: add payment success/failure popup
-        Object paymentAction = e.getSource();
-        if (paymentAction.equals(payButton)) {
-            System.out.println((String) paymentTypeDropdown.getSelectedItem());
-            System.out.println(amountField.getText());
-            System.out.println("pay pressed");
-        }
-
+    public String getCustomerPaymentType(){
+        return (String)paymentTypeDropdown.getSelectedItem();
     }
+
 }
