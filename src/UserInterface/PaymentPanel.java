@@ -9,19 +9,17 @@ import UserInterfaceController.*;
 public class PaymentPanel extends JPanel{
 
     private static final long serialVersionUID = 1L;
-    UserInterfaceController controller;
     JComboBox paymentTypeDropdown;
     TextField amountField;
     JButton payButton;
 
-    public PaymentPanel(UserInterfaceController controller) {
-        this.controller = controller;
+    public PaymentPanel(PaymentListener paymentListener) {
         setPreferredSize(new Dimension(200, 800));
         setBorder(BorderFactory.createTitledBorder("Payment"));
         setLayout(new BorderLayout(10, 10));
         setPaymentTypeDropdown();
         setAmountField();
-        setPayButton(this.controller);
+        setPayButton(paymentListener);
     }
 
     private void setPaymentTypeDropdown() {
@@ -44,14 +42,17 @@ public class PaymentPanel extends JPanel{
         add(amountPanel, BorderLayout.CENTER);
     }
 
-    private void setPayButton(UserInterfaceController controller) {
+    private void setPayButton(PaymentListener paymentListener) {
         this.payButton = new JButton("Pay");
         add(payButton, BorderLayout.PAGE_END);
-        payButton.addActionListener(controller.getPaymentListener());
+        payButton.addActionListener(paymentListener);
     }
 
     public String getCustomerPaymentType(){
         return (String)paymentTypeDropdown.getSelectedItem();
+    }
+    public String getAmountTendered(){
+        return amountField.getText();
     }
 
 }
