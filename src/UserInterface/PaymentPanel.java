@@ -2,26 +2,24 @@ package UserInterface;
 
 import javax.swing.*;
 
-import javafx.scene.control.ComboBox;
-
 import java.awt.*;
 import java.awt.event.*;
+import UserInterfaceController.*;
 
-public class PaymentPanel extends JPanel implements ActionListener {
+public class PaymentPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     JComboBox paymentTypeDropdown;
     TextField amountField;
     JButton payButton;
 
-    public PaymentPanel() {
+    public PaymentPanel(PaymentListener paymentListener) {
         setPreferredSize(new Dimension(200, 800));
         setBorder(BorderFactory.createTitledBorder("Payment"));
         setLayout(new BorderLayout(10, 10));
-
         setPaymentTypeDropdown();
         setAmountField();
-        setPayButton();
+        setPayButton(paymentListener);
     }
 
     private void setPaymentTypeDropdown() {
@@ -44,22 +42,18 @@ public class PaymentPanel extends JPanel implements ActionListener {
         add(amountPanel, BorderLayout.CENTER);
     }
 
-    private void setPayButton() {
-        payButton = new JButton("Pay");
+    private void setPayButton(PaymentListener paymentListener) {
+        this.payButton = new JButton("Pay");
         add(payButton, BorderLayout.PAGE_END);
-        payButton.addActionListener(this);
+        payButton.addActionListener(paymentListener);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO: add validation for payment
-        // TODO: add payment success/failure popup
-        Object paymentAction = e.getSource();
-        if (paymentAction.equals(payButton)) {
-            System.out.println((String) paymentTypeDropdown.getSelectedItem());
-            System.out.println(amountField.getText());
-            System.out.println("pay pressed");
-        }
-
+    public String getCustomerPaymentType() {
+        return (String) paymentTypeDropdown.getSelectedItem();
     }
+
+    public String getAmountTendered() {
+        return amountField.getText();
+    }
+
 }

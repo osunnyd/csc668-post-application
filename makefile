@@ -2,6 +2,7 @@ clean:
 	find src/Main -type f -name "*.class" -delete
 	find src/UserInterface -type f -name "*.class" -delete
 	find src/Requests -type f -name "*.class" -delete
+	find src/UserInterfaceController -type f -name "*.class" -delete
 
 
 local:
