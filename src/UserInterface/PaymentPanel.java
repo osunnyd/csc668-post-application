@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import UserInterfaceController.*;
 
-public class PaymentPanel extends JPanel{
+public class PaymentPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     JComboBox paymentTypeDropdown;
@@ -48,10 +48,11 @@ public class PaymentPanel extends JPanel{
         payButton.addActionListener(paymentListener);
     }
 
-    public String getCustomerPaymentType(){
-        return (String)paymentTypeDropdown.getSelectedItem();
+    public String getCustomerPaymentType() {
+        return (String) paymentTypeDropdown.getSelectedItem();
     }
-    public String getAmountTendered(){
+
+    public String getAmountTendered() {
         return amountField.getText();
     }
 

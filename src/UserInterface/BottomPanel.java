@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.util.Date;
 import UserInterfaceController.*;
 
-public class BottomPanel extends JPanel{
+public class BottomPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     PaymentPanel paymentPanel;
@@ -16,7 +16,7 @@ public class BottomPanel extends JPanel{
         addPaymentPanel(paymentListener);
     }
 
-    private void setDefaults(){
+    private void setDefaults() {
         setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridLayout(0, 2));
         JPanel datePanel = new JPanel();
@@ -26,17 +26,17 @@ public class BottomPanel extends JPanel{
 
     }
 
-    private void addPaymentPanel(PaymentListener paymentListener){
+    private void addPaymentPanel(PaymentListener paymentListener) {
         this.paymentPanel = new PaymentPanel(paymentListener);
         add(this.paymentPanel);
     }
-    public String getPaymentType(){
+
+    public String getPaymentType() {
         return paymentPanel.getCustomerPaymentType();
     }
-    
-    public String getAmountTendered(){
+
+    public String getAmountTendered() {
         return paymentPanel.getAmountTendered();
     }
-
 
 }

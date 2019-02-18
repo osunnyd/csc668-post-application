@@ -7,7 +7,6 @@ import java.util.Observer;
 
 import UserInterfaceController.*;
 
-
 public class POS_GUI extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -15,7 +14,7 @@ public class POS_GUI extends JFrame {
     UserInterfaceController controller;
 
     public POS_GUI(PaymentListener paymentListener) {
-        //this.controller = new UserInterfaceController();
+        // this.controller = new UserInterfaceController();
         setDefaults();
         addPanels(paymentListener);
         setVisible(true);
@@ -34,7 +33,7 @@ public class POS_GUI extends JFrame {
         TopPanel topPanel = new TopPanel();
         CenterPanel centerPanel = new CenterPanel();
         this.bottomPanel = new BottomPanel(paymentListener);
-        //sets panels to strict coordinates (x, y, width, height)
+        // sets panels to strict coordinates (x, y, width, height)
         topPanel.setBounds(0, 0, 800, 200);
         centerPanel.setBounds(0, 200, 800, 400);
         bottomPanel.setBounds(0, 600, 800, 200);
@@ -44,12 +43,13 @@ public class POS_GUI extends JFrame {
         add(bottomPanel);
 
     }
-    public String getPaymentType(){
+
+    public String getPaymentType() {
         return bottomPanel.getPaymentType();
     }
-    public String getAmountTendered(){
+
+    public String getAmountTendered() {
         return bottomPanel.getAmountTendered();
     }
-
 
 }
