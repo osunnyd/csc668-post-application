@@ -36,7 +36,13 @@ public class Item {
     // To remove the $ sign from the string
     String actualNumbers = price.substring(1);
     priceOfItem = Float.parseFloat(actualNumbers);
+    System.out.println("Float: " + priceOfItem);
     return priceOfItem;
+  }
+
+  @Override
+  public String toString() {
+    return upc + " " + description + " @ " + price;
   }
 
 }
