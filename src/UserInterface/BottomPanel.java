@@ -18,14 +18,14 @@ public class BottomPanel extends JPanel {
     }
 
     private void setDefaults() {
-        setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridLayout(0, 2));
-
     }
-    private void setDate(){
+
+    private void setDate() {
         JPanel datePanel = new JPanel();
+        datePanel.setLayout(new BorderLayout());
         JLabel dateLabel = new JLabel(new Date().toString());
-        datePanel.add(dateLabel);
+        datePanel.add(dateLabel, BorderLayout.CENTER);
         add(datePanel);
     }
 
