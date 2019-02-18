@@ -4,17 +4,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+//Jarek
+
 public class TopPanel extends JPanel{
 
   private static final long serialVersionUID = 1L;
   ProductPanel productPanel;
   JLabel nameLabel;
   JTextField textfield;
+  JPanel namePanel;
 
   public TopPanel() {
     setDefaults();
-    //get and set upc codes
-    //add panels
+    addPanels();
   }
 
   private void setDefaults(){
@@ -22,7 +24,11 @@ public class TopPanel extends JPanel{
     setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(new GridLayout(0, 2));
     //setLayout(null);
-    JPanel namePanel = new JPanel();
+  }
+
+  private void addPanels(){
+    namePanel = new JPanel();
+
     nameLabel = new JLabel("Customer Name: ");
     textfield = new JTextField();
     
@@ -32,6 +38,7 @@ public class TopPanel extends JPanel{
     namePanel.add(nameLabel,BorderLayout.WEST);
     namePanel.add(textfield, BorderLayout.CENTER);
 
+    this.productPanel = new ProductPanel();  
     this.productPanel = new ProductPanel();
 
     add(namePanel);
