@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class TopPanel extends JPanel implements ActionListener{
+public class TopPanel extends JPanel{
 
   private static final long serialVersionUID = 1L;
   JLabel nameLabel;
@@ -12,8 +12,8 @@ public class TopPanel extends JPanel implements ActionListener{
   JLabel qtyLabel;
   JButton enterButton;
   JTextField textfield;
-  final JComboBox<String> upcDropdown;
-  final JComboBox<Integer> qtyDropdown;
+  //final JComboBox<String> upcDropdown;
+  //final JComboBox<Integer> qtyDropdown;
 
   public TopPanel() {
     setDefaults();
