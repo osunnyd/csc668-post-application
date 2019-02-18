@@ -1,6 +1,9 @@
 package UserInterface;
 
 import javax.swing.*;
+
+import UserInterfaceController.ProductListener;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -14,9 +17,9 @@ public class TopPanel extends JPanel{
   JTextField textfield;
   JPanel namePanel;
 
-  public TopPanel() {
+  public TopPanel(ProductListener productListener) {
     setDefaults();
-    addPanels();
+    addPanels(productListener);
   }
 
   private void setDefaults(){
@@ -24,7 +27,7 @@ public class TopPanel extends JPanel{
     setLayout(new GridLayout(0, 2));
   }
 
-  private void addPanels(){
+  private void addPanels(ProductListener productListener){
     namePanel = new JPanel();
 
     nameLabel = new JLabel("Customer Name: ");
@@ -36,8 +39,7 @@ public class TopPanel extends JPanel{
     namePanel.add(nameLabel,BorderLayout.WEST);
     namePanel.add(textfield, BorderLayout.CENTER);
 
-    this.productPanel = new ProductPanel();  
-    this.productPanel = new ProductPanel();
+    this.productPanel = new ProductPanel(productListener);
 
     add(namePanel);
     add(this.productPanel);

@@ -13,10 +13,10 @@ public class POS_GUI extends JFrame {
     BottomPanel bottomPanel;
     UserInterfaceController controller;
 
-    public POS_GUI(PaymentListener paymentListener) {
+    public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
         // this.controller = new UserInterfaceController();
         setDefaults();
-        addPanels(paymentListener);
+        addPanels(paymentListener, productListener);
         setVisible(true);
     }
 
@@ -29,8 +29,8 @@ public class POS_GUI extends JFrame {
         setResizable(false);
     }
 
-    private void addPanels(PaymentListener paymentListener) {
-        TopPanel topPanel = new TopPanel();
+    private void addPanels(PaymentListener paymentListener, ProductListener productListener) {
+        TopPanel topPanel = new TopPanel(productListener);
         CenterPanel centerPanel = new CenterPanel();
         this.bottomPanel = new BottomPanel(paymentListener);
         // sets panels to strict coordinates (x, y, width, height)
@@ -51,5 +51,7 @@ public class POS_GUI extends JFrame {
     public String getAmountTendered() {
         return bottomPanel.getAmountTendered();
     }
+
+    //public String get stuff from PANEL FUNCTIONS for User interface controller
 
 }

@@ -18,10 +18,11 @@ public class ProductPanel extends JPanel {
     JComboBox<Integer> qtyDropdown;
 
 
-    public ProductPanel(){
+    public ProductPanel(ProductListener productListener){
         setDefaults();
         getUPCcodes();
         addPanels();
+        setListeners(productListener);
     }
 
     private void setDefaults(){
@@ -56,5 +57,17 @@ public class ProductPanel extends JPanel {
         add(enterButton, BorderLayout.PAGE_END);
     }
     
+    private void setListeners(ProductListener productListener){
+        enterButton.addActionListener(productListener);
+    }
+
+    public String getUPCcode(){
+        return (String) upcDropdown.getSelectedItem();
+    }
+
+    public Integer getQuantity(){
+        return (Integer) qtyDropdown.getSelectedItem();
+    }
+
 
 }
