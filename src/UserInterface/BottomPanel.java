@@ -13,17 +13,20 @@ public class BottomPanel extends JPanel {
 
     public BottomPanel(PaymentListener paymentListener) {
         setDefaults();
+        setDate();
         addPaymentPanel(paymentListener);
     }
 
     private void setDefaults() {
-        setBorder(BorderFactory.createLineBorder(Color.black));
         setLayout(new GridLayout(0, 2));
-        JPanel datePanel = new JPanel();
-        JLabel dateLabel = new JLabel(new Date().toString());
-        datePanel.add(dateLabel);
-        add(datePanel);
+    }
 
+    private void setDate() {
+        JPanel datePanel = new JPanel();
+        datePanel.setLayout(new BorderLayout());
+        JLabel dateLabel = new JLabel(new Date().toString());
+        datePanel.add(dateLabel, BorderLayout.CENTER);
+        add(datePanel);
     }
 
     private void addPaymentPanel(PaymentListener paymentListener) {

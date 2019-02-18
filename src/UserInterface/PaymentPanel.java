@@ -14,23 +14,27 @@ public class PaymentPanel extends JPanel {
     JButton payButton;
 
     public PaymentPanel(PaymentListener paymentListener) {
-        setPreferredSize(new Dimension(200, 800));
-        setBorder(BorderFactory.createTitledBorder("Payment"));
-        setLayout(new BorderLayout(10, 10));
+        setDefaults();
         setPaymentTypeDropdown();
         setAmountField();
         setPayButton(paymentListener);
     }
 
+    private void setDefaults(){
+        setPreferredSize(new Dimension(200, 800));
+        setBorder(BorderFactory.createTitledBorder("Payment"));
+        setLayout(new BorderLayout(10, 10));
+    }
+
     private void setPaymentTypeDropdown() {
-        JPanel panel = new JPanel();
+        JPanel paymentTypePanel = new JPanel();
         String[] paymentType = { "CREDIT", "CHECK", "CASH" };
         paymentTypeDropdown = new JComboBox(paymentType);
         paymentTypeDropdown.setSelectedIndex(0);
         JLabel paymentTypeLabel = new JLabel("Payment type");
-        panel.add(paymentTypeLabel);
-        panel.add(paymentTypeDropdown);
-        add(panel, BorderLayout.LINE_START);
+        paymentTypePanel.add(paymentTypeLabel);
+        paymentTypePanel.add(paymentTypeDropdown);
+        add(paymentTypePanel, BorderLayout.LINE_START);
     }
 
     private void setAmountField() {
