@@ -33,18 +33,18 @@ public class ProductPanel extends JPanel {
         upcLabel = new JLabel("UPC:");
         qtyLabel = new JLabel("QTY:");
         enterButton = new JButton("Enter");
-
-        upcLabel.setBounds(100, 0, 50, 50);
-        qtyLabel.setBounds(100, 0, 50, 50);
-        enterButton.setBounds(50, 0, 100, 50);
-        upcDropdown.setBounds(0, 50, 50, 50);
-        qtyDropdown.setBounds(50, 50, 100, 50);
-
-        add(upcLabel);
-        add(qtyLabel);
-        add(enterButton);
-        add(upcDropdown);
-        add(qtyDropdown);
+        
+        JPanel upcPanel = new JPanel();
+        upcPanel.add(upcLabel);
+        upcPanel.add(upcDropdown);
+        
+        JPanel qtyPanel = new JPanel();
+        qtyPanel.add(qtyLabel);
+        qtyPanel.add(qtyDropdown);
+        
+        add(upcPanel, BorderLayout.LINE_START);
+        add(qtyPanel, BorderLayout.CENTER);
+        add(enterButton, BorderLayout.PAGE_END);
     }
     
 
