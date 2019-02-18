@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+//Jarek
+
 public class CenterPanel extends JPanel {
 
   private static final long serialVersionUID = 1L;

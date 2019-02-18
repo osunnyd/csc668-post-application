@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import UserInterfaceController.*;
 
+//Jarek
+
 public class ProductPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
