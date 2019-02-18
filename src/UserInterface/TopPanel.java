@@ -21,9 +21,7 @@ public class TopPanel extends JPanel{
 
   private void setDefaults(){
     setPreferredSize(new Dimension(800, 250));
-    setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(new GridLayout(0, 2));
-    //setLayout(null);
   }
 
   private void addPanels(){
