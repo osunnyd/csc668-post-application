@@ -61,6 +61,8 @@ public class ProductPanel extends JPanel {
         enterButton.addActionListener(productListener);
     }
 
+
+    //getters for UI listener calls
     public String getUPCcode(){
         return (String) upcDropdown.getSelectedItem();
     }

@@ -51,7 +51,8 @@ public class UserInterfaceController implements Observer {
             //panel functions to get values for customer submission
             //System.out.println(pos_GUI.)
         } else if (listener instanceof ProductListener) {
-            System.out.println("Damn we made it here");
+            System.out.println(pos_GUI.getUPCcode());
+            System.out.println(pos_GUI.getQuantity());
         }
     }
 

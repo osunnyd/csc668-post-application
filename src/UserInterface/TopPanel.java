@@ -44,4 +44,17 @@ public class TopPanel extends JPanel{
     add(namePanel);
     add(this.productPanel);
   }
+
+  public String getName(){
+    return textfield.getText();
+  }
+
+  public String getUPCcode(){
+      return productPanel.getUPCcode();
+  }
+
+  public Integer getQuantity(){
+      return productPanel.getQuantity();
+  }
+
 }
