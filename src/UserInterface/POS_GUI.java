@@ -13,8 +13,6 @@ public class POS_GUI extends JFrame {
     BottomPanel bottomPanel;
     CenterPanel centerPanel;
     TopPanel topPanel;
-    UserInterfaceController controller;
-
     public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
         // this.controller = new UserInterfaceController();
         setDefaults();
