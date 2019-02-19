@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 public class ReceiptBuilder {
   private Customer customer;
+  private Transaction transaction;
   private String receipt;
 
-  public ReceiptBuilder(Customer customerData) {
+  public ReceiptBuilder(Customer customerData, Transaction transactionData) {
     this.customer = customerData;
+    this.transaction = transactionData;
     this.receipt = "";
 
     generateReceipt();
@@ -23,7 +25,7 @@ public class ReceiptBuilder {
   private void generateReceiptHeader() {
     this.receipt += String.format("%1$s\t%2$s\n", this.customer.getName(), this.customer.getDate());
 
-    ArrayList<SalesLineItem> purchasedItems = this.customer.getPurchasedItems();
+    ArrayList<SalesLineItem> purchasedItems = this.transaction.getPurchasedItems();
 
     if (purchasedItems.isEmpty()) {
       this.receipt += "<NO ITEMS>\n";
@@ -42,20 +44,20 @@ public class ReceiptBuilder {
   }
 
   private void generateReceiptFooter() {
-    this.receipt += String.format("Total: $%1$.2f \n", this.customer.getBillTotal());
+    this.receipt += String.format("Total: $%1$.2f \n", this.transaction.getBillTotal());
 
     if (this.receipt.contains("<NO ITEMS>\n")) {
       this.receipt += "No Items Purchased - Payment Rejected\n";
 
     } else {
 
-      if (this.customer.isCashPayment()) {
+      if (isCashPayment()) {
         generateCashPaymentFooter();
 
       } else {
-        String statusCode = this.customer.getStatusCode();
+        String statusCode = this.transaction.getStatusCode();
 
-        if (this.customer.isCreditPayment()) {
+        if (isCreditPayment()) {
           generateNonCashPaymentFooter(statusCode, "Credit Card");
 
         } else {
@@ -67,13 +69,13 @@ public class ReceiptBuilder {
   }
 
   private void generateCashPaymentFooter() {
-    if (this.customer.getChange() < 0) {
+    if (this.transaction.getChange() < 0) {
       this.receipt += String.format("Amount Tendered: $%1$s\nPaid by Cash - Payment Rejected",
-          this.customer.getAmountTendered());
+          this.transaction.getAmountTendered());
 
     } else {
       this.receipt += String.format("Amount Tendered: $%1$s\nAmount Returned: $%2$.2f",
-          this.customer.getAmountTendered(), this.customer.getChange());
+          this.transaction.getAmountTendered(), this.transaction.getChange());
 
     }
   }
@@ -83,9 +85,17 @@ public class ReceiptBuilder {
       this.receipt += String.format("Paid by %1$s - Payment Rejected", paymentType);
 
     } else {
-      this.receipt += String.format("Paid by %1$s %2$s \n", paymentType, this.customer.getAmountTendered());
+      this.receipt += String.format("Paid by %1$s %2$s \n", paymentType, this.transaction.getAmountTendered());
 
     }
+  }
+
+  public boolean isCashPayment() {
+    return this.transaction.getPaymentType().equals("CASH");
+  }
+
+  public boolean isCreditPayment() {
+    return this.transaction.getPaymentType().equals("CREDIT");
   }
 
   public String getReceipt() {

@@ -88,13 +88,14 @@ public class TransactionManager {
   void processTransaction(String name, String date, String tenderType, String tenderValue,
       ArrayList<SalesLineItem> purchasedItems) {
 
-    Customer customerTransaction = new Customer(name, date, tenderType, tenderValue, purchasedItems);
+    // Customer customerTransaction = new Customer(name, date, tenderType,
+    // tenderValue, purchasedItems);
 
-    customerTransaction.calculateBill(this.catalog);
-    customerTransaction.calculateChange();
-    customerTransaction.generateReceipt();
+    // customerTransaction.calculateBill(this.catalog);
+    // customerTransaction.calculateChange();
+    // customerTransaction.generateReceipt();
 
-    this.receipts.add(customerTransaction.getReceipt());
+    // this.receipts.add(customerTransaction.getReceipt());
   }
 
   public ArrayList<String> getReceipts() {
