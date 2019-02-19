@@ -20,6 +20,15 @@ public class SalesLineItem {
 
   }
 
+  // Debug Constructor
+  public SalesLineItem(String itemUPC, String description, int quantity, float unitPrice, float subtotal) {
+    this.upc = new UPC(itemUPC);
+    this.description = description;
+    this.quantity = quantity;
+    this.unitPrice = unitPrice;
+    this.subtotal = subtotal;
+  }
+
   public UPC getUPC() {
     return this.upc;
   }
