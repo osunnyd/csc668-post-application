@@ -2,6 +2,7 @@ package Main;
 
 // Robert Quinones
 import java.util.ArrayList;
+import ReceiptBuilder.ReceiptBuilder;
 
 public class Transaction {
 
@@ -12,6 +13,8 @@ public class Transaction {
   private float billTotal = 0;
   private float change = 0;
   private ArrayList<SalesLineItem> purchasedItems;
+  private boolean isAuthorized;
+  private Customer customer;
 
   public Transaction() {
     this.paymentType = "";
@@ -30,7 +33,7 @@ public class Transaction {
   }
 
   public void calculateChange() {
-    if (paymentType.equals("CASH") || paymentType.equals("CHECK")) {
+    if (isCashPayment() || isCheckPayment()) {
       float calculatedChange = Float.parseFloat(this.amountTendered) - this.billTotal;
 
       if (this.billTotal > 0 && calculatedChange > 0) {
@@ -43,12 +46,17 @@ public class Transaction {
     return this.paymentType.equals("CASH");
   }
 
-  public boolean isCreditPayment() {
-    return this.paymentType.equals("CREDIT");
+  public boolean isCheckPayment() {
+    return this.paymentType.equals("CHECK");
   }
 
-  public void generateReceipt(Customer customer) {
-    this.receipt = new ReceiptBuilder(customer, this).getReceipt();
+  public boolean isAuthorized() {
+    return this.isAuthorized;
+  }
+
+  public void generateReceipt() {
+    ReceiptBuilder receiptBuilder = ReceiptBuilder.getReceiptBuilder(this.paymentType);
+    this.receipt = receiptBuilder.generateReceipt(this, this.customer);
   }
 
   public float getBillTotal() {
@@ -75,8 +83,16 @@ public class Transaction {
     return this.receipt;
   }
 
+  public Customer getCustomer() {
+    return this.customer;
+  }
+
   public ArrayList<SalesLineItem> getPurchasedItems() {
     return this.purchasedItems;
+  }
+
+  public void setCustomer(Customer customer) {
+    this.customer = customer;
   }
 
   public void setPaymentType(String paymentType) {
@@ -89,5 +105,9 @@ public class Transaction {
 
   public void setStatusCode(String code) {
     this.statusCode = code;
+  }
+
+  public void setAuthorization(boolean authorization) {
+    this.isAuthorized = authorization;
   }
 }

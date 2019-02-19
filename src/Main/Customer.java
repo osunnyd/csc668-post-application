@@ -1,23 +1,15 @@
 package Main;
-
 /*
    Robert Quinones
-   Hold Customer Transaction Data, Generate Change, and Receipts
 */
 
 public class Customer {
   private String name;
   private String date;
-  private Transaction transaction;
 
-  public Customer() {
-    this.name = "";
-    this.date = "";
-    this.transaction = new Transaction();
-  }
-
-  public void generateReceipt() {
-    this.transaction.generateReceipt(this);
+  public Customer(String name, String date) {
+    this.name = name;
+    this.date = date;
   }
 
   public String getName() {
@@ -26,14 +18,6 @@ public class Customer {
 
   public String getDate() {
     return this.date;
-  }
-
-  public Transaction getTransaction() {
-    return this.transaction;
-  }
-
-  public String getReceipt() {
-    return this.transaction.getReceipt();
   }
 
   public void setName(String name) {
