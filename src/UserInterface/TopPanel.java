@@ -2,7 +2,7 @@ package UserInterface;
 
 import javax.swing.*;
 
-import UserInterfaceController.ProductListener;
+import PointOfSale.ProductListener;
 
 import java.awt.*;
 import java.awt.event.*;

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Observer;
 
-import UserInterfaceController.*;
+import PointOfSale.*;
 
 public class POS_GUI extends JFrame {
 

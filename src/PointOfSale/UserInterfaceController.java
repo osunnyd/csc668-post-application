@@ -1,4 +1,4 @@
-package UserInterfaceController;
+package PointOfSale;
 
 import javax.swing.*;
 

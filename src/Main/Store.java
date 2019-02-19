@@ -3,6 +3,7 @@ package Main;
 /*
 Omar ALaniz, Sunny Wong
 */
+import PointOfSale.*;
 import java.io.File;
 import java.util.HashMap;
 
@@ -36,13 +37,13 @@ public class Store {
   }
 
   public boolean closeStore() {
-    pos.buildReceipts();
+    this.pos.buildReceipts();
     return isOpen = false;
 
   }
 
   public boolean openStore(File transactions) {
-    pos = new POS(catalog, transactions);
+    this.pos = new POS(catalog, transactions);
     return isOpen = true;
   }
 
