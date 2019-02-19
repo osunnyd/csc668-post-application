@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
-import UserInterfaceController.*;
+import PointOfSale.*;
 
 public class BottomPanel extends JPanel {
 

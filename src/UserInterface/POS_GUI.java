@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Observer;
 
-import UserInterfaceController.*;
+import PointOfSale.*;
 
 public class POS_GUI extends JFrame {
 
@@ -13,8 +13,6 @@ public class POS_GUI extends JFrame {
     BottomPanel bottomPanel;
     CenterPanel centerPanel;
     TopPanel topPanel;
-    UserInterfaceController controller;
-
     public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
         // this.controller = new UserInterfaceController();
         setDefaults();

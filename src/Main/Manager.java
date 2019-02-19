@@ -1,7 +1,7 @@
 package Main;
 
 import UserInterface.*;
-import UserInterfaceController.*;
+import PointOfSale.*;
 import Requests.Http.*;
 import Requests.StoreRequests.*;
 
@@ -38,8 +38,7 @@ public class Manager {
       System.out.println("This is the URI " + URI);
       if (debugOn) {
         try {
-
-          new UserInterfaceController();
+          new POS();
           // Test to GET Data from Backend
           // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);

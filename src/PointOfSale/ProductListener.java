@@ -1,4 +1,4 @@
-package UserInterfaceController;
+package PointOfSale;
 
 import javax.swing.*;
 
@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
 
-public class PaymentListener extends Observable implements ActionListener {
+public class ProductListener extends Observable implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object event = e.getSource();
