@@ -44,34 +44,33 @@ public class Manager {
           // System.out.println(result);
 
           // // Cash Sale
-          // System.out.println("-----Testing a Cash Sale-----");
-          // String cashTransactionData = "{ \"customer\": \"John Roberts\",
-          // \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\":
-          // \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56,
-          // \"tendered\": { \"type\": \"CASH\", \"amount\": 1235.56 }, \"returned\": 1.00
-          // }";
-          // cashSale(cashTransactionData);
-          // System.out.println("-----Ending Cash Sale-----\n");
+          System.out.println("-----Testing a Cash Sale-----");
+          String cashTransactionData = "{ \"customer\": \"John Roberts\","
+              + "\"timeOfSale\": \"2019-02-11T06:46:51.623Z\", "
+              + "\"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], " + "\"total\": 1234.56,"
+              + "\"tendered\": { \"type\": \"CASH\", \"amount\": 1235.56 }, " + "\"returned\": 1.00}";
+          cashSale(cashTransactionData);
+          System.out.println("-----Ending Cash Sale-----\n");
 
-          // // Check Sale
-          // System.out.println("-----Testing a Check Sale-----");
-          // String checkTransactionData = "{ \"customer\": \"John Roberts\",
-          // \"timeOfSale\": \"2019-02-11T06:46:51.623Z\", \"items\": [ { \"upc\":
-          // \"1234\", \"quantity\": 2, \"price\": 123.45 } ], \"total\": 1234.56,
-          // \"tendered\": { \"type\": \"CHECK\", \"amount\": 1235.56 }, \"returned\":
-          // 0.00 }";
-          // String checkAuthorizationData = "{ \"amount\": 1234.56 }";
-          // nonCashSale("CHECK", checkAuthorizationData, checkTransactionData);
-          // System.out.println("-----Ending Check Sale-----\n");
+          // Check Sale
+          System.out.println("-----Testing a Check Sale-----");
+          String checkTransactionData = "{ \"customer\": \"John Roberts\","
+              + "\"timeOfSale\": \"2019-02-11T06:46:51.623Z\", "
+              + "\"items\": [ { \"upc\": \"1234\", \"quantity\": 2, \"price\": 123.45 } ], " + "\"total\": 1234.56,"
+              + "\"tendered\": { \"type\": \"CHECK\", \"amount\": 1235.56 }, " + "\"returned\": 0.00 }";
+          String checkAuthorizationData = "{ \"amount\": 1234.56 }";
+          nonCashSale("CHECK", checkAuthorizationData, checkTransactionData);
+          System.out.println("-----Ending Check Sale-----\n");
 
-          // // Credit Sale
-          // System.out.println("-----Testing a Credit Sale-----");
-          // String creditTransactionData = "{\"customer\":\"John
-          // Roberts\",\"timeOfSale\":\"2019-02-11T06:46:51.623Z\",\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}],\"total\":1234.56,\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456},\"returned\":0.00}";
-          // String creditAuthorizationData = "{ \"amount\": 1234.56, \"cardNumber\":
-          // 123456 }";
-          // nonCashSale("CREDIT", creditAuthorizationData, creditTransactionData);
-          // System.out.println("-----Ending Credit Sale-----\n");
+          // Credit Sale
+          System.out.println("-----Testing a Credit Sale-----");
+          String creditTransactionData = "{ \"customer\":\"John Roberts\", "
+              + "\"timeOfSale\":\"2019-02-11T06:46:51.623Z\", "
+              + "\"items\":[{\"upc\":\"1234\",\"quantity\":2,\"price\":123.45}]," + "\"total\":1234.56, "
+              + "\"tendered\":{\"type\":\"CREDIT\",\"amount\":1235.56,\"cardNumber\":123456}," + "\"returned\":0.00}";
+          String creditAuthorizationData = "{ \"amount\": 1234.56, \"cardNumber\":123456 }";
+          nonCashSale("CREDIT", creditAuthorizationData, creditTransactionData);
+          System.out.println("-----Ending Credit Sale-----\n");
 
           // Test Customer Changes - This will set everything and properly generate
           // receipt
@@ -89,7 +88,9 @@ public class Manager {
         } catch (Exception ex) {
           ex.printStackTrace();
         }
-      } else {
+      } else
+
+      {
         // openStore(products);
         // processTransactions(transactions);
         // closeStore();
