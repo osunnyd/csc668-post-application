@@ -21,21 +21,13 @@ public class POS implements Observer{
 
   public POS(){
     //testing purposes, do not use this constructor, delete before submission
+    addListeners();
+    this.pos_GUI = new POS_GUI(paymentListener, productListener);
   }
 
   public POS( Catalog catalog, File transactions ) {
     addListeners();
     this.pos_GUI = new POS_GUI(paymentListener, productListener);
-
-    transactionManager = new TransactionManager( transactions, catalog );
-
-    try{
-      transactionManager.parseTransactions();
-
-    } catch( IOException error ){
-      System.out.println( error );
-
-    }
   }
 
 

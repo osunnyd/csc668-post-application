@@ -37,7 +37,7 @@ public class Manager {
       System.out.println("This is the URI " + URI);
       if (debugOn) {
         try {
-
+          new POS();
           // Test to GET Data from Backend
           // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);
