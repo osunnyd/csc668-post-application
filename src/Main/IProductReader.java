@@ -2,6 +2,7 @@ package Main;
 /*
    Omar Alaniz
 */
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.io.File;
@@ -18,27 +19,23 @@ public abstract class IProductReader{
 
   public abstract Item[] getProductList();
   public abstract void read(String productString) throws IOException;
-  
-  public int check(){
-    URL uri;
-    File filename;
 
-    int flag = 0;
+  public boolean checkFile(){
+    try {
+      filename = new File(productString);
+    } catch (IOException e) {
+      return false;
+    }
+    return true;
+  }
 
+  public boolean checkUri(){
     try {
       uri = new URL(productString);
     } catch (Exception e1) {
-      System.out.println(e1);
-      return flag = flag - 1;
+      return false;
     }
-
-    /*try {
-      filename = new File(productString);
-    } catch (IOException e) {
-      System.out.println(e);
-      return flag = flag + 1;
-    }*/
-    return flag;
+    return true;
   }
 
 }

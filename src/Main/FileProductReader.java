@@ -11,34 +11,34 @@ import java.io.File;
 
 public class FileProductReader extends IProductReader
 {
-  public ArrayList<String> items = new ArrayList<>();
-  Item[] itemsForCatalog;
+  public ArrayList<String> itemsFromFile = new ArrayList<>();
+  Item[] items;
 
   public FileProductReader(String productString) throws IOException
   {
     super(productString);
-    if(check()){read(productString);}
+    if(checkFile()){read(productString);}
   }
 
 
   @Override
   public Item[] getProductList()
   {
-    return itemsForCatalog;
+    return items;
   }
 
   @Override
-  public void read(String file) throws IOException
+  public void read(String fileName) throws IOException
   {
     String item;
 
     int itrOfItems = 0;
 
-    FileReader readFile = new FileReader(file);
+    FileReader readFile = new FileReader(fileName);
     BufferedReader lineBuffer = new BufferedReader(readFile);
 
     while ((item = lineBuffer.readLine()) != null) { // split each product to their own line
-      items.add(item);
+      itemsFromFile.add(item);
       itrOfItems++;
     }
 
@@ -49,18 +49,18 @@ public class FileProductReader extends IProductReader
 
   public void parseItems(ArrayList items) {
     String[] product;
-    itemsForCatalog = new Item[items.size()];
+    items = new Item[itemsFromFile.size()];
 
     // parse each line by spaces
     for (int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++) {
 
-      product = items.get(itrOfItems).toString().split("  +"); // splits by 2 spaces or more
+      product = itemsFromFile.get(itrOfItems).toString().split("  +"); // splits by 2 spaces or more
 
       String productUPC = product[0];
       String productDescription = product[1];
       String productPrice = product[2];
       Item item = new Item(productUPC, productDescription, productPrice);
-      itemsForCatalog[itrOfItems] = item;
+      items[itrOfItems] = item;
     }
   }
 }

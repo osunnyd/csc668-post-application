@@ -17,38 +17,31 @@ public class Catalog {
   FileProductReader fileProductReader;
   RestProductReader restProductReader;
 
-  public Catalog(String productString) throws IOException
-  {
+  public Catalog(String productString) throws IOException {
     fileProductReader = new FileProductReader(productString);
     restProductReader = new RestProductReader(productString);
   }
 
 
-  public void setUpCatalogHashM()
-  { 
-    item = fileProductReader.getProductList();
-    
-    for (int i = 0; i < item.length;i++){}
-  }
+  public void setUpCatalogHashM() { 
 
-  private void parseItems(ArrayList items) {
-    String[] product;
-
-    // parse each line by spaces
-    for (int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++) {
-
-      product = items.get(itrOfItems).toString().split("  +"); // splits by 2 spaces or more
-
-      String productUPC = product[0];
-      String productDescription = product[1];
-      String productPrice = (product[2]);
-
-      UPC upc = new UPC(productUPC);
-      Item item = new Item(productUPC, productDescription, productPrice);
-
-      catalog.put(upc, item);
+    if (fileProductReader.checkFile()) {
+      item = fileProductReader.getProductList();
     }
 
+    else if (restProductReader.checkUri()) {
+      item = restProductReader.getProductList();
+    } else {
+      System.out.println("Can not creat HashMap");
+    }
+
+    
+    for (int i = 0; i < item.length;i++) {
+      Upc upc = new Upc();
+
+      upc = item[i].getUPC();
+      catalog.put(upc, item[i]);
+    }
   }
 
   public Item getItem(UPC upc) {

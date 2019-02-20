@@ -11,13 +11,15 @@ public class RestProductReader extends IProductReader
   public RestProductReader(String productString) throws IOException
   {
     super(productString);
-    if(check()){read(productString);
+    if (checkUrcheckUri()) {
+      read(productString);
+    }
   }
 
   @Override
-  public void read(String endpoint) throws IOException
+  public void read(String productString) throws IOException
   {
-    String listOfProducts =  new Get(endpoint).execute();
+    String listOfProducts =  new Get(productString).execute();
     Gson jsonToItems = new Gson();
 
     // Creates objects from Json
