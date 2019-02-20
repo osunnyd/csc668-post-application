@@ -10,8 +10,9 @@ import java.util.Observable;
 import java.util.ArrayList;
 import java.io.*;
 import Main.*;
+import Customer.Customer;
 import UserInterface.*;
-import Transaction.TransactionManager;;
+import Transaction.*;;
 
 public class POS implements Observer {
 
