@@ -2,13 +2,10 @@ package PointOfSale;
 
 //Jarek, Tommy
 import javax.swing.*;
-
 import java.awt.*;
-import java.awt.event.*;
 import java.util.Observer;
 import java.util.Observable;
 import java.util.ArrayList;
-import java.io.*;
 import Main.*;
 import Customer.Customer;
 import UserInterface.*;
@@ -19,6 +16,7 @@ public class POS implements Observer {
   private PaymentListener paymentListener;
   private ProductListener productListener;
   TransactionManager transactionManager;
+  private SalesLog salesLog;
   private Transaction transaction;
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
@@ -30,10 +28,11 @@ public class POS implements Observer {
     this.transaction = new Transaction();
   }
 
-  public POS(Catalog catalog, File transactions) {
+  public POS(Catalog catalog, String uri) {
     addListeners();
     this.pos_GUI = new POS_GUI(paymentListener, productListener);
     this.transaction = new Transaction();
+    this.salesLog = new SalesLog(uri);
   }
 
   private void addListeners() {
@@ -47,9 +46,9 @@ public class POS implements Observer {
   public void buildReceipts() {
     // TODO Update this to saleslog
     // receipts = transactionManager.getReceipts();
-
-    for (int index = 0; index < receipts.size(); index++) {
-      System.out.println(receipts.get(index));
+    this.receipts = salesLog.getReceipts();
+    for (int index = 0; index < this.receipts.size(); index++) {
+      System.out.println(this.receipts.get(index));
       System.out.println();
     }
   }
@@ -58,6 +57,7 @@ public class POS implements Observer {
   public void update(Observable listener, Object object) {
       if (listener instanceof PaymentListener) {
         processPayment();
+        pos_GUI.resetGUI();
 
       } else if (listener instanceof ProductListener) {
         addItem();

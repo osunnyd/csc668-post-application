@@ -9,9 +9,9 @@ import PointOfSale.*;
 public class PaymentPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    JComboBox paymentTypeDropdown;
-    TextField amountField;
-    JButton payButton;
+    private JComboBox paymentTypeDropdown;
+    private TextField amountField;
+    private JButton payButton;
 
     public PaymentPanel(PaymentListener paymentListener) {
         setDefaults();
@@ -50,6 +50,11 @@ public class PaymentPanel extends JPanel {
         this.payButton = new JButton("Pay");
         add(payButton, BorderLayout.PAGE_END);
         payButton.addActionListener(paymentListener);
+    }
+
+    public void resetGUI(){
+        paymentTypeDropdown.setSelectedIndex(0);
+        amountField.setText("");
     }
 
     public String getCustomerPaymentType() {

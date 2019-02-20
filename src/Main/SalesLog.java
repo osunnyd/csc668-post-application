@@ -12,7 +12,7 @@ public class SalesLog {
   private ArrayList<String> receipts;
   private String URI;
 
-  SalesLog(String URI) {
+  public SalesLog(String URI) {
     this.URI = URI;
     this.receipts = new ArrayList<>();
   }

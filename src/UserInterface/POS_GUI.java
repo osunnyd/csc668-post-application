@@ -15,7 +15,6 @@ public class POS_GUI {
     TopPanel topPanel;
     JFrame frame;
     public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
-        // this.controller = new UserInterfaceController();
         setDefaults();
         addPanels(paymentListener, productListener);
         frame.setVisible(true);
@@ -45,6 +44,10 @@ public class POS_GUI {
         frame.add(bottomPanel);
 
     }
+    public void resetGUI(){
+        //clear out the GUI for next transaction
+        bottomPanel.resetGUI();
+    }
 
     public String getPaymentType() {
         return bottomPanel.getPaymentType();
@@ -73,7 +76,9 @@ public class POS_GUI {
     public void displayItemAdded(){
         JOptionPane.showMessageDialog(frame, "Item(s) added");
     }
+    public void displayPaymentMessage(){
+        
+    }
 
-    //public String get stuff from PANEL FUNCTIONS for User interface controller
 
 }

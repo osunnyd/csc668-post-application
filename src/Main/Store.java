@@ -42,8 +42,8 @@ public class Store {
 
   }
 
-  public boolean openStore(File transactions) {
-    this.pos = new POS(catalog, transactions);
+  public boolean openStore(String uri) {
+    this.pos = new POS(catalog, uri);
     return isOpen = true;
   }
 
