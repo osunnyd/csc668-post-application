@@ -20,21 +20,11 @@ public class Store {
     this.stock = stock;
   }
 
-  public void printCatalog() {
-    catalog.printCatalog();
-  }
 
   public Item getItem(String itemUPC) {
     return catalog.getItem(new UPC(itemUPC));
   }
 
-  public HashMap hashMapOFStock() {
-    return stock.getStock();
-  }
-
-  public HashMap hashMapOfCatalog() {
-    return catalog.getCatalog();
-  }
 
   public boolean closeStore() {
     this.pos.buildReceipts();
