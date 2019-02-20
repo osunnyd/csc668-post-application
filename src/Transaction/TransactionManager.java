@@ -1,4 +1,4 @@
-package Main;
+package Transaction;
 
 /*
   Juan Valdez, Robert Quinones
@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
+import Main.*;
 
 public class TransactionManager {
 

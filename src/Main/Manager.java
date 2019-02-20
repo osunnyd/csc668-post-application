@@ -4,13 +4,14 @@ import UserInterface.*;
 import PointOfSale.*;
 import Requests.Http.*;
 import Requests.StoreRequests.*;
+import Transaction.Transaction;
+import Customer.Customer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Date;
-
 //Jarek, Robert
 
 /*

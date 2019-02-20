@@ -54,10 +54,8 @@ public class Response {
 
     // Set Non-200 return codes, since cannot be set in createReader
     // 202 responses also have no body, it could be a valid response already
-    if (isNotAccepted()) {
-      if (result.isEmpty()) {
-        this.statusCode = 400;
-      }
+    if (isNotAccepted() && !result.isEmpty()) {
+      this.statusCode = 400;
       // 406 Will be implied by thrown Exception, and returned once
       // Post's execute has completed
     }
