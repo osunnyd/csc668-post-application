@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FileProductReader
+public class FileProductReader extends IProductReader
 {
   public ArrayList<String> items;
 
