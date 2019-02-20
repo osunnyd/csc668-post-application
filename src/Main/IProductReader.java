@@ -16,7 +16,7 @@ public abstract class IProductReader{
 }
 
 
-  public abstract Object getProductList();
+  public abstract Item[] getProductList();
   public abstract void read(String productString) throws IOException;
   
   public int check(){
@@ -41,7 +41,4 @@ public abstract class IProductReader{
     return flag;
   }
 
-
-//   public abstract Item[] restParse(String productString);
-//   public abstract ArrayList<Item> fileParse(String productString);
 }

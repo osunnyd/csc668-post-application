@@ -11,6 +11,7 @@ public class RestProductReader extends IProductReader
   public RestProductReader(String productString)
   {
     super(productString);
+    if(check()){read(file);}
   }
 
   @Override
@@ -26,7 +27,7 @@ public class RestProductReader extends IProductReader
   }
 
   @Override
-  public Object getProductList()
+  public Item[] getProductList()
   {
     return items;
   }

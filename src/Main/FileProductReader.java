@@ -7,30 +7,35 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.File;
 
 public class FileProductReader extends IProductReader
 {
-  public ArrayList<String> items;
-  ArrayList<Item> itemsForCatalog = new ArrayList<>();
+  public ArrayList<String> items = new ArrayList<>();
+
   public FileProductReader(String productString)
   {
     super(productString);
+    if(check()){read(file);}
+
+    
   }
 
 
   @Override
-  public Object getProductList()
+  public Item[] getProductList()
   {
-    return itemsForCatalog;
+    return items;
   }
 
   @Override
   public void read(String file) throws IOException
   {
     String item;
+
     int itrOfItems = 0;
 
-    FileReader readFile = new FileReader(file);
+    FileReader readFile = new FileReader(fileName);
     BufferedReader lineBuffer = new BufferedReader(readFile);
 
     while ((item = lineBuffer.readLine()) != null) { // split each product to their own line
@@ -41,12 +46,11 @@ public class FileProductReader extends IProductReader
     readFile.close();
     lineBuffer.close();
 
-    parseItems(items);
   }
 
   public void parseItems(ArrayList items) {
     String[] product;
-    ArrayList<Item> itemsForCatalog = new ArrayList<>();
+   
     // parse each line by spaces
     for (int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++) {
 
@@ -56,8 +60,6 @@ public class FileProductReader extends IProductReader
       String productDescription = product[1];
       String productPrice = product[2];
       Item item = new Item(productUPC, productDescription, productPrice);
-      itemsForCatalog.add(item);
-
     }
 
   }
