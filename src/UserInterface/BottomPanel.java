@@ -9,7 +9,8 @@ import PointOfSale.*;
 public class BottomPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    PaymentPanel paymentPanel;
+    private PaymentPanel paymentPanel;
+    private JLabel dateLabel;
 
     public BottomPanel(PaymentListener paymentListener) {
         setDefaults();
@@ -24,7 +25,7 @@ public class BottomPanel extends JPanel {
     private void setDate() {
         JPanel datePanel = new JPanel();
         datePanel.setLayout(new BorderLayout());
-        JLabel dateLabel = new JLabel(new Date().toString());
+        dateLabel = new JLabel(new Date().toString());
         datePanel.add(dateLabel, BorderLayout.CENTER);
         add(datePanel);
     }
@@ -36,6 +37,10 @@ public class BottomPanel extends JPanel {
 
     public String getPaymentType() {
         return paymentPanel.getCustomerPaymentType();
+    }
+
+    public String getDate(){
+        return dateLabel.getText();
     }
 
     public String getAmountTendered() {
