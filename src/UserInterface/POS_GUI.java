@@ -7,26 +7,28 @@ import java.util.Observer;
 
 import PointOfSale.*;
 
-public class POS_GUI extends JFrame {
+public class POS_GUI {
 
     private static final long serialVersionUID = 1L;
     BottomPanel bottomPanel;
     CenterPanel centerPanel;
     TopPanel topPanel;
+    JFrame frame;
     public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
         // this.controller = new UserInterfaceController();
         setDefaults();
         addPanels(paymentListener, productListener);
-        setVisible(true);
+        frame.setVisible(true);
     }
 
     private void setDefaults() {
-        setTitle("POS");
-        setSize(800, 820);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setResizable(false);
+        this.frame = new JFrame();
+        frame.setTitle("POS");
+        frame.setSize(800, 820);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setResizable(false);
     }
 
     private void addPanels(PaymentListener paymentListener, ProductListener productListener) {
@@ -38,9 +40,9 @@ public class POS_GUI extends JFrame {
         centerPanel.setBounds(0, 200, 800, 400);
         bottomPanel.setBounds(0, 600, 800, 200);
 
-        add(topPanel);
-        add(centerPanel);
-        add(bottomPanel);
+        frame.add(topPanel);
+        frame.add(centerPanel);
+        frame.add(bottomPanel);
 
     }
 
@@ -52,12 +54,24 @@ public class POS_GUI extends JFrame {
         return bottomPanel.getAmountTendered();
     }
 
+    public String getName(){
+        return topPanel.getName();
+    }
+
     public String getUPCcode(){
         return topPanel.getUPCcode();
     }
 
     public Integer getQuantity(){
         return topPanel.getQuantity();
+    }
+
+    public String getDate(){
+        return bottomPanel.getDate();
+    }
+
+    public void displayItemAdded(){
+        JOptionPane.showMessageDialog(this.frame, "Item added");
     }
 
     //public String get stuff from PANEL FUNCTIONS for User interface controller
