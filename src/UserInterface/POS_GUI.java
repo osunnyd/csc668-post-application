@@ -71,7 +71,7 @@ public class POS_GUI {
     }
 
     public void displayItemAdded(){
-        JOptionPane.showMessageDialog(this.frame, "Item added");
+        JOptionPane.showMessageDialog(frame, "Item(s) added");
     }
 
     //public String get stuff from PANEL FUNCTIONS for User interface controller
