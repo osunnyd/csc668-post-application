@@ -8,6 +8,7 @@ import Transaction.TransactionManager;
 import Main.SalesLog;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 //Jarek, Robert
 
@@ -24,7 +25,7 @@ public class Manager {
   static Stock stock;
   static Catalog catalog;
   static String URI;
-  static Boolean debugOn = true;
+  static Boolean debugOn = false;
 
   public static void main(String[] args) {
     if (args.length > 1) {
@@ -112,6 +113,24 @@ public class Manager {
         // openStore(products);
         // processTransactions(transactions);
         // closeStore();
+        RestProductReader p;
+        FileProductReader f;
+        try
+        {
+          p = new RestProductReader("https://post-server.herokuapp.com/products");
+          f = new FileProductReader("src/InputFiles/products.txt");
+          Item[] is = (Item[]) f.getProductList();
+
+          for(int i = 0; i < is.length; i++)
+          {
+            //System.out.println(is[i].toString());
+            System.out.println(is[i].toString());
+          }
+        } catch (IOException e)
+        {
+          e.printStackTrace();
+        }
+
       }
     }
 
@@ -119,7 +138,7 @@ public class Manager {
 
   public static void openStore(File products) {
     try {
-      catalog = new Catalog(products);
+      //catalog = new Catalog(products);
       stock = new Stock(products);
       store = new Store(catalog, stock);
 

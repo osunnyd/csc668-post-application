@@ -8,15 +8,17 @@ Utility class item
 public class Item {
   private String upc;
   private String description;
-  private float price;
+  private String price;
+  float priceOfItem;
 
   public Item() {
     this.upc = "";
     this.description = "";
-    this.price = 0;
+    this.price = "";
+
   }
 
-  public Item(String upc, String description, float price) {
+  public Item(String upc, String description, String price) {
     this.upc = upc;
     this.description = description;
     this.price = price;
@@ -31,6 +33,15 @@ public class Item {
   }
 
   public float getPrice() {
-    return this.price;
+    // To remove the $ sign from the string
+    String actualNumbers = price.substring(1);
+    priceOfItem = Float.parseFloat(actualNumbers);
+    return priceOfItem;
   }
+
+  @Override
+  public String toString() {
+    return upc + " " + description + " @ " + price;
+  }
+
 }
