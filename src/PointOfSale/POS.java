@@ -42,7 +42,8 @@ public class POS implements Observer {
   }
 
   public void buildReceipts() {
-    receipts = transactionManager.getReceipts();
+    // TODO Update this to saleslog
+    // receipts = transactionManager.getReceipts();
 
     for (int index = 0; index < receipts.size(); index++) {
       System.out.println(receipts.get(index));
