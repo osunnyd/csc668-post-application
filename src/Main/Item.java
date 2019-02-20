@@ -18,11 +18,11 @@ public class Item {
 
   }
 
- /* public Item(String upc, String description, float price) {
+  public Item(String upc, String description, String price) {
     this.upc = upc;
     this.description = description;
     this.price = price;
-  }*/
+  }
 
   public String getUPC() {
     return this.upc;
