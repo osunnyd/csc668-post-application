@@ -12,20 +12,19 @@ import java.io.File;
 public class FileProductReader extends IProductReader
 {
   public ArrayList<String> items = new ArrayList<>();
+  Item[] itemsForCatalog;
 
-  public FileProductReader(String productString)
+  public FileProductReader(String productString) throws IOException
   {
     super(productString);
-    if(check()){read(file);}
-
-    
+    if(check()){read(productString);}
   }
 
 
   @Override
   public Item[] getProductList()
   {
-    return items;
+    return itemsForCatalog;
   }
 
   @Override
@@ -35,7 +34,7 @@ public class FileProductReader extends IProductReader
 
     int itrOfItems = 0;
 
-    FileReader readFile = new FileReader(fileName);
+    FileReader readFile = new FileReader(file);
     BufferedReader lineBuffer = new BufferedReader(readFile);
 
     while ((item = lineBuffer.readLine()) != null) { // split each product to their own line
@@ -50,7 +49,8 @@ public class FileProductReader extends IProductReader
 
   public void parseItems(ArrayList items) {
     String[] product;
-   
+    itemsForCatalog = new Item[items.size()];
+
     // parse each line by spaces
     for (int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++) {
 
@@ -60,7 +60,7 @@ public class FileProductReader extends IProductReader
       String productDescription = product[1];
       String productPrice = product[2];
       Item item = new Item(productUPC, productDescription, productPrice);
+      itemsForCatalog[itrOfItems] = item;
     }
-
   }
 }

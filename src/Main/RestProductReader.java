@@ -8,10 +8,10 @@ import java.io.IOException;
 public class RestProductReader extends IProductReader
 {
   Item[] items;
-  public RestProductReader(String productString)
+  public RestProductReader(String productString) throws IOException
   {
     super(productString);
-    if(check()){read(file);}
+    if(check()){read(productString);
   }
 
   @Override
