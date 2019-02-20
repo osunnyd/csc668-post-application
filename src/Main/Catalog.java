@@ -20,6 +20,7 @@ public class Catalog {
   public Catalog(String productString) throws IOException {
     fileProductReader = new FileProductReader(productString);
     restProductReader = new RestProductReader(productString);
+    setUpCatalogHashM();
   }
 
 
@@ -32,14 +33,13 @@ public class Catalog {
     else if (restProductReader.checkUri()) {
       item = restProductReader.getProductList();
     } else {
-      System.out.println("Can not creat HashMap");
+      System.out.println("Can not create HashMap");
     }
 
     
     for (int i = 0; i < item.length;i++) {
-      Upc upc = new Upc();
-
-      upc = item[i].getUPC();
+      String itemUPC = item[i].getUPC();
+      UPC upc = new UPC(itemUPC);
       catalog.put(upc, item[i]);
     }
   }

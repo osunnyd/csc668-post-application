@@ -45,14 +45,16 @@ public class FileProductReader extends IProductReader
     readFile.close();
     lineBuffer.close();
 
+    parseItems(itemsFromFile);
+
   }
 
-  public void parseItems(ArrayList items) {
+  public void parseItems(ArrayList itemsFromFile) {
     String[] product;
     items = new Item[itemsFromFile.size()];
 
     // parse each line by spaces
-    for (int itrOfItems = 0; itrOfItems < items.size(); itrOfItems++) {
+    for (int itrOfItems = 0; itrOfItems < itemsFromFile.size(); itrOfItems++) {
 
       product = itemsFromFile.get(itrOfItems).toString().split("  +"); // splits by 2 spaces or more
 

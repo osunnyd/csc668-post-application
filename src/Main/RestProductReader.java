@@ -11,7 +11,7 @@ public class RestProductReader extends IProductReader
   public RestProductReader(String productString) throws IOException
   {
     super(productString);
-    if (checkUrcheckUri()) {
+    if (checkUri()) {
       read(productString);
     }
   }
