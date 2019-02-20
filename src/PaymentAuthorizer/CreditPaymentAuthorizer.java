@@ -1,8 +1,11 @@
 package PaymentAuthorizer;
 
 // Robert Quinones
+
 import Transaction.Transaction;
 import Requests.StoreRequests.PaymentAuthorizationRequest;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 public class CreditPaymentAuthorizer extends PaymentAuthorizer {
 
@@ -38,5 +41,13 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
     }
 
     return false;
+  }
+
+  public String creditAuthorizationJSON(Transaction Transaction) {
+    JsonObject jsonObj = new JsonObject();
+    jsonObj.addProperty("amount", Transaction.getBillTotal());
+    jsonObj.addProperty("cardNumber", Transaction.getAmountTendered()); //change amount tendered to credit number
+    String json = jsonObj.toString();
+    return json;
   }
 }
