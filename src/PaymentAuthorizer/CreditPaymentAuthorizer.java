@@ -4,8 +4,6 @@ package PaymentAuthorizer;
 
 import Transaction.Transaction;
 import Requests.StoreRequests.PaymentAuthorizationRequest;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 public class CreditPaymentAuthorizer extends PaymentAuthorizer {
 
@@ -19,7 +17,7 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
     }
 
     // TODO DEBUG STRING, WE NEED REAL JSON
-    String authorizationData = "{ \"amount\": 123.45, \"cardNumber\":12345 }";
+    String authorizationData = transaction.getCreditAuthorizationJSON();
 
     this.authorizationRequest = new PaymentAuthorizationRequest(URI);
     String authorizationResultCode = this.authorizationRequest.authorizePayment("CREDIT", authorizationData);
@@ -43,11 +41,4 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
     return false;
   }
 
-  public String creditAuthorizationJSON(Transaction Transaction) {
-    JsonObject jsonObj = new JsonObject();
-    jsonObj.addProperty("amount", Transaction.getBillTotal());
-    jsonObj.addProperty("cardNumber", Transaction.getAmountTendered()); //change amount tendered to credit number
-    String json = jsonObj.toString();
-    return json;
-  }
 }

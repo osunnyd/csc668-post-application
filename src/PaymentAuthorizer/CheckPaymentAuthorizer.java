@@ -4,8 +4,6 @@ package PaymentAuthorizer;
 
 import Transaction.Transaction;
 import Requests.StoreRequests.PaymentAuthorizationRequest;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 public class CheckPaymentAuthorizer extends PaymentAuthorizer {
 
@@ -19,7 +17,7 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
     }
 
     // TODO DEBUG STRING, WE NEED REAL JSON
-    String authorizationData = "{ \"amount\": 123.45 }";
+    String authorizationData = transaction.getCheckAuthorizationJSON();
 
     this.authorizationRequest = new PaymentAuthorizationRequest(URI);
     String authorizationResultCode = this.authorizationRequest.authorizePayment("CHECK", authorizationData);
@@ -43,10 +41,4 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
     return false;
   }
 
-  public String checkAuthorizationJSON(Transaction Transaction) {
-    JsonObject jsonObj = new JsonObject();
-    jsonObj.addProperty("amount", Transaction.getBillTotal());
-    String json = jsonObj.toString();
-    return json;
-  }
 }

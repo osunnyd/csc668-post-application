@@ -112,4 +112,19 @@ public class Transaction {
   public void setAuthorization(boolean authorization) {
     this.isAuthorized = authorization;
   }
+
+  //debug methods
+  public String getCheckAuthorizationJSON(){
+    return new JsonBuilder().checkAuthorizationJSON(this);
+  }
+
+  public String getCreditAuthorizationJSON(){
+    return new JsonBuilder().creditAuthorizationJSON(this);
+  }
+
+  public String getSalesJSON(){
+    return new JsonBuilder().createSaleJSON(this);
+  }
+
+
 }
