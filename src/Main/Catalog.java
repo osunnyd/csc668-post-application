@@ -54,7 +54,7 @@ public class Catalog {
 
       String productUPC = product[0];
       String productDescription = product[1];
-      float productPrice = Float.parseFloat(product[2]);
+      String productPrice = (product[2]);
 
       UPC upc = new UPC(productUPC);
       Item item = new Item(productUPC, productDescription, productPrice);
