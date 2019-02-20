@@ -9,11 +9,11 @@ public class RestProductReader extends IProductReader
 {
   RestProductReader(String endpoint) throws IOException
   {
-    read(endpoint);
+    restParse(endpoint);
   }
 
 
-  public Item[] read(String endpoint) throws IOException
+  public Item[] restParse(String endpoint) throws IOException
   {
     String listOfProducts =  new Get(endpoint).execute();
     Gson jsonToItems = new Gson();
