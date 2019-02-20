@@ -1,4 +1,5 @@
 package PointOfSale;
+
 //Jarek, Tommy
 import javax.swing.*;
 
@@ -10,8 +11,9 @@ import java.util.ArrayList;
 import java.io.*;
 import Main.*;
 import UserInterface.*;
+import Transaction.TransactionManager;;
 
-public class POS implements Observer{
+public class POS implements Observer {
 
   private PaymentListener paymentListener;
   private ProductListener productListener;
@@ -20,14 +22,14 @@ public class POS implements Observer{
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
 
-  public POS(){
-    //testing purposes, do not use this constructor, delete before submission
+  public POS() {
+    // testing purposes, do not use this constructor, delete before submission
     addListeners();
     this.pos_GUI = new POS_GUI(paymentListener, productListener);
     this.transaction = new Transaction();
   }
 
-  public POS( Catalog catalog, File transactions ) {
+  public POS(Catalog catalog, File transactions) {
     addListeners();
     this.pos_GUI = new POS_GUI(paymentListener, productListener);
     this.transaction = new Transaction();
@@ -38,13 +40,15 @@ public class POS implements Observer{
     this.paymentListener.addObserver(this);
     this.productListener = new ProductListener();
     this.productListener.addObserver(this);
+
   }
 
   public void buildReceipts() {
-    receipts = transactionManager.getReceipts();
+    // TODO Update this to saleslog
+    // receipts = transactionManager.getReceipts();
 
-    for ( int index = 0; index < receipts.size(); index++ ) {
-      System.out.println( receipts.get( index ) );
+    for (int index = 0; index < receipts.size(); index++) {
+      System.out.println(receipts.get(index));
       System.out.println();
     }
   }
@@ -74,6 +78,7 @@ public class POS implements Observer{
     transaction.setAmountTendered(pos_GUI.getAmountTendered());
 
   }
+
 
 
 

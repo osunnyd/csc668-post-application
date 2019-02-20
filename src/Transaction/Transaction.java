@@ -1,8 +1,10 @@
-package Main;
+package Transaction;
 
 // Robert Quinones
 import java.util.ArrayList;
 import ReceiptBuilder.ReceiptBuilder;
+import Customer.Customer;
+import Main.SalesLineItem;
 
 public class Transaction {
 

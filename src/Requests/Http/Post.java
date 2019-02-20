@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class Post extends RestRequest {
+  Response response;
+
   public Post(String uri) throws MalformedURLException, IOException {
     super(uri);
     connection.setRequestMethod("POST");
@@ -18,7 +20,7 @@ public class Post extends RestRequest {
     connection.setDoOutput(true);
     connection.getOutputStream().write(body.getBytes("UTF-8"));
 
-    Response response = new Response(connection);
+    this.response = new Response(connection);
 
     // Debug, Delete later
     System.out.println("<POST Result>");
@@ -27,5 +29,13 @@ public class Post extends RestRequest {
     connection.disconnect();
 
     return Integer.toString(response.getStatusCode());
+  }
+
+  public Boolean containsResponse() {
+    return !this.response.getBody().isEmpty();
+  }
+
+  public String getResponse() {
+    return this.response.getBody();
   }
 }

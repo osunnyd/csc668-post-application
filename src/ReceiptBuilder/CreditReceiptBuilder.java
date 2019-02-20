@@ -1,8 +1,8 @@
 package ReceiptBuilder;
 
 // Robert Quinones
-import Main.Transaction;
-import Main.Customer;
+import Transaction.Transaction;
+import Customer.Customer;
 
 public class CreditReceiptBuilder extends ReceiptBuilder {
 
