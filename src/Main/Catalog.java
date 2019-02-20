@@ -4,6 +4,7 @@ package Main;
 Sunny Wong and Omar Alaniz
 */
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -16,7 +17,8 @@ public class Catalog {
   FileProductReader fileProductReader;
   RestProductReader restProductReader;
 
-  public Catalog(String productString) {
+  public Catalog(String productString) throws IOException
+  {
     fileProductReader = new FileProductReader(productString);
     restProductReader = new RestProductReader(productString);
   }
