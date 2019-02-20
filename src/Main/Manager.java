@@ -128,9 +128,9 @@ public class Manager {
     }
   }
 
-  public static void processTransactions(File transactions) {
-    store.openStore(transactions);
-  }
+  // public static void processTransactions(File transactions) {
+  //   store.openStore(transactions);
+  // }
 
   public static void closeStore() {
     store.closeStore();
