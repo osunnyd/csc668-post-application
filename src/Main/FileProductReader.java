@@ -14,11 +14,11 @@ public class FileProductReader extends IProductReader
 
   FileProductReader(String file) throws IOException
   {
-    fileParse(file);
+    read(file);
   }
 
 
-  void fileParse(String file) throws IOException
+  void read(String file) throws IOException
   {
     String item;
     int itrOfItems = 0;
