@@ -9,15 +9,15 @@ import java.net.URL;
 
 
 public abstract class IProductReader{
-  String producString;
+  String productString;
 
   public IProductReader(String productString) {
-    this.producString = productString;
+    this.productString = productString;
 }
 
 
-  public abstract void getProductList();
-  public abstract read(String producString);
+  public abstract Object getProductList();
+  public abstract void read(String productString) throws IOException;
   
   public int check(){
     URL uri;
@@ -32,12 +32,13 @@ public abstract class IProductReader{
       return flag = flag - 1;
     }
 
-    try {
+    /*try {
       filename = new File(productString);
     } catch (IOException e) {
       System.out.println(e);
       return flag = flag + 1;
-    }
+    }*/
+    return flag;
   }
 
 
