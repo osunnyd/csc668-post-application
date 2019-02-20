@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
 
+/*
+Sunny Wong and Omar Alaniz
+*/
+
 public class FileProductReader extends IProductReader
 {
   public ArrayList<String> itemsFromFile = new ArrayList<>();

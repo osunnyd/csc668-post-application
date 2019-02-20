@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.File;
 import java.net.URL;
 
+/*
+Sunny Wong and Omar Alaniz
+*/
+
 
 public abstract class IProductReader{
   String productString;

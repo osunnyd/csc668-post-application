@@ -5,6 +5,10 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
+/*
+Sunny Wong and Omar Alaniz
+*/
+
 public class RestProductReader extends IProductReader
 {
   Item[] items;
