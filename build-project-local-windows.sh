@@ -1,13 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Remove any potential class files
 find src/Main -type f -name "*.class" -delete
-find src/Requests/Http -type f -name "*.class" -delete
-
 
 # Compile Project
-javac -cp src src/*.java
+javac -cp src src/Main/*.java
 
 # Run Project
-java -cp src Main.Manager localhost:3000
+java -cp src Main.Manager src/InputFiles/products.txt src/InputFiles/transactions.txt
 
 # Test Argument $1, $2 would be the arguments passed into the command line

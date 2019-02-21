@@ -1,8 +1,18 @@
 package Main;
 
+import Requests.StoreRequests.ProductRequest;
+import UserInterface.*;
+import PointOfSale.*;
+import ProductReader.*;
+import Transaction.Transaction;
+import Customer.Customer;
+import Transaction.TransactionManager;
+import Main.SalesLog;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-//Jarek
+import java.io.IOException;
+import java.util.ArrayList;
+//Jarek, Robert
 
 /*
 Manager is in charge of starting initialization.
@@ -16,38 +26,25 @@ public class Manager {
   static Store store;
   static Stock stock;
   static Catalog catalog;
+  static String URI;
+  static Boolean debugOn = false;
 
-  // Moved from Driver.main
   public static void main(String[] args) {
-    if (args.length > 2) {
+    if (args.length > 1) {
       System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
     } else {
-      File products = new File(args[0]);
-      File transactions = new File(args[1]);
 
-      openStore(products);
-      processTransactions(transactions);
-      closeStore();
+      // Set URI
+      try {
+        URI = args[0];
+        catalog = new Catalog(URI);
+        store = new Store(catalog, new Stock());
+        store.openStore(URI);
+        // new POS(catalog);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
-  }
-
-  public static void openStore(File products) {
-    try {
-      catalog = new Catalog(products);
-      stock = new Stock(products);
-      store = new Store(catalog, stock);
-
-    } catch (Exception error) {
-      System.out.println(error);
-    }
-  }
-
-  public static void processTransactions(File transactions) {
-    store.openStore(transactions);
-  }
-
-  public static void closeStore() {
-    store.closeStore();
   }
 }

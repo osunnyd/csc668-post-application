@@ -3,6 +3,8 @@ package Main;
 /*
 Omar ALaniz, Sunny Wong
 */
+import ProductReader.*;
+import PointOfSale.*;
 import java.io.File;
 import java.util.HashMap;
 
@@ -19,30 +21,14 @@ public class Store {
     this.stock = stock;
   }
 
-  public void printCatalog() {
-    catalog.printCatalog();
-  }
-
-  public Item getItem(String itemUPC) {
-    return catalog.getItem(new UPC(itemUPC));
-  }
-
-  public HashMap hashMapOFStock() {
-    return stock.getStock();
-  }
-
-  public HashMap hashMapOfCatalog() {
-    return catalog.getCatalog();
-  }
-
   public boolean closeStore() {
-    pos.buildReceipts();
+    this.pos.buildReceipts();
     return isOpen = false;
 
   }
 
-  public boolean openStore(File transactions) {
-    pos = new POS(catalog, transactions);
+  public boolean openStore(String uri) {
+    this.pos = new POS(catalog, uri);
     return isOpen = true;
   }
 

@@ -6,6 +6,7 @@ package Main;
     Holds UPC, QTY Pairs from transactions, then adds more relevant
     data to make receipt generation simpler
 */
+import ProductReader.UPC;
 
 public class SalesLineItem {
   private UPC upc;
@@ -18,6 +19,14 @@ public class SalesLineItem {
     this.upc = new UPC(itemUPC);
     this.quantity = quantity;
 
+  }
+
+  public SalesLineItem(String itemUPC, String description, int quantity, float unitPrice, float subtotal) {
+    this.upc = new UPC(itemUPC);
+    this.description = description;
+    this.quantity = quantity;
+    this.unitPrice = unitPrice;
+    this.subtotal = subtotal;
   }
 
   public UPC getUPC() {
