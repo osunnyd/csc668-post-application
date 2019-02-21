@@ -23,12 +23,14 @@ public class POS implements Observer {
   POS_GUI pos_GUI;
   private Catalog catalog;
 
+
   // public POS(Catalog catalog){
   //   //testing purposes, do not use this constructor, delete before submission
   //   addListeners();
   //   this.catalog = catalog;
   //   this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
   // }
+
 
   public POS(Catalog catalog, String uri) {
     addListeners();
@@ -59,9 +61,10 @@ public class POS implements Observer {
   @Override
   public void update(Observable listener, Object object) {
       if (listener instanceof PaymentListener) {
-        processPayment();
-        pos_GUI.resetGUI();
-
+        if (check() == true) {
+          processPayment();
+          pos_GUI.resetGUI();
+        }
       } else if (listener instanceof ProductListener) {
         addItem();
         pos_GUI.displayItemAdded();
@@ -87,6 +90,13 @@ public class POS implements Observer {
     transaction.setPaymentType(pos_GUI.getPaymentType());
     transaction.setAmountTendered(pos_GUI.getAmountTendered());
 
+  }
+
+  private boolean check(){
+      if (Float.valueOf(pos_GUI.getAmountTendered()) < Float.valueOf( pos_GUI.getAmountDue()) || pos_GUI.getName().length() == 0  || pos_GUI.getAmountTendered().length() == 0){
+        return false;
+      }
+    return true;
   }
 
 }
