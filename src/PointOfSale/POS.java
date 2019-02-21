@@ -93,10 +93,16 @@ public class POS implements Observer {
   }
 
   private boolean check(){
-      if (Float.valueOf(pos_GUI.getAmountTendered()) < Float.valueOf( pos_GUI.getAmountDue()) || pos_GUI.getName().length() == 0  || pos_GUI.getAmountTendered().length() == 0){
+      if (pos_GUI.getName().length() == 0) {
         return false;
+      } else if (pos_GUI.getAmountTendered().length() == 0) {
+        return false;
+      } else if (Float.valueOf(pos_GUI.getAmountTendered()) < Float.valueOf( pos_GUI.getAmountDue())) {
+        return false;
+      }else {
+        return true;
       }
-    return true;
+    //return true;
   }
 
 }
