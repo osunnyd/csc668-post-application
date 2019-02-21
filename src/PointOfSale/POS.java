@@ -13,6 +13,7 @@ import Main.*;
 import Customer.Customer;
 import UserInterface.*;
 import Transaction.*;;
+import ProductReader.*;
 
 public class POS implements Observer {
 
