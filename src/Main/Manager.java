@@ -6,6 +6,8 @@ import Transaction.Transaction;
 import Customer.Customer;
 import Transaction.TransactionManager;
 import Main.SalesLog;
+import Products.Stock;
+import Products.Catalog;
 
 import java.io.File;
 import java.io.IOException;

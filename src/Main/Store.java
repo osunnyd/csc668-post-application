@@ -3,11 +3,13 @@ package Main;
 /*
 Omar ALaniz, Sunny Wong
 */
-import PointOfSale.*;
 import java.io.File;
 import java.util.HashMap;
 
-//Sunny
+import PointOfSale.*;
+import Products.Stock;
+import Products.Catalog;
+import Products.Item;
 
 public class Store {
   Catalog catalog;

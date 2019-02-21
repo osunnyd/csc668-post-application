@@ -6,6 +6,8 @@ package Main;
     Holds UPC, QTY Pairs from transactions, then adds more relevant
     data to make receipt generation simpler
 */
+import Products.Reader.UPC;
+
 
 public class SalesLineItem {
   private UPC upc;

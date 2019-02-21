@@ -4,9 +4,13 @@ package Main;
 Sunny Wong and Omar Alaniz
 */
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ArrayList;
+
+import Reader.RestProductReader;
+import Reader.FileProductReader;
 
 public class Catalog {
 
