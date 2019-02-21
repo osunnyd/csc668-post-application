@@ -20,12 +20,15 @@ public class Catalog {
   public Catalog(String productString) throws IOException {
     fileProductReader = new FileProductReader(productString);
     restProductReader = new RestProductReader(productString);
-    setUpCatalogHashM();
+    setUpCatalogHashMap();
   }
 
 
-  public void setUpCatalogHashM() { 
-
+  public void setUpCatalogHashMap() { 
+    
+    /*Checkfile lets us know if we are accesing the getProductList from either
+    RestProductReader or FileProductReader. It returns true if is a file or true if it is a uri
+    */
     if (fileProductReader.checkFile()) {
       item = fileProductReader.getProductList();
     }
