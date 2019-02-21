@@ -21,12 +21,6 @@ public class Store {
     this.stock = stock;
   }
 
-
-  public Item getItem(String itemUPC) {
-    return catalog.getItem(new UPC(itemUPC));
-  }
-
-
   public boolean closeStore() {
     this.pos.buildReceipts();
     return isOpen = false;

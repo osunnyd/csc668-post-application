@@ -8,13 +8,10 @@
  # Build Instructions for Assignment 2
   From `post-console-application-team-7` run the commands
   - Build Locally
-    - Bash Script - `./build-project-local.sh localhost:3000` 
     - Make File - `make local`
   - Build For Heroku
-    - `./build-project-heroku.sh https://post-server.herokuapp.com`
     - `make live`
   - Clean Project Locally
-    - Bash Script - `./clean-project.sh`
     - Make File - `make clean`
 
 # Team 7
