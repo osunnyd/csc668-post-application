@@ -46,8 +46,8 @@ public class POS_GUI {
         frame.add(topPanel);
         frame.add(centerPanel);
         frame.add(bottomPanel);
-
     }
+
     public void resetGUI(){
         //clear out the GUI for next transaction
         bottomPanel.resetGUI();
