@@ -16,8 +16,7 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
       return false;
     }
 
-    // TODO DEBUG STRING, WE NEED REAL JSON
-    String authorizationData = transaction.getCreditAuthorizationJSON();
+    String authorizationData = transaction.getAuthorizationJSON();
 
     this.authorizationRequest = new PaymentAuthorizationRequest(URI);
     String authorizationResultCode = this.authorizationRequest.authorizePayment("CREDIT", authorizationData);
@@ -27,7 +26,6 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
       return true;
 
     case "400":
-      // TODO Add Errors Individually
       super.addError(this.authorizationRequest.getResponse());
       break;
 

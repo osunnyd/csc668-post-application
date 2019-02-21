@@ -30,8 +30,6 @@ public class SalesLog {
   }
 
   private void saveTransactionToDatabase(Transaction transaction) {
-    // TODO MAKE THIS STRING FROM TRANSACTION
-    // DEBUG
     String transactionData = transaction.getSalesJSON();
 
     new SaleRequest(this.URI).createSale(transactionData);

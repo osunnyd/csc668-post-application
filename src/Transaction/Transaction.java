@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ReceiptBuilder.ReceiptBuilder;
 import Customer.Customer;
 import Main.SalesLineItem;
+import Transaction.JSONBuilder.JsonBuilder;
 
 public class Transaction {
 
@@ -93,6 +94,14 @@ public class Transaction {
     return this.purchasedItems;
   }
 
+  public String getAuthorizationJSON() {
+    return JsonBuilder.getJsonBuilder(this.paymentType).getAuthorizationJSON(this);
+  }
+
+  public String getSalesJSON() {
+    return JsonBuilder.getJsonBuilder(this.paymentType).createSaleJSON(this);
+  }
+
   public void setCustomer(Customer customer) {
     this.customer = customer;
   }
@@ -112,19 +121,4 @@ public class Transaction {
   public void setAuthorization(boolean authorization) {
     this.isAuthorized = authorization;
   }
-
-  //debug methods
-  public String getCheckAuthorizationJSON(){
-    return new JsonBuilder().checkAuthorizationJSON(this);
-  }
-
-  public String getCreditAuthorizationJSON(){
-    return new JsonBuilder().creditAuthorizationJSON(this);
-  }
-
-  public String getSalesJSON(){
-    return new JsonBuilder().createSaleJSON(this);
-  }
-
-
 }

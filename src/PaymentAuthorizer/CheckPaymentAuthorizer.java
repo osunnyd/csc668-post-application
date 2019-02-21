@@ -16,26 +16,24 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
       return false;
     }
 
-    // TODO DEBUG STRING, WE NEED REAL JSON
-    String authorizationData = transaction.getCheckAuthorizationJSON();
+    String authorizationData = transaction.getAuthorizationJSON();
 
     this.authorizationRequest = new PaymentAuthorizationRequest(URI);
     String authorizationResultCode = this.authorizationRequest.authorizePayment("CHECK", authorizationData);
 
     switch (authorizationResultCode) {
-      case "202":
-        return true;
+    case "202":
+      return true;
 
-      case "400":
-        // TODO Add Errors Individually
-        super.addError(this.authorizationRequest.getResponse());
-        break;
+    case "400":
+      super.addError(this.authorizationRequest.getResponse());
+      break;
 
-      case "406":
-        return false;
+    case "406":
+      return false;
 
-      default:
-        return false;
+    default:
+      return false;
     }
 
     return false;

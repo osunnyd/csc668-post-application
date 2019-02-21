@@ -61,6 +61,26 @@ public class Manager {
           salesLog.logTransaction(cashTransaction);
           // Cash Transaction End
 
+          // Cash Transaction 2 Start
+          System.out.println("\n\nStarting Cash Sale 2");
+          Transaction cashTransaction2 = new Transaction();
+          cashTransaction2.setCustomer(new Customer("John Roberts", "2019-02-11T06:46:51.623Z"));
+          cashTransaction2.addPurchasedItem(new SalesLineItem("1234", "Item 1", 1, 123.45f, 123.45f));
+          cashTransaction2.addPurchasedItem(new SalesLineItem("5678", "Item 2", 2, 5.00f, 10.00f));
+          System.out.println("THERE IS " + cashTransaction2.getPurchasedItems().size() + " ITEMS");
+          cashTransaction2.setPaymentType("CASH");
+          cashTransaction2.setAmountTendered("133.45");
+
+          // Calculate Change, Authorize Payment, Generate Receipt
+          TransactionManager transactionManager2 = new TransactionManager(cashTransaction2, URI);
+
+          // Overwrite existing old transaction with its processed self
+          cashTransaction2 = transactionManager2.processTransaction();
+
+          // Save Transaction
+          salesLog.logTransaction(cashTransaction2);
+          // Cash Transaction End
+
           // Check Transaction Start
           System.out.println("\n\nStarting Check Sale");
           Transaction checkTransaction = new Transaction();

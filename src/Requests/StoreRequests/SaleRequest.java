@@ -17,13 +17,7 @@ public class SaleRequest {
 
   public String createSale(String transactionData) {
     try {
-      // DEBUG
-      System.out.println("<Transaction Data Sent to PUT " + this.uri + ">");
-      System.out.println(transactionData);
-
       String result = new Put(this.uri).execute(transactionData);
-      System.out.println("<PUT " + this.uri + "/sales Result>");
-      System.out.println(result);
 
       if (result.contains("id")) {
         this.statusCode = "201";
