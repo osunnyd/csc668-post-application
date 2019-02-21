@@ -12,6 +12,7 @@
     - Make File - `make local`
   - Build For Heroku
     - `./build-project-heroku.sh https://post-server.herokuapp.com`
+    - Make File= `make live`
   - Clean Project Locally
     - Bash Script - `./clean-project.sh`
     - Make File - `make clean`
