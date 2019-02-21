@@ -7,6 +7,8 @@ import PointOfSale.ProductListener;
 import java.awt.*;
 import java.awt.event.*;
 
+import Main.*;
+
 //Jarek
 
 public class TopPanel extends JPanel{
@@ -17,9 +19,9 @@ public class TopPanel extends JPanel{
   JTextField textfield;
   JPanel namePanel;
 
-  public TopPanel(ProductListener productListener) {
+  public TopPanel(ProductListener productListener, Catalog catalog) {
     setDefaults();
-    addPanels(productListener);
+    addPanels(productListener, catalog);
   }
 
   private void setDefaults(){
@@ -27,19 +29,20 @@ public class TopPanel extends JPanel{
     setLayout(new GridLayout(0, 2));
   }
 
-  private void addPanels(ProductListener productListener){
+  private void addPanels(ProductListener productListener, Catalog catalog){
     namePanel = new JPanel();
+    //namePanel.setLayout(new BorderLayout());
 
-    nameLabel = new JLabel("Customer Name: ");
+    nameLabel = new JLabel("Customer Name:");
     textfield = new JTextField();
     
     nameLabel.setPreferredSize(new Dimension(150, 25));
-    textfield.setPreferredSize(new Dimension(150, 25));
+    textfield.setPreferredSize(new Dimension(200, 25));
     
     namePanel.add(nameLabel,BorderLayout.WEST);
     namePanel.add(textfield, BorderLayout.CENTER);
 
-    this.productPanel = new ProductPanel(productListener);
+    this.productPanel = new ProductPanel(productListener, catalog);
 
     add(namePanel);
     add(this.productPanel);
@@ -49,7 +52,7 @@ public class TopPanel extends JPanel{
     return textfield.getText();
   }
 
-  public String getUPCcode(){
+  public UPC getUPCcode(){
       return productPanel.getUPCcode();
   }
 

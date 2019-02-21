@@ -1,11 +1,15 @@
 package UserInterface;
 
 import javax.swing.*;
+
+import Main.Catalog;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observer;
 
 import PointOfSale.*;
+import Main.*;
 
 public class POS_GUI {
 
@@ -14,10 +18,9 @@ public class POS_GUI {
     CenterPanel centerPanel;
     TopPanel topPanel;
     JFrame frame;
-    public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
-        // this.controller = new UserInterfaceController();
+    public POS_GUI(PaymentListener paymentListener, ProductListener productListener, Catalog catalog) {
         setDefaults();
-        addPanels(paymentListener, productListener);
+        addPanels(paymentListener, productListener, catalog);
         frame.setVisible(true);
     }
 
@@ -31,8 +34,8 @@ public class POS_GUI {
         frame.setResizable(false);
     }
 
-    private void addPanels(PaymentListener paymentListener, ProductListener productListener) {
-        this.topPanel = new TopPanel(productListener);
+    private void addPanels(PaymentListener paymentListener, ProductListener productListener, Catalog catalog) {
+        this.topPanel = new TopPanel(productListener, catalog);
         this.centerPanel = new CenterPanel();
         this.bottomPanel = new BottomPanel(paymentListener);
         // sets panels to strict coordinates (x, y, width, height)
@@ -44,6 +47,10 @@ public class POS_GUI {
         frame.add(centerPanel);
         frame.add(bottomPanel);
 
+    }
+    public void resetGUI(){
+        //clear out the GUI for next transaction
+        bottomPanel.resetGUI();
     }
 
     public String getPaymentType() {
@@ -58,7 +65,7 @@ public class POS_GUI {
         return topPanel.getName();
     }
 
-    public String getUPCcode(){
+    public UPC getUPCcode(){
         return topPanel.getUPCcode();
     }
 
@@ -73,7 +80,13 @@ public class POS_GUI {
     public void displayItemAdded(){
         JOptionPane.showMessageDialog(frame, "Item(s) added");
     }
+    public void displayPaymentMessage(){
+        
+    }
 
-    //public String get stuff from PANEL FUNCTIONS for User interface controller
+    public void itemtoInvoice(Item item, int quantity){
+        centerPanel.itemtoInvoice(item, quantity);
+    }
+
 
 }

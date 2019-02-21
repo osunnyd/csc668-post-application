@@ -22,8 +22,6 @@ public class Post extends RestRequest {
 
     this.response = new Response(connection);
 
-    // Debug, Delete later
-    System.out.println("<POST Result>");
     System.out.println(response.getBody());
 
     connection.disconnect();

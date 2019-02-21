@@ -20,12 +20,15 @@ public class Catalog {
   public Catalog(String productString) throws IOException {
     fileProductReader = new FileProductReader(productString);
     restProductReader = new RestProductReader(productString);
-    setUpCatalogHashM();
+    setUpCatalogHashMap();
   }
 
 
-  public void setUpCatalogHashM() { 
-
+  public void setUpCatalogHashMap() { 
+    
+    /*Checkfile lets us know if we are accesing the getProductList from either
+    RestProductReader or FileProductReader. It returns true if is a file or true if it is a uri
+    */
     if (fileProductReader.checkFile()) {
       item = fileProductReader.getProductList();
     }
@@ -57,4 +60,24 @@ public class Catalog {
 
     return itemToReturn;
   }
+  
+  public ArrayList<UPC> getUPCs(){
+    ArrayList<UPC> arraylist = new ArrayList();
+    for (UPC keys : catalog.keySet()) {
+      arraylist.add(keys);
+      //System.out.println(keys.getUPC());
+    }
+    return arraylist;
+  }
+  /*public String[] getUPCs(){
+    ArrayList<String> arraylist = new ArrayList();
+    for (UPC keys : catalog.keySet()) {
+      arraylist.add(keys.getUPC());
+      System.out.println(keys.getUPC());
+    }
+    String[] array = arraylist.toArray(new String[arraylist.size()]);
+    return array;
+  }*/
+
+
 }

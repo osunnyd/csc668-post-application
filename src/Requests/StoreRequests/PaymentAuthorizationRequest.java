@@ -14,11 +14,6 @@ public class PaymentAuthorizationRequest {
   }
 
   public String authorizePayment(String type, String transactionData) {
-
-    // DEBUG - Delete Later
-    System.out.println("<Transaction Data Sent to POST " + this.uri + "/" + type.toLowerCase() + ">");
-    System.out.println(transactionData);
-
     try {
       this.postRequest = new Post(this.uri + "/" + type.toLowerCase());
       this.statusCode = this.postRequest.execute(transactionData);

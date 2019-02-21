@@ -34,6 +34,10 @@ public class BottomPanel extends JPanel {
         this.paymentPanel = new PaymentPanel(paymentListener);
         add(this.paymentPanel);
     }
+    public void resetGUI(){
+        dateLabel.setText(new Date().toString());
+        paymentPanel.resetGUI();
+    }
 
     public String getPaymentType() {
         return paymentPanel.getCustomerPaymentType();

@@ -21,7 +21,6 @@ public class SalesLineItem {
 
   }
 
-  // Debug Constructor
   public SalesLineItem(String itemUPC, String description, int quantity, float unitPrice, float subtotal) {
     this.upc = new UPC(itemUPC);
     this.description = description;

@@ -40,11 +40,20 @@ public class Manager {
       // Set URI
       URI = args[0];
       System.out.println("This is the URI " + URI);
+<<<<<<< HEAD
       if (debugOn)
       {
         try
         {
           new POS();
+=======
+      if (debugOn) {
+        try {
+
+          catalog = new Catalog("src/InputFiles/products.txt");
+          //new POS(catalog);
+          new POS(catalog);
+>>>>>>> develop
 
           SalesLog salesLog = new SalesLog(URI);
           // Test to GET Data from Backend
@@ -67,6 +76,26 @@ public class Manager {
 
           // Save Transaction
           salesLog.logTransaction(cashTransaction);
+          // Cash Transaction End
+
+          // Cash Transaction 2 Start
+          System.out.println("\n\nStarting Cash Sale 2");
+          Transaction cashTransaction2 = new Transaction();
+          cashTransaction2.setCustomer(new Customer("John Roberts", "2019-02-11T06:46:51.623Z"));
+          cashTransaction2.addPurchasedItem(new SalesLineItem("1234", "Item 1", 1, 123.45f, 123.45f));
+          cashTransaction2.addPurchasedItem(new SalesLineItem("5678", "Item 2", 2, 5.00f, 10.00f));
+          System.out.println("THERE IS " + cashTransaction2.getPurchasedItems().size() + " ITEMS");
+          cashTransaction2.setPaymentType("CASH");
+          cashTransaction2.setAmountTendered("133.45");
+
+          // Calculate Change, Authorize Payment, Generate Receipt
+          TransactionManager transactionManager2 = new TransactionManager(cashTransaction2, URI);
+
+          // Overwrite existing old transaction with its processed self
+          cashTransaction2 = transactionManager2.processTransaction();
+
+          // Save Transaction
+          salesLog.logTransaction(cashTransaction2);
           // Cash Transaction End
 
           // Check Transaction Start
@@ -119,6 +148,29 @@ public class Manager {
       } else
 
       {
+<<<<<<< HEAD
+=======
+        //openStore(products);
+        //processTransactions(transactions);
+        //closeStore();
+        RestProductReader p;
+        FileProductReader f;
+        try
+        {
+          p = new RestProductReader("https://post-server.herokuapp.com/products");
+          f = new FileProductReader("src/InputFiles/products.txt");
+          Item[] is = (Item[]) f.getProductList();
+
+          for(int i = 0; i < is.length; i++)
+          {
+            //System.out.println(is[i].toString());
+            System.out.println(is[i].toString());
+          }
+        } catch (IOException e)
+        {
+          e.printStackTrace();
+        }
+>>>>>>> develop
 
       }
 
@@ -136,9 +188,9 @@ public class Manager {
     }
   }
 
-  public static void processTransactions(File transactions) {
-    store.openStore(transactions);
-  }
+  // public static void processTransactions(File transactions) {
+  //   store.openStore(transactions);
+  // }
 
   public static void closeStore() {
     store.closeStore();
