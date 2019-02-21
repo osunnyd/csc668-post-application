@@ -61,19 +61,23 @@ public class Catalog {
     return itemToReturn;
   }
   
-  public String[] getUPCs(){
-
-    System.out.println("WE ARE INSIDE THE FUNCTION");
+  public ArrayList<UPC> getUPCs(){
+    ArrayList<UPC> arraylist = new ArrayList();
+    for (UPC keys : catalog.keySet()) {
+      arraylist.add(keys);
+      //System.out.println(keys.getUPC());
+    }
+    return arraylist;
+  }
+  /*public String[] getUPCs(){
     ArrayList<String> arraylist = new ArrayList();
     for (UPC keys : catalog.keySet()) {
       arraylist.add(keys.getUPC());
       System.out.println(keys.getUPC());
     }
-    System.out.println("RIGHT BEFORE THE ARRAY IS MADE");
     String[] array = arraylist.toArray(new String[arraylist.size()]);
-    System.out.println("array is made, sending it");
     return array;
-  }
+  }*/
 
 
 }

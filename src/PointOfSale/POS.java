@@ -65,9 +65,9 @@ public class POS implements Observer {
   }
 
   private void addItem(){
-    String upc = pos_GUI.getUPCcode();
+    UPC upc = pos_GUI.getUPCcode();
     int quantity = pos_GUI.getQuantity().intValue();
-    transaction.addPurchasedItem(new SalesLineItem(upc, quantity));
+    transaction.addPurchasedItem(new SalesLineItem(upc.getUPC(), quantity));
   }
 
   private void processPayment(){
