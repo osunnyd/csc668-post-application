@@ -26,6 +26,7 @@ public class SalesLog {
   }
 
   private void saveTransactionReceiptToLog(String receipt) {
+    System.out.println(receipt);
     this.receipts.add(receipt);
   }
 
