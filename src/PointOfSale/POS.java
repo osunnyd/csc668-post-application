@@ -63,7 +63,7 @@ public class POS implements Observer {
       if (listener instanceof PaymentListener) {
         if (check() == true) {
           processPayment();
-          pos_GUI.displayPaymentMessage(transaction.getAuthorizationJSON());
+          pos_GUI.displayPaymentMessage(transaction.isAuthorized());
           pos_GUI.resetGUI();
         }
       } else if (listener instanceof ProductListener) {
