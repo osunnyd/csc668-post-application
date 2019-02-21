@@ -23,6 +23,7 @@ public abstract class IProductReader{
   public abstract Item[] getProductList();
   public abstract void read(String productString) throws IOException;
 
+  //checks used to see which class will return
   public boolean checkFile() {
     File filename = new File(productString);
     return filename.exists();
