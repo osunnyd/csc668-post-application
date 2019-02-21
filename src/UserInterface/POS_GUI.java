@@ -43,19 +43,13 @@ public class POS_GUI {
         frame.add(topPanel);
         frame.add(centerPanel);
         frame.add(bottomPanel);
-
     }
+
     public void resetGUI(){
         //clear out the GUI for next transaction
         bottomPanel.resetGUI();
-    }
-
-    public String getPaymentType() {
-        return bottomPanel.getPaymentType();
-    }
-
-    public String getAmountTendered() {
-        return bottomPanel.getAmountTendered();
+        topPanel.resetGUI();
+        centerPanel.resetGUI();
     }
 
     public String getName(){
@@ -70,8 +64,24 @@ public class POS_GUI {
         return topPanel.getQuantity();
     }
 
+    public void itemtoInvoice(Item item, int quantity){
+        centerPanel.itemtoInvoice(item, quantity);
+    }
+
+    public String getAmountDue(){
+        return centerPanel.getAmountDue();
+    }
+
     public String getDate(){
         return bottomPanel.getDate();
+    }
+
+    public String getPaymentType() {
+        return bottomPanel.getPaymentType();
+    }
+
+    public String getAmountTendered() {
+        return bottomPanel.getAmountTendered();
     }
 
     public void displayItemAdded(){
@@ -80,10 +90,4 @@ public class POS_GUI {
     public void displayPaymentMessage(){
         
     }
-
-    public void itemtoInvoice(Item item, int quantity){
-        centerPanel.itemtoInvoice(item, quantity);
-    }
-
-
 }
