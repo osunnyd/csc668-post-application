@@ -35,18 +35,16 @@ public class Manager {
 
     } else {
 
-
+      // Set URI
       try {
-        // Set URI
         URI = args[0];
-        System.out.println("This is the URI " + URI);
         catalog = new Catalog(URI);
         store = new Store(catalog, new Stock());
         store.openStore(URI);
+        // new POS(catalog);
       } catch (Exception e) {
         e.printStackTrace();
       }
-
     }
   }
 }
