@@ -22,6 +22,7 @@ public class POS implements Observer {
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
   private Catalog catalog;
+  private String uri;
 
 
   // public POS(Catalog catalog){
@@ -34,6 +35,7 @@ public class POS implements Observer {
 
   public POS(Catalog catalog, String uri) {
     addListeners();
+    this.uri = uri;
     this.catalog = catalog;
     this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
     this.transaction = new Transaction();
@@ -89,7 +91,8 @@ public class POS implements Observer {
     transaction.setCustomer(new Customer(name, date ));
     transaction.setPaymentType(pos_GUI.getPaymentType());
     transaction.setAmountTendered(pos_GUI.getAmountTendered());
-
+    TransactionManager transactionManager = new TransactionManager(transaction, uri);
+    Transaction transactionResult = transactionManager.processTransaction();
   }
 
   private boolean check(){

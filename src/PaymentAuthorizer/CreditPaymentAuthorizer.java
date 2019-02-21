@@ -11,10 +11,7 @@ public class CreditPaymentAuthorizer extends PaymentAuthorizer {
 
   @Override
   public Boolean authorizePayment(Transaction transaction, String URI) {
-    if (transaction.getAmountTendered().length() != 5) {
-      super.addError("Invalid Credit Card Number");
-      return false;
-    }
+
 
     String authorizationData = transaction.getAuthorizationJSON();
 
