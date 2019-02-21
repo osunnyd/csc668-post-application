@@ -57,4 +57,12 @@ public class Catalog {
 
     return itemToReturn;
   }
+  public ArrayList<UPC> getUPCs(){
+    ArrayList<UPC> arraylist = new ArrayList();
+    for (UPC keys : catalog.keySet()) {
+      arraylist.add(keys);
+      //System.out.println(keys.getUPC());
+    }
+    return arraylist;
+  }
 }

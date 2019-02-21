@@ -27,33 +27,23 @@ public class Manager {
   static Stock stock;
   static Catalog catalog;
   static String URI;
-  static Boolean debugOn = false;
+  static Boolean debugOn = true;
 
-  public static void main(String[] args)
-  {
-    if (args.length > 1)
-    {
+  public static void main(String[] args) {
+    if (args.length > 1) {
       System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
-    } else
-    {
+    } else {
       // Set URI
       URI = args[0];
       System.out.println("This is the URI " + URI);
-<<<<<<< HEAD
-      if (debugOn)
-      {
-        try
-        {
-          new POS();
-=======
+
       if (debugOn) {
         try {
 
           catalog = new Catalog("src/InputFiles/products.txt");
-          //new POS(catalog);
+          // new POS(catalog);
           new POS(catalog);
->>>>>>> develop
 
           SalesLog salesLog = new SalesLog(URI);
           // Test to GET Data from Backend
@@ -136,63 +126,33 @@ public class Manager {
 
           System.out.println("\n\n-----Print Sales Log-----");
           ArrayList<String> receipts = salesLog.getReceipts();
-          for (int i = 0; i < receipts.size(); i++)
-          {
+          for (int i = 0; i < receipts.size(); i++) {
             System.out.println("-----Start of Receipt-----\n" + receipts.get(i) + "\n-----End of Receipt-----\n");
           }
 
-        } catch (Exception ex)
-        {
+        } catch (Exception ex) {
           ex.printStackTrace();
         }
-      } else
-
-      {
-<<<<<<< HEAD
-=======
-        //openStore(products);
-        //processTransactions(transactions);
-        //closeStore();
-        RestProductReader p;
-        FileProductReader f;
-        try
-        {
-          p = new RestProductReader("https://post-server.herokuapp.com/products");
-          f = new FileProductReader("src/InputFiles/products.txt");
-          Item[] is = (Item[]) f.getProductList();
-
-          for(int i = 0; i < is.length; i++)
-          {
-            //System.out.println(is[i].toString());
-            System.out.println(is[i].toString());
-          }
-        } catch (IOException e)
-        {
-          e.printStackTrace();
-        }
->>>>>>> develop
-
       }
-
     }
-  }
 
-  public static void openStore(File products) {
-    try {
-      //catalog = new Catalog(products);
-      stock = new Stock(products);
-      store = new Store(catalog, stock);
+    // public static void openStore(File products) {
+    // try {
+    // //catalog = new Catalog(products);
+    // stock = new Stock(products);
+    // store = new Store(catalog, stock);
 
-    } catch (Exception error) {
-      System.out.println(error);
-    }
-  }
+    // } catch (Exception error) {
+    // System.out.println(error);
+    // }
+    // }
 
-  // public static void processTransactions(File transactions) {
-  //   store.openStore(transactions);
-  // }
+    // public static void processTransactions(File transactions) {
+    // store.openStore(transactions);
+    // }
 
-  public static void closeStore() {
-    store.closeStore();
+    // public static void closeStore() {
+    // store.closeStore();
+    // }
   }
 }

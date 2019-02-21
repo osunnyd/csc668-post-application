@@ -3,9 +3,8 @@ package UserInterface;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import ProductReader.*;
 
-import Main.UPC;
-import Main.Item;
 
 //Jarek
 

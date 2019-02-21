@@ -21,7 +21,7 @@ public class POS implements Observer {
   private Transaction transaction;
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
-  Catalog catalog;
+  private Catalog catalog;
 
   public POS(Catalog catalog){
     //testing purposes, do not use this constructor, delete before submission

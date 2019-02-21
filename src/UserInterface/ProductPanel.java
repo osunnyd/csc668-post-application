@@ -1,13 +1,10 @@
 package UserInterface;
 
 import javax.swing.*;
-
-import Main.Catalog;
-
 import java.awt.*;
 import java.awt.event.*;
 import PointOfSale.*;
-
+import ProductReader.*;
 import Main.*;
 import java.util.ArrayList;
 

@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Main.*;
-
+import ProductReader.*;
 //Jarek
 
 public class TopPanel extends JPanel{
