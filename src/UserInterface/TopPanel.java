@@ -60,4 +60,7 @@ public class TopPanel extends JPanel{
       return productPanel.getQuantity();
   }
 
+  public void resetGUI(){
+    textfield.setText("");
+  }
 }
