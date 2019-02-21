@@ -27,29 +27,41 @@ public class Manager {
   static Stock stock;
   static Catalog catalog;
   static String URI;
-  static Boolean debugOn = true;
+  static Boolean debugOn = false;
 
   public static void main(String[] args) {
     if (args.length > 1) {
       System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
     } else {
+
       // Set URI
+      try{
       URI = args[0];
       System.out.println("This is the URI " + URI);
+      catalog = new Catalog(URI);
+      store = new Store(catalog, new Stock());
+      store.openStore(URI);
+      // new POS(catalog);
+      }catch(Exception e){
+        e.printStackTrace();
+      }
+
+
 
       if (debugOn) {
         try {
 
-          catalog = new Catalog("src/InputFiles/products.txt");
+          catalog = new Catalog(URI);
+          store = new Store(catalog, new Stock());
+          store.openStore(URI);
           // new POS(catalog);
-          new POS(catalog);
-
-          SalesLog salesLog = new SalesLog(URI);
+          new POS(catalog, URI);
+         
           // Test to GET Data from Backend
           // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);
-
+          SalesLog salesLog = new SalesLog(URI);
           // Cash Transaction Start
           System.out.println("\n\nStarting Cash Sale");
           Transaction cashTransaction = new Transaction();
