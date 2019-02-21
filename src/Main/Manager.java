@@ -1,7 +1,9 @@
 package Main;
 
+import Requests.StoreRequests.ProductRequest;
 import UserInterface.*;
 import PointOfSale.*;
+import ProductReader.*;
 import Transaction.Transaction;
 import Customer.Customer;
 import Transaction.TransactionManager;
@@ -27,16 +29,21 @@ public class Manager {
   static String URI;
   static Boolean debugOn = false;
 
-  public static void main(String[] args) {
-    if (args.length > 1) {
+  public static void main(String[] args)
+  {
+    if (args.length > 1)
+    {
       System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
-    } else {
+    } else
+    {
       // Set URI
       URI = args[0];
       System.out.println("This is the URI " + URI);
-      if (debugOn) {
-        try {
+      if (debugOn)
+      {
+        try
+        {
           new POS();
 
           SalesLog salesLog = new SalesLog(URI);
@@ -100,40 +107,22 @@ public class Manager {
 
           System.out.println("\n\n-----Print Sales Log-----");
           ArrayList<String> receipts = salesLog.getReceipts();
-          for (int i = 0; i < receipts.size(); i++) {
+          for (int i = 0; i < receipts.size(); i++)
+          {
             System.out.println("-----Start of Receipt-----\n" + receipts.get(i) + "\n-----End of Receipt-----\n");
           }
 
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
           ex.printStackTrace();
         }
       } else
 
       {
-        // openStore(products);
-        // processTransactions(transactions);
-        // closeStore();
-        RestProductReader p;
-        FileProductReader f;
-        try
-        {
-          p = new RestProductReader("https://post-server.herokuapp.com/products");
-          f = new FileProductReader("src/InputFiles/products.txt");
-          Item[] is = (Item[]) f.getProductList();
-
-          for(int i = 0; i < is.length; i++)
-          {
-            //System.out.println(is[i].toString());
-            System.out.println(is[i].toString());
-          }
-        } catch (IOException e)
-        {
-          e.printStackTrace();
-        }
 
       }
-    }
 
+    }
   }
 
   public static void openStore(File products) {
