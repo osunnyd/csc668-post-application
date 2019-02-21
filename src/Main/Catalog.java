@@ -60,4 +60,20 @@ public class Catalog {
 
     return itemToReturn;
   }
+  
+  public String[] getUPCs(){
+
+    System.out.println("WE ARE INSIDE THE FUNCTION");
+    ArrayList<String> arraylist = new ArrayList();
+    for (UPC keys : catalog.keySet()) {
+      arraylist.add(keys.getUPC());
+      System.out.println(keys.getUPC());
+    }
+    System.out.println("RIGHT BEFORE THE ARRAY IS MADE");
+    String[] array = arraylist.toArray(new String[arraylist.size()]);
+    System.out.println("array is made, sending it");
+    return array;
+  }
+
+
 }

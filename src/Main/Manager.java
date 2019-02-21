@@ -37,7 +37,10 @@ public class Manager {
       System.out.println("This is the URI " + URI);
       if (debugOn) {
         try {
-          new POS();
+
+          catalog = new Catalog("src/InputFiles/products.txt");
+          //new POS(catalog);
+          new POS(catalog);
 
           SalesLog salesLog = new SalesLog(URI);
           // Test to GET Data from Backend
@@ -130,9 +133,9 @@ public class Manager {
       } else
 
       {
-        // openStore(products);
-        // processTransactions(transactions);
-        // closeStore();
+        //openStore(products);
+        //processTransactions(transactions);
+        //closeStore();
         RestProductReader p;
         FileProductReader f;
         try

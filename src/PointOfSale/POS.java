@@ -21,16 +21,15 @@ public class POS implements Observer {
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
 
-  public POS() {
-    // testing purposes, do not use this constructor, delete before submission
+  public POS(Catalog catalog){
+    //testing purposes, do not use this constructor, delete before submission
     addListeners();
-    this.pos_GUI = new POS_GUI(paymentListener, productListener);
-    this.transaction = new Transaction();
+    this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
   }
 
   public POS(Catalog catalog, String uri) {
     addListeners();
-    this.pos_GUI = new POS_GUI(paymentListener, productListener);
+    this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
     this.transaction = new Transaction();
     this.salesLog = new SalesLog(uri);
   }
@@ -79,9 +78,5 @@ public class POS implements Observer {
     transaction.setAmountTendered(pos_GUI.getAmountTendered());
 
   }
-
-
-
-
 
 }
