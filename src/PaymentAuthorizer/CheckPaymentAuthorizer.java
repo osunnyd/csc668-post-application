@@ -1,6 +1,7 @@
 package PaymentAuthorizer;
 
 // Robert Quinones
+
 import Transaction.Transaction;
 import Requests.StoreRequests.PaymentAuthorizationRequest;
 
@@ -15,8 +16,7 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
       return false;
     }
 
-    // TODO DEBUG STRING, WE NEED REAL JSON
-    String authorizationData = "{ \"amount\": 123.45 }";
+    String authorizationData = transaction.getAuthorizationJSON();
 
     this.authorizationRequest = new PaymentAuthorizationRequest(URI);
     String authorizationResultCode = this.authorizationRequest.authorizePayment("CHECK", authorizationData);
@@ -26,7 +26,6 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
       return true;
 
     case "400":
-      // TODO Add Errors Individually
       super.addError(this.authorizationRequest.getResponse());
       break;
 
@@ -39,4 +38,5 @@ public class CheckPaymentAuthorizer extends PaymentAuthorizer {
 
     return false;
   }
+
 }

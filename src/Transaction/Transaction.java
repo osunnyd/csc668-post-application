@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ReceiptBuilder.ReceiptBuilder;
 import Customer.Customer;
 import Main.SalesLineItem;
+import Transaction.JSONBuilder.JsonBuilder;
 
 public class Transaction {
 
@@ -91,6 +92,14 @@ public class Transaction {
 
   public ArrayList<SalesLineItem> getPurchasedItems() {
     return this.purchasedItems;
+  }
+
+  public String getAuthorizationJSON() {
+    return JsonBuilder.getJsonBuilder(this.paymentType).getAuthorizationJSON(this);
+  }
+
+  public String getSalesJSON() {
+    return JsonBuilder.getJsonBuilder(this.paymentType).createSaleJSON(this);
   }
 
   public void setCustomer(Customer customer) {
