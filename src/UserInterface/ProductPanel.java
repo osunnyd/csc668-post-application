@@ -22,6 +22,7 @@ public class ProductPanel extends JPanel {
     JComboBox<String> upcDropdown;
     JComboBox<Integer> qtyDropdown;
     Catalog catalog;
+    ArrayList<UPC> upcArrayList;
 
 
     public ProductPanel(ProductListener productListener, Catalog catalog){
@@ -44,19 +45,23 @@ public class ProductPanel extends JPanel {
 
 
     private void getUPCcodes(Catalog catalog){
+
+        upcArrayList = catalog.getUPCs();
+        ArrayList<String> tempArrayList = new ArrayList();
+        for(int i = 0; i < upcArrayList.size(); i++){
+            tempArrayList.add(upcArrayList.get(i).getUPC());
+        }
+
         Integer[] quantityChoices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        //String[] upcChoices = catalog.getUPCs().clone();
-        System.out.println(catalog.getUPCs());
-        
-        //String[] array = upcChoices.toArray(new String[upcChoices.size()]);
+        String[] upcChoices = tempArrayList.toArray(new String[tempArrayList.size()]);
         qtyDropdown = new JComboBox<Integer>(quantityChoices);
-        //upcDropdown = new JComboBox<String>(upcChoices);
+        upcDropdown = new JComboBox<String>(upcChoices);
     }
 
     private void addPanels(){
         JPanel upcPanel = new JPanel();
         upcPanel.add(upcLabel);
-        //upcPanel.add(upcDropdown);
+        upcPanel.add(upcDropdown);
         
         JPanel qtyPanel = new JPanel();
         qtyPanel.add(qtyLabel);
@@ -73,8 +78,10 @@ public class ProductPanel extends JPanel {
 
 
     //getters for UI listener calls
-    public String getUPCcode(){
-        return (String) upcDropdown.getSelectedItem();
+    public UPC getUPCcode(){
+        //return (String) upcDropdown.getSelectedItem();
+        int temp = upcDropdown.getSelectedIndex();
+        return upcArrayList.get(temp);
     }
 
     public Integer getQuantity(){

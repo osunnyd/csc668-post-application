@@ -20,15 +20,18 @@ public class POS implements Observer {
   private Transaction transaction;
   ArrayList<String> receipts;
   POS_GUI pos_GUI;
+  Catalog catalog;
 
   public POS(Catalog catalog){
     //testing purposes, do not use this constructor, delete before submission
     addListeners();
+    this.catalog = catalog;
     this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
   }
 
   public POS(Catalog catalog, String uri) {
     addListeners();
+    this.catalog = catalog;
     this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
     this.transaction = new Transaction();
     this.salesLog = new SalesLog(uri);
@@ -65,9 +68,15 @@ public class POS implements Observer {
   }
 
   private void addItem(){
-    String upc = pos_GUI.getUPCcode();
+    UPC upc = pos_GUI.getUPCcode();
     int quantity = pos_GUI.getQuantity().intValue();
-    transaction.addPurchasedItem(new SalesLineItem(upc, quantity));
+
+    //add item to invoice
+    Item item = catalog.getItem(upc);
+    pos_GUI.itemtoInvoice(item, quantity);
+
+    //add item to transaction
+    transaction.addPurchasedItem(new SalesLineItem(upc.getUPC(), quantity));
   }
 
   private void processPayment(){

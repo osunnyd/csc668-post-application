@@ -52,7 +52,7 @@ public class TopPanel extends JPanel{
     return textfield.getText();
   }
 
-  public String getUPCcode(){
+  public UPC getUPCcode(){
       return productPanel.getUPCcode();
   }
 

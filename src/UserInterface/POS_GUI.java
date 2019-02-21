@@ -9,6 +9,7 @@ import java.awt.event.*;
 import java.util.Observer;
 
 import PointOfSale.*;
+import Main.*;
 
 public class POS_GUI {
 
@@ -64,7 +65,7 @@ public class POS_GUI {
         return topPanel.getName();
     }
 
-    public String getUPCcode(){
+    public UPC getUPCcode(){
         return topPanel.getUPCcode();
     }
 
@@ -81,6 +82,10 @@ public class POS_GUI {
     }
     public void displayPaymentMessage(){
         
+    }
+
+    public void itemtoInvoice(Item item, int quantity){
+        centerPanel.itemtoInvoice(item, quantity);
     }
 
 
