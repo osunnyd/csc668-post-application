@@ -2,9 +2,14 @@ package UserInterface;
 
 import javax.swing.*;
 
+import Main.Catalog;
+
 import java.awt.*;
 import java.awt.event.*;
 import PointOfSale.*;
+
+import Main.*;
+import java.util.ArrayList;
 
 //Jarek
 
@@ -16,11 +21,13 @@ public class ProductPanel extends JPanel {
     JButton enterButton;
     JComboBox<String> upcDropdown;
     JComboBox<Integer> qtyDropdown;
+    Catalog catalog;
 
 
-    public ProductPanel(ProductListener productListener){
+    public ProductPanel(ProductListener productListener, Catalog catalog){
+        //catalog = this.catalog;
         setDefaults();
-        getUPCcodes();
+        getUPCcodes(catalog);
         addPanels();
         setListeners(productListener);
     }
@@ -36,17 +43,20 @@ public class ProductPanel extends JPanel {
     }
 
 
-    private void getUPCcodes(){
+    private void getUPCcodes(Catalog catalog){
         Integer[] quantityChoices = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        String[] upcChoices = {"1234", "2345", "3456"};
+        //String[] upcChoices = catalog.getUPCs().clone();
+        System.out.println(catalog.getUPCs());
+        
+        //String[] array = upcChoices.toArray(new String[upcChoices.size()]);
         qtyDropdown = new JComboBox<Integer>(quantityChoices);
-        upcDropdown = new JComboBox<String>(upcChoices);
+        //upcDropdown = new JComboBox<String>(upcChoices);
     }
 
     private void addPanels(){
         JPanel upcPanel = new JPanel();
         upcPanel.add(upcLabel);
-        upcPanel.add(upcDropdown);
+        //upcPanel.add(upcDropdown);
         
         JPanel qtyPanel = new JPanel();
         qtyPanel.add(qtyLabel);

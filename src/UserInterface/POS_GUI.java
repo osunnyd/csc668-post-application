@@ -1,6 +1,9 @@
 package UserInterface;
 
 import javax.swing.*;
+
+import Main.Catalog;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observer;
@@ -14,9 +17,9 @@ public class POS_GUI {
     CenterPanel centerPanel;
     TopPanel topPanel;
     JFrame frame;
-    public POS_GUI(PaymentListener paymentListener, ProductListener productListener) {
+    public POS_GUI(PaymentListener paymentListener, ProductListener productListener, Catalog catalog) {
         setDefaults();
-        addPanels(paymentListener, productListener);
+        addPanels(paymentListener, productListener, catalog);
         frame.setVisible(true);
     }
 
@@ -30,8 +33,8 @@ public class POS_GUI {
         frame.setResizable(false);
     }
 
-    private void addPanels(PaymentListener paymentListener, ProductListener productListener) {
-        this.topPanel = new TopPanel(productListener);
+    private void addPanels(PaymentListener paymentListener, ProductListener productListener, Catalog catalog) {
+        this.topPanel = new TopPanel(productListener, catalog);
         this.centerPanel = new CenterPanel();
         this.bottomPanel = new BottomPanel(paymentListener);
         // sets panels to strict coordinates (x, y, width, height)
