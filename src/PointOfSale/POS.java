@@ -63,6 +63,7 @@ public class POS implements Observer {
       if (listener instanceof PaymentListener) {
         if (check() == true) {
           processPayment();
+          pos_GUI.displayPaymentMessage(transaction.getStatusCode());
           pos_GUI.resetGUI();
         }
       } else if (listener instanceof ProductListener) {

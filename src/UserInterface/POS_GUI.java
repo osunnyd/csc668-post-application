@@ -87,7 +87,11 @@ public class POS_GUI {
     public void displayItemAdded(){
         JOptionPane.showMessageDialog(frame, "Item(s) added");
     }
-    public void displayPaymentMessage(){
-        
+    public void displayPaymentMessage(String statuscode){
+        if(statuscode == "200"){
+            JOptionPane.showMessageDialog(frame, "Payment Success");
+        } else {
+            JOptionPane.showMessageDialog(frame, "Payment Failed");
+        }
     }
 }
