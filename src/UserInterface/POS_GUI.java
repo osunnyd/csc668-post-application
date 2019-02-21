@@ -84,5 +84,9 @@ public class POS_GUI {
         
     }
 
+    public void itemtoInvoice(Item item, int quantity){
+        centerPanel.itemtoInvoice(item, quantity);
+    }
+
 
 }

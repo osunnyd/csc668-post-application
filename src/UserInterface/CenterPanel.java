@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import Main.UPC;
+import Main.Item;
+
 //Jarek
 
 public class CenterPanel extends JPanel {
@@ -12,7 +15,7 @@ public class CenterPanel extends JPanel {
     protected JTextArea textArea;
     protected JLabel infoLabel;
     protected JLabel totalLabel;
-    int totalDue;
+    float totalDue;
     //JTable table;
     JScrollPane scrollPane;
 
@@ -26,7 +29,7 @@ private void setDefaults(){
     setLayout(new BorderLayout(10, 10));
     //Item                                                                    QTY                     UNIT_PRICE                     EXTENDED_PRICE"    
     infoLabel = new JLabel("Item                                                                    QTY                     UNIT_PRICE                     EXTENDED_PRICE");
-    totalDue = 0;
+    totalDue = 0.f;
     totalLabel = new JLabel("                                                                                                                                                TOTAL        $" + String.valueOf(totalDue));
 
 
@@ -54,5 +57,20 @@ private void setDefaults(){
     //add(table, BorderLayout.CENTER);
     add(infoLabel, BorderLayout.NORTH);
     add(totalLabel, BorderLayout.PAGE_END);
+  }
+
+  public void itemtoInvoice(Item item, int quantity){
+    textArea.append(item.getDescription() + "   ");
+    String itemprice = String.valueOf(item.getPrice());
+    String subtotal = String.valueOf(item.getPrice() *(float) quantity);
+    textArea.append(String.valueOf(quantity));
+    textArea.append(itemprice + "   ");
+    textArea.append(subtotal + "\n");
+    totalDue = totalDue + (item.getPrice() * (float) quantity);
+    update();
+  }
+
+  private void update(){
+    totalLabel.setText("                                                                                                                                           TOTAL        $" + String.valueOf(totalDue));
   }
 }
