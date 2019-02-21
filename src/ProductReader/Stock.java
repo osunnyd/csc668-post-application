@@ -17,6 +17,10 @@ public class Stock {
   private HashMap<UPC, Integer> stock = new HashMap<>();
   private ArrayList<String> items = new ArrayList<>();
 
+  public Stock(){
+    
+  }
+
   public Stock(File filename) throws IOException {
     parseProducts(filename);
   }

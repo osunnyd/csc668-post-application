@@ -23,12 +23,12 @@ public class POS implements Observer {
   POS_GUI pos_GUI;
   private Catalog catalog;
 
-  public POS(Catalog catalog){
-    //testing purposes, do not use this constructor, delete before submission
-    addListeners();
-    this.catalog = catalog;
-    this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
-  }
+  // public POS(Catalog catalog){
+  //   //testing purposes, do not use this constructor, delete before submission
+  //   addListeners();
+  //   this.catalog = catalog;
+  //   this.pos_GUI = new POS_GUI(paymentListener, productListener, catalog);
+  // }
 
   public POS(Catalog catalog, String uri) {
     addListeners();
