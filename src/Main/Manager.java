@@ -1,7 +1,9 @@
 package Main;
 
+import Requests.StoreRequests.ProductRequest;
 import UserInterface.*;
 import PointOfSale.*;
+import ProductReader.*;
 import Transaction.Transaction;
 import Customer.Customer;
 import Transaction.TransactionManager;
@@ -27,20 +29,31 @@ public class Manager {
   static String URI;
   static Boolean debugOn = false;
 
-  public static void main(String[] args) {
-    if (args.length > 1) {
+  public static void main(String[] args)
+  {
+    if (args.length > 1)
+    {
       System.out.println("Invalid Amount of Command Line Arguments. Please try again.");
 
-    } else {
+    } else
+    {
       // Set URI
       URI = args[0];
       System.out.println("This is the URI " + URI);
+<<<<<<< HEAD
+      if (debugOn)
+      {
+        try
+        {
+          new POS();
+=======
       if (debugOn) {
         try {
 
           catalog = new Catalog("src/InputFiles/products.txt");
           //new POS(catalog);
           new POS(catalog);
+>>>>>>> develop
 
           SalesLog salesLog = new SalesLog(URI);
           // Test to GET Data from Backend
@@ -123,16 +136,20 @@ public class Manager {
 
           System.out.println("\n\n-----Print Sales Log-----");
           ArrayList<String> receipts = salesLog.getReceipts();
-          for (int i = 0; i < receipts.size(); i++) {
+          for (int i = 0; i < receipts.size(); i++)
+          {
             System.out.println("-----Start of Receipt-----\n" + receipts.get(i) + "\n-----End of Receipt-----\n");
           }
 
-        } catch (Exception ex) {
+        } catch (Exception ex)
+        {
           ex.printStackTrace();
         }
       } else
 
       {
+<<<<<<< HEAD
+=======
         //openStore(products);
         //processTransactions(transactions);
         //closeStore();
@@ -153,10 +170,11 @@ public class Manager {
         {
           e.printStackTrace();
         }
+>>>>>>> develop
 
       }
-    }
 
+    }
   }
 
   public static void openStore(File products) {

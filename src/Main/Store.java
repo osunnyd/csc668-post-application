@@ -3,6 +3,7 @@ package Main;
 /*
 Omar ALaniz, Sunny Wong
 */
+import ProductReader.*;
 import PointOfSale.*;
 import java.io.File;
 import java.util.HashMap;
