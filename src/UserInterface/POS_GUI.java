@@ -15,6 +15,7 @@ public class POS_GUI {
     CenterPanel centerPanel;
     TopPanel topPanel;
     JFrame frame;
+
     public POS_GUI(PaymentListener paymentListener, ProductListener productListener, Catalog catalog) {
         setDefaults();
         addPanels(paymentListener, productListener, catalog);
@@ -45,34 +46,34 @@ public class POS_GUI {
         frame.add(bottomPanel);
     }
 
-    public void resetGUI(){
-        //clear out the GUI for next transaction
+    public void resetGUI() {
+        // clear out the GUI for next transaction
         bottomPanel.resetGUI();
         topPanel.resetGUI();
         centerPanel.resetGUI();
     }
 
-    public String getName(){
+    public String getName() {
         return topPanel.getName();
     }
 
-    public UPC getUPCcode(){
+    public UPC getUPCcode() {
         return topPanel.getUPCcode();
     }
 
-    public Integer getQuantity(){
+    public Integer getQuantity() {
         return topPanel.getQuantity();
     }
 
-    public void itemtoInvoice(Item item, int quantity){
+    public void itemtoInvoice(Item item, int quantity) {
         centerPanel.itemtoInvoice(item, quantity);
     }
 
-    public String getAmountDue(){
+    public String getAmountDue() {
         return centerPanel.getAmountDue();
     }
 
-    public String getDate(){
+    public String getDate() {
         return bottomPanel.getDate();
     }
 
@@ -84,11 +85,12 @@ public class POS_GUI {
         return bottomPanel.getAmountTendered();
     }
 
-    public void displayItemAdded(){
+    public void displayItemAdded() {
         JOptionPane.showMessageDialog(frame, "Item(s) added");
     }
-    public void displayPaymentMessage(boolean status){
-        if(status == true){
+
+    public void displayPaymentMessage(boolean status) {
+        if (status == true) {
             JOptionPane.showMessageDialog(frame, "Payment Success");
         } else {
             JOptionPane.showMessageDialog(frame, "Payment Failed");

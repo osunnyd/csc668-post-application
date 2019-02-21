@@ -36,18 +36,15 @@ public class Manager {
     } else {
 
       // Set URI
-      try{
-      URI = args[0];
-      System.out.println("This is the URI " + URI);
-      catalog = new Catalog(URI);
-      store = new Store(catalog, new Stock());
-      store.openStore(URI);
-      // new POS(catalog);
-      }catch(Exception e){
+      try {
+        URI = args[0];
+        catalog = new Catalog(URI);
+        store = new Store(catalog, new Stock());
+        store.openStore(URI);
+        // new POS(catalog);
+      } catch (Exception e) {
         e.printStackTrace();
       }
-
-
 
       if (debugOn) {
         try {
@@ -57,7 +54,7 @@ public class Manager {
           store.openStore(URI);
           // new POS(catalog);
           new POS(catalog, URI);
-         
+
           // Test to GET Data from Backend
           // String result = new ProductRequest(URI).getProducts();
           // System.out.println(result);
